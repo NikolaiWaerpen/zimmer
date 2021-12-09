@@ -9,4 +9,5 @@ export default NextAuth({
     }),
     // GOOGLE
   ],
+  secret: process.env.NODE_ENV ? process.env.SECRET : "development",
 });
