@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 
+console.log(process.env.NODE_ENV);
+
 export default NextAuth({
   providers: [
     GithubProvider({
@@ -9,5 +11,5 @@ export default NextAuth({
     }),
     // GOOGLE
   ],
-  secret: process.env.NODE_ENV ? process.env.SECRET : "development",
+  secret: process.env.SECRET,
 });
