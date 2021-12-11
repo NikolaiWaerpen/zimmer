@@ -1,5 +1,5 @@
 type ErrorProps = {
-  error: Error;
+  error?: Error;
 };
 
 export default function Error({ error }: ErrorProps) {
