@@ -1,8 +1,10 @@
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "lib/apollo-client";
+import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
+import "styles/styles.css";
 import "tailwindcss/tailwind.css";
 import Layout from "../components/Layout";
-import "styles/styles.css";
-import { SessionProvider } from "next-auth/react";
 
 export default function MyApp({
   Component,
@@ -10,9 +12,11 @@ export default function MyApp({
 }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ApolloProvider client={apolloClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ApolloProvider>
     </SessionProvider>
   );
 }
