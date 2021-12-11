@@ -8,7 +8,7 @@ type LayoutProps = {
 function Login() {
   return (
     <div className="h-screen grid place-items-center">
-      <button onClick={() => signIn()}>Login</button>
+      <button onClick={() => signIn("github")}>Login to github</button>
     </div>
   );
 }
