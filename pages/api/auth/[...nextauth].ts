@@ -9,12 +9,5 @@ export default NextAuth({
     }),
     // GOOGLE
   ],
-  callbacks: {
-    redirect({ url, baseUrl }) {
-      console.log("url", url);
-      console.log("baseUrl", baseUrl);
-      return url;
-    },
-  },
   secret: process.env.SECRET,
 });
