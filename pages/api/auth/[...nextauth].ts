@@ -13,7 +13,7 @@ export default NextAuth({
     redirect({ url, baseUrl }) {
       console.log("url", url);
       console.log("baseUrl", baseUrl);
-      return baseUrl;
+      return "https://www.waerpen.com";
     },
   },
   secret: process.env.SECRET,
