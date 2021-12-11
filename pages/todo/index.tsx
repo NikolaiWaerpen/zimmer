@@ -22,7 +22,7 @@ function ViewTodo({ id, description, isComplete, setStatus }: ViewTodoProps) {
     <div>
       <p className={``}>{description}</p>
       <div>{isComplete ? "Complete" : "Not complete"}</div>
-      <button type="button" onClick={() => setStatus({ isEditing: id })}>
+      <button type="button" onClick={() => setStatus({ editingTodo: id })}>
         <FontAwesomeIcon icon={faPencilAlt} />
       </button>
     </div>
@@ -65,6 +65,8 @@ export const COMPLETE_TODO = gql`
   }
 `;
 
+// TODO: Change form logic
+
 // temp manual typing, until I get apollo codegen to work
 type TodosType = {
   id: number;
@@ -72,7 +74,7 @@ type TodosType = {
   isComplete: boolean;
 };
 
-const initialStatus = { isEditing: null, todoUserInput: "" };
+const initialStatus = { editingTodo: null, todoUserInput: "" };
 
 export default function Todo() {
   const { loading, error, data } = useQuery<{ todos: TodosType[] }>(GET_TODOS);
@@ -86,11 +88,13 @@ export default function Todo() {
     <div className="grid place-items-center h-screen">
       <Formik
         initialValues={todos}
-        onSubmit={() => console.log()}
+        onSubmit={(todos, {}) => {
+          console.log();
+        }}
         initialStatus={initialStatus}
       >
         {({ values, status, setStatus }) => {
-          const { isEditing, editInput } = status;
+          const { editingTodo, editInput } = status;
           return (
             <Form className="space-y-2">
               <h1 className="text-2xl text-center">Todo</h1>
@@ -98,7 +102,7 @@ export default function Todo() {
                 {values.map(({ id, description, isComplete }) => {
                   return (
                     <div key={id}>
-                      {isEditing !== id ? (
+                      {editingTodo !== id ? (
                         <div className="flex gap-2">
                           <button
                             type="button"
@@ -127,7 +131,7 @@ export default function Todo() {
                             type="button"
                             onClick={() =>
                               setStatus({
-                                isEditing: id,
+                                editingTodo: id,
                                 editInput: description,
                               })
                             }
