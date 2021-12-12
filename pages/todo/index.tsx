@@ -1,20 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
 import Error from "components/Error";
 import Loader from "components/Loader";
-import { Form, Formik } from "formik";
-import { apolloClient } from "lib/apollo-client";
-import * as cx from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faCircle,
-  faPencilAlt,
-  faStop,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import ViewTodo from "./ViewTodo";
+import AddTodo from "./AddTodo";
 import EditTodo from "./EditTodo";
+import ViewTodo from "./ViewTodo";
 
 export const GET_TODOS = gql`
   query Todos {
@@ -71,7 +61,9 @@ export default function Todo() {
   return (
     <div className="grid place-items-center h-screen">
       <div className="space-y-2">
-        <h1 className="text-2xl text-center">Todo</h1>
+        <h1 className="text-2xl text-center">Add Todo:</h1>
+        <AddTodo />
+        <h1 className="text-2xl text-center">Todos:</h1>
         {todos.map((todo) => {
           const { id } = todo;
           return (
