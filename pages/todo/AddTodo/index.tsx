@@ -16,8 +16,30 @@ const CREATE_TODO = gql`
   }
 `;
 
-export const validationSchema = yup.object({
-  description: yup.string().required("Description required"),
+const createTodoMutation = async (description: string) => {
+  await apolloClient.mutate({
+    mutation: CREATE_TODO,
+    variables: {
+      input: {
+        description,
+      },
+    },
+    refetchQueries: [
+      {
+        query: GET_TODOS,
+      },
+    ],
+  });
+};
+
+const validationSchema = yup.object({
+  description: yup
+    .string()
+    .required("Description required")
+    .test("len", "Must be less than 25 characters", (value) => {
+      if (!value) return true;
+      return value.length < 26;
+    }),
 });
 
 export default function AddTodo() {
@@ -25,19 +47,7 @@ export default function AddTodo() {
     <Formik
       initialValues={{ description: "" }}
       onSubmit={async ({ description }, { resetForm }) => {
-        await apolloClient.mutate({
-          mutation: CREATE_TODO,
-          variables: {
-            input: {
-              description,
-            },
-          },
-          refetchQueries: [
-            {
-              query: GET_TODOS,
-            },
-          ],
-        });
+        createTodoMutation(description);
         resetForm();
       }}
       validationSchema={validationSchema}

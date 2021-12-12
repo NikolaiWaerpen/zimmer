@@ -13,6 +13,22 @@ const COMPLETE_TODO = gql`
   }
 `;
 
+const completeTodoMutation = async (id: number) => {
+  await apolloClient.mutate({
+    mutation: COMPLETE_TODO,
+    variables: {
+      input: {
+        id,
+      },
+    },
+    refetchQueries: [
+      {
+        query: GET_TODOS,
+      },
+    ],
+  });
+};
+
 export type ViewTodoProps = {
   todo: TodoType;
   setEditingTodo: Dispatch<SetStateAction<number | null>>;
@@ -22,24 +38,7 @@ export default function ViewTodo({ todo, setEditingTodo }: ViewTodoProps) {
   const { description, id, isComplete } = todo;
   return (
     <div className="flex gap-2">
-      <button
-        type="button"
-        onClick={async () => {
-          await apolloClient.mutate({
-            mutation: COMPLETE_TODO,
-            variables: {
-              input: {
-                id,
-              },
-            },
-            refetchQueries: [
-              {
-                query: GET_TODOS,
-              },
-            ],
-          });
-        }}
-      >
+      <button type="button" onClick={() => completeTodoMutation(id)}>
         <FontAwesomeIcon icon={faCircle} />
       </button>
       <p className={isComplete ? "text-red-600" : ""}>{description}</p>

@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
 import { GET_TODOS } from "pages";
-import { validationSchema } from "../AddTodo";
 import { ViewTodoProps } from "../ViewTodo";
+import * as yup from "yup";
 
 const DELETE_TODO = gql`
   mutation DeleteTodo($input: DeleteTodoInput!) {
@@ -17,6 +17,22 @@ const DELETE_TODO = gql`
   }
 `;
 
+const deleteTodoMutation = async (id: number) => {
+  await apolloClient.mutate({
+    mutation: DELETE_TODO,
+    variables: {
+      input: {
+        id,
+      },
+    },
+    refetchQueries: [
+      {
+        query: GET_TODOS,
+      },
+    ],
+  });
+};
+
 const EDIT_TODO = gql`
   mutation EditTodo($input: EditTodoInput!) {
     editTodo(input: $input) {
@@ -25,27 +41,41 @@ const EDIT_TODO = gql`
   }
 `;
 
+const editTodoMutation = async (id: number, description: string) => {
+  await apolloClient.mutate({
+    mutation: EDIT_TODO,
+    variables: {
+      input: {
+        description,
+        id,
+      },
+    },
+    refetchQueries: [
+      {
+        query: GET_TODOS,
+      },
+    ],
+  });
+};
+
+const validationSchema = yup.object({
+  description: yup
+    .string()
+    .test("len", "Must be less than 25 characters", (value) => {
+      if (!value) return true;
+      return value.length < 26;
+    }),
+});
+
 type EditTodoType = ViewTodoProps & {};
 
 export default function EditTodo({ todo, setEditingTodo }: EditTodoType) {
   return (
     <Formik
       initialValues={todo}
-      onSubmit={async ({ description, id }, {}) => {
-        await apolloClient.mutate({
-          mutation: EDIT_TODO,
-          variables: {
-            input: {
-              description,
-              id,
-            },
-          },
-          refetchQueries: [
-            {
-              query: GET_TODOS,
-            },
-          ],
-        });
+      onSubmit={async ({ description, id }) => {
+        if (description) editTodoMutation(id, description);
+        else deleteTodoMutation(id);
         setEditingTodo(null);
       }}
       validationSchema={validationSchema}
@@ -61,24 +91,7 @@ export default function EditTodo({ todo, setEditingTodo }: EditTodoType) {
             />
             <div className="flex">
               {/* Delete */}
-              <button
-                type="button"
-                onClick={async () => {
-                  await apolloClient.mutate({
-                    mutation: DELETE_TODO,
-                    variables: {
-                      input: {
-                        id,
-                      },
-                    },
-                    refetchQueries: [
-                      {
-                        query: GET_TODOS,
-                      },
-                    ],
-                  });
-                }}
-              >
+              <button type="button" onClick={() => deleteTodoMutation(id)}>
                 <FontAwesomeIcon icon={faTimes} />
               </button>
               {/* Save */}
