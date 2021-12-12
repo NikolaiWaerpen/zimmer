@@ -48,7 +48,7 @@ export default NextAuth({
   secret: process.env.SECRET,
   callbacks: {
     signIn: async ({ user }) => {
-      if (!user || !user.name || !user.email || !user.image) return false;
+      if (!user ?? !user.name ?? !user.email ?? !user.image) return false;
 
       try {
         // @ts-ignore TEMPORARY
