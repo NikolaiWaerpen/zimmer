@@ -6,6 +6,7 @@ import { apolloClient } from "lib/apollo-client";
 import { GET_TODOS } from "pages";
 import { ViewTodoProps } from "../ViewTodo";
 import * as yup from "yup";
+import { MAX_TODO_CHARACTER_INPUT } from "consts";
 
 const DELETE_TODO = gql`
   mutation DeleteTodo($input: DeleteTodoInput!) {
@@ -61,10 +62,14 @@ const editTodoMutation = async (id: number, description: string) => {
 const validationSchema = yup.object({
   description: yup
     .string()
-    .test("len", "Must be less than 25 characters", (value) => {
-      if (!value) return true;
-      return value.length < 26;
-    }),
+    .test(
+      "len",
+      `Must be less than ${MAX_TODO_CHARACTER_INPUT} characters`,
+      (value) => {
+        if (!value) return true;
+        return value.length <= MAX_TODO_CHARACTER_INPUT;
+      }
+    ),
 });
 
 type EditTodoType = ViewTodoProps & {};

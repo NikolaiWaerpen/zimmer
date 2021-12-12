@@ -2,8 +2,9 @@ import { gql } from "@apollo/client";
 import { faCircle, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { apolloClient } from "lib/apollo-client";
+import { GET_TODOS } from "pages";
+import { TodoType } from "pages/todo";
 import { Dispatch, SetStateAction } from "react";
-import { GET_TODOS, TodoType } from "..";
 
 const COMPLETE_TODO = gql`
   mutation CompleteTodo($input: CompleteTodoInput!) {

@@ -3,8 +3,9 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
-import { GET_TODOS } from "..";
+import { GET_TODOS } from "../../../pages/todo";
 import * as yup from "yup";
+import { MAX_TODO_CHARACTER_INPUT } from "consts";
 
 const CREATE_TODO = gql`
   mutation CreateTodo($input: CreateTodoInput!) {
@@ -36,10 +37,14 @@ const validationSchema = yup.object({
   description: yup
     .string()
     .required("Description required")
-    .test("len", "Must be less than 25 characters", (value) => {
-      if (!value) return true;
-      return value.length < 26;
-    }),
+    .test(
+      "len",
+      `Must be less than ${MAX_TODO_CHARACTER_INPUT} characters`,
+      (value) => {
+        if (!value) return true;
+        return value.length <= MAX_TODO_CHARACTER_INPUT;
+      }
+    ),
 });
 
 export default function AddTodo() {

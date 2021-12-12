@@ -2,7 +2,7 @@
 @tailwind utilities;
 @tailwind base;
 
-/* body {
-  background-image: url("https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1948&q=80");
-  background-size: 100vw;
-} */
+body,
+html {
+  height: 100%;
+}

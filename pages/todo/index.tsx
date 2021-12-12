@@ -1,10 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
 import Error from "components/Error";
 import Loader from "components/Loader";
+import EditTodo from "components/todo/EditTodo";
+import ViewTodo from "components/todo/ViewTodo";
 import { useState } from "react";
-import AddTodo from "./AddTodo";
-import EditTodo from "./EditTodo";
-import ViewTodo from "./ViewTodo";
+import AddTodo from "../../components/todo/AddTodo";
 
 export const GET_TODOS = gql`
   query Todos {
