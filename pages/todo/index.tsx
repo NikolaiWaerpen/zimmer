@@ -12,22 +12,9 @@ import {
   faStop,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-
-type ViewTodoProps = TodosType & {
-  setStatus: (status?: any) => void;
-};
-
-function ViewTodo({ id, description, isComplete, setStatus }: ViewTodoProps) {
-  return (
-    <div>
-      <p className={``}>{description}</p>
-      <div>{isComplete ? "Complete" : "Not complete"}</div>
-      <button type="button" onClick={() => setStatus({ editingTodo: id })}>
-        <FontAwesomeIcon icon={faPencilAlt} />
-      </button>
-    </div>
-  );
-}
+import { useState } from "react";
+import ViewTodo from "./ViewTodo";
+import EditTodo from "./EditTodo";
 
 export const GET_TODOS = gql`
   query Todos {
@@ -65,19 +52,16 @@ export const COMPLETE_TODO = gql`
   }
 `;
 
-// TODO: Change form logic
-
 // temp manual typing, until I get apollo codegen to work
-type TodosType = {
+export type TodoType = {
   id: number;
   description: string;
   isComplete: boolean;
 };
 
-const initialStatus = { editingTodo: null, todoUserInput: "" };
-
 export default function Todo() {
-  const { loading, error, data } = useQuery<{ todos: TodosType[] }>(GET_TODOS);
+  const { loading, error, data } = useQuery<{ todos: TodoType[] }>(GET_TODOS);
+  const [editingTodo, setEditingTodo] = useState<null | number>(null);
 
   if (loading) return <Loader />;
   if (error ?? !data) return <Error error={error} />;
@@ -86,133 +70,21 @@ export default function Todo() {
 
   return (
     <div className="grid place-items-center h-screen">
-      <Formik
-        initialValues={todos}
-        onSubmit={(todos, {}) => {
-          console.log();
-        }}
-        initialStatus={initialStatus}
-      >
-        {({ values, status, setStatus }) => {
-          const { editingTodo, editInput } = status;
+      <div className="space-y-2">
+        <h1 className="text-2xl text-center">Todo</h1>
+        {todos.map((todo) => {
+          const { id } = todo;
           return (
-            <Form className="space-y-2">
-              <h1 className="text-2xl text-center">Todo</h1>
-              <div>
-                {values.map(({ id, description, isComplete }) => {
-                  return (
-                    <div key={id}>
-                      {editingTodo !== id ? (
-                        <div className="flex gap-2">
-                          <button
-                            type="button"
-                            onClick={async () => {
-                              await apolloClient.mutate({
-                                mutation: COMPLETE_TODO,
-                                variables: {
-                                  input: {
-                                    id,
-                                  },
-                                },
-                                refetchQueries: [
-                                  {
-                                    query: GET_TODOS,
-                                  },
-                                ],
-                              });
-                            }}
-                          >
-                            <FontAwesomeIcon icon={faCircle} />
-                          </button>
-                          <p className={isComplete ? "text-gray-600" : ""}>
-                            {description}
-                          </p>
-                          <button
-                            type="button"
-                            onClick={() =>
-                              setStatus({
-                                editingTodo: id,
-                                editInput: description,
-                              })
-                            }
-                          >
-                            <FontAwesomeIcon icon={faPencilAlt} />
-                          </button>
-                        </div>
-                      ) : (
-                        <div className="flex">
-                          <input
-                            value={editInput}
-                            onChange={(event) => {
-                              setStatus({
-                                ...status,
-                                editInput: event.target.value,
-                              });
-                            }}
-                          />
-                          <div className="flex">
-                            {/* Cancel */}
-                            <button
-                              type="button"
-                              onClick={() => setStatus(initialStatus)}
-                            >
-                              <FontAwesomeIcon icon={faStop} />
-                            </button>
-                            {/* Delete */}
-                            <button
-                              type="button"
-                              onClick={async () => {
-                                await apolloClient.mutate({
-                                  mutation: DELETE_TODO,
-                                  variables: {
-                                    input: {
-                                      id,
-                                    },
-                                  },
-                                  refetchQueries: [
-                                    {
-                                      query: GET_TODOS,
-                                    },
-                                  ],
-                                });
-                              }}
-                            >
-                              <FontAwesomeIcon icon={faTimes} />
-                            </button>
-                            {/* Save */}
-                            <button
-                              type="button"
-                              onClick={async () => {
-                                await apolloClient.mutate({
-                                  mutation: EDIT_TODO,
-                                  variables: {
-                                    input: {
-                                      description: editInput,
-                                      id,
-                                    },
-                                  },
-                                  refetchQueries: [
-                                    {
-                                      query: GET_TODOS,
-                                    },
-                                  ],
-                                });
-                                setStatus(initialStatus);
-                              }}
-                            >
-                              <FontAwesomeIcon icon={faCheck} />
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </Form>
+            <div key={id}>
+              {editingTodo !== id ? (
+                <ViewTodo todo={todo} setEditingTodo={setEditingTodo} />
+              ) : (
+                <EditTodo todo={todo} setEditingTodo={setEditingTodo} />
+              )}
+            </div>
           );
-        }}
-      </Formik>
+        })}
+      </div>
     </div>
   );
 }
