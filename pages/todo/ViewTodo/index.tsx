@@ -1,8 +1,17 @@
+import { gql } from "@apollo/client";
 import { faCircle, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { apolloClient } from "lib/apollo-client";
 import { Dispatch, SetStateAction } from "react";
-import { COMPLETE_TODO, GET_TODOS, TodoType } from ".";
+import { GET_TODOS, TodoType } from "..";
+
+const COMPLETE_TODO = gql`
+  mutation CompleteTodo($input: CompleteTodoInput!) {
+    completeTodo(input: $input) {
+      id
+    }
+  }
+`;
 
 export type ViewTodoProps = {
   todo: TodoType;

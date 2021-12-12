@@ -16,32 +16,6 @@ export const GET_TODOS = gql`
   }
 `;
 
-export const DELETE_TODO = gql`
-  mutation DeleteTodo($input: DeleteTodoInput!) {
-    deleteTodo(input: $input) {
-      id
-      description
-      isComplete
-    }
-  }
-`;
-
-export const EDIT_TODO = gql`
-  mutation EditTodo($input: EditTodoInput!) {
-    editTodo(input: $input) {
-      id
-    }
-  }
-`;
-
-export const COMPLETE_TODO = gql`
-  mutation CompleteTodo($input: CompleteTodoInput!) {
-    completeTodo(input: $input) {
-      id
-    }
-  }
-`;
-
 // temp manual typing, until I get apollo codegen to work
 export type TodoType = {
   id: number;

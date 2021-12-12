@@ -3,9 +3,8 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
-import { GET_TODOS } from ".";
-
-type AddTodoProps = {};
+import { GET_TODOS } from "..";
+import * as yup from "yup";
 
 const CREATE_TODO = gql`
   mutation CreateTodo($input: CreateTodoInput!) {
@@ -17,7 +16,11 @@ const CREATE_TODO = gql`
   }
 `;
 
-export default function AddTodo({}: AddTodoProps) {
+export const validationSchema = yup.object({
+  description: yup.string().required("Description required"),
+});
+
+export default function AddTodo() {
   return (
     <Formik
       initialValues={{ description: "" }}
@@ -37,21 +40,24 @@ export default function AddTodo({}: AddTodoProps) {
         });
         resetForm();
       }}
+      validationSchema={validationSchema}
     >
-      {({ values: { description }, setFieldValue }) => (
-        <Form className="flex">
-          <input
-            value={description}
-            onChange={(event) => {
-              setFieldValue("description", event.target.value);
-            }}
-          />
+      {({ values: { description }, setFieldValue, errors }) => (
+        <Form>
           <div className="flex">
+            <input
+              value={description}
+              onChange={(event) => {
+                setFieldValue("description", event.target.value);
+              }}
+            />
+
             {/* Save */}
             <button type="submit">
               <FontAwesomeIcon icon={faCheck} />
             </button>
           </div>
+          {errors && <span>{errors.description}</span>}
         </Form>
       )}
     </Formik>
