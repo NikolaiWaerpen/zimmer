@@ -24,7 +24,7 @@ function Authenticated() {
           <img
             className="inline-block h-9 w-9 rounded-full"
             src={image}
-            alt=""
+            alt={`Image of ${name}`}
           />
         </div>
         <div className="ml-3 text-left">
@@ -45,7 +45,7 @@ type LayoutProps = {
 };
 
 const navigation = [
-  // { name: "Home", href: "/" },
+  { name: "Home", href: "/" },
   { name: "Todo", href: "/todo" },
 ];
 
