@@ -1,15 +1,3 @@
-import { gql } from "@apollo/client";
-
-export const GET_TODOS = gql`
-  query Todos {
-    todos {
-      id
-      description
-      isComplete
-    }
-  }
-`;
-
 export default function Home() {
   return (
     <div className="bg-white">

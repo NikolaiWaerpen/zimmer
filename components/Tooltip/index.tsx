@@ -1,4 +1,3 @@
-import Button from "components/Button";
 import ReactTooltip from "react-tooltip";
 
 type TooltipProps = {};

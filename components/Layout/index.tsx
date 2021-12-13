@@ -1,10 +1,8 @@
-import { ReactNode } from "react";
-import { Fragment } from "react";
-import { Menu, Popover, Transition } from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { signOut, useSession } from "next-auth/react";
 import Error from "components/Error";
-import { DotsVerticalIcon } from "@heroicons/react/solid";
+import { signOut, useSession } from "next-auth/react";
+import { Fragment, ReactNode } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -46,7 +44,7 @@ type LayoutProps = {
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Todo", href: "/todo" },
+  { name: "Greeting", href: "/greeting" },
 ];
 
 export default function Layout({ children }: LayoutProps) {

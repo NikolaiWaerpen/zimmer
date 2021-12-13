@@ -4,8 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "apollo:generate": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/**\" --includes \"components/**\" --excludes generated generated --outputFlat",
-    "apollo:generate1": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/todo/**\" --excludes generated generated --outputFlat"
+    "apollo:generate": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/**\" --includes \"components/**\" --excludes generated generated --outputFlat"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",

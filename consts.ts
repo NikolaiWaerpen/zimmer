@@ -3,4 +3,5 @@ export const URL =
     ? "INPUT CORRECT URL WHEN PRODUCTION BACKEND IS UP" // TODO: this
     : "http://localhost:4000";
 
-export const MAX_TODO_CHARACTER_INPUT = 25;
+export const MAX_GREETING_TITLE_LENGTH = 25,
+  MAX_GREETING_COMMENT_LENGTH = 150;
