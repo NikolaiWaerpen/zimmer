@@ -6,6 +6,8 @@ import { apolloClient } from "lib/apollo-client";
 import { GET_TODOS } from "../../../pages/todo";
 import * as yup from "yup";
 import { MAX_TODO_CHARACTER_INPUT } from "consts";
+import Input from "components/Input";
+import Button from "components/Button";
 
 const CREATE_TODO = gql`
   mutation CreateTodo($input: CreateTodoInput!) {
@@ -52,27 +54,28 @@ export default function AddTodo() {
     <Formik
       initialValues={{ description: "" }}
       onSubmit={async ({ description }, { resetForm }) => {
-        createTodoMutation(description);
+        await createTodoMutation(description);
         resetForm();
       }}
       validationSchema={validationSchema}
     >
-      {({ values: { description }, setFieldValue, errors }) => (
+      {({ values: { description }, setFieldValue, errors, isSubmitting }) => (
         <Form>
           <div className="flex">
-            <input
+            <Input
+              error={errors.description}
+              placeholder="Add something todo..."
+              type="text"
               value={description}
-              onChange={(event) => {
-                setFieldValue("description", event.target.value);
-              }}
+              onChange={(event) =>
+                setFieldValue("description", event?.target.value)
+              }
             />
 
-            {/* Save */}
-            <button type="submit">
+            <Button type="submit" loading={isSubmitting}>
               <FontAwesomeIcon icon={faCheck} />
-            </button>
+            </Button>
           </div>
-          {errors && <span>{errors.description}</span>}
         </Form>
       )}
     </Formik>

@@ -12,6 +12,11 @@ export const GET_TODOS = gql`
       id
       description
       isComplete
+      author {
+        name
+        image
+        email
+      }
     }
   }
 `;
@@ -21,6 +26,11 @@ export type TodoType = {
   id: number;
   description: string;
   isComplete: boolean;
+  author: {
+    name: string;
+    image: string;
+    email: string;
+  };
 };
 
 export default function Todo() {
@@ -38,18 +48,20 @@ export default function Todo() {
         <h1 className="text-2xl text-center">Add Todo:</h1>
         <AddTodo />
         <h1 className="text-2xl text-center">Todos:</h1>
-        {todos.map((todo) => {
-          const { id } = todo;
-          return (
-            <div key={id}>
-              {editingTodo !== id ? (
-                <ViewTodo todo={todo} setEditingTodo={setEditingTodo} />
-              ) : (
-                <EditTodo todo={todo} setEditingTodo={setEditingTodo} />
-              )}
-            </div>
-          );
-        })}
+        <div className="grid gap-4 grid-cols-3">
+          {todos.map((todo) => {
+            const { id } = todo;
+            return (
+              <div key={id}>
+                {editingTodo !== id ? (
+                  <ViewTodo todo={todo} setEditingTodo={setEditingTodo} />
+                ) : (
+                  <EditTodo todo={todo} setEditingTodo={setEditingTodo} />
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

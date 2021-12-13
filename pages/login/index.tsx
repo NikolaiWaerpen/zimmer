@@ -7,7 +7,7 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    if (status === "authenticated") router.push("/");
+    if (status === "authenticated") router.back();
   }, [status]);
 
   return (

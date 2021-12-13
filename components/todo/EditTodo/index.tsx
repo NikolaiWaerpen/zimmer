@@ -7,6 +7,9 @@ import { GET_TODOS } from "pages";
 import { ViewTodoProps } from "../ViewTodo";
 import * as yup from "yup";
 import { MAX_TODO_CHARACTER_INPUT } from "consts";
+import { ExclamationCircleIcon } from "@heroicons/react/solid";
+import Button from "components/Button";
+import Input from "components/Input";
 
 const DELETE_TODO = gql`
   mutation DeleteTodo($input: DeleteTodoInput!) {
@@ -86,30 +89,29 @@ export default function EditTodo({ todo, setEditingTodo }: EditTodoType) {
       validationSchema={validationSchema}
     >
       {({ values: { description, id }, setFieldValue, errors }) => (
-        <Form>
+        <Form className="flex">
+          <Input
+            placeholder="Something todo..."
+            error={errors.description}
+            value={description}
+            onChange={(event) => {
+              setFieldValue("description", event.target.value);
+            }}
+          />
           <div className="flex">
-            <input
-              value={description}
-              onChange={(event) => {
-                setFieldValue("description", event.target.value);
-              }}
-            />
-            <div className="flex">
-              {/* Delete */}
-              <button type="button" onClick={() => deleteTodoMutation(id)}>
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-              {/* Save */}
-              <button type="submit">
-                <FontAwesomeIcon icon={faCheck} />
-              </button>
-              {/* Cancel */}
-              <button type="reset" onClick={() => setEditingTodo(null)}>
-                <FontAwesomeIcon icon={faStop} />
-              </button>
-            </div>
+            {/* Delete */}
+            <Button type="button" onClick={() => deleteTodoMutation(id)}>
+              <FontAwesomeIcon icon={faTimes} />
+            </Button>
+            {/* Save */}
+            <Button type="submit">
+              <FontAwesomeIcon icon={faCheck} />
+            </Button>
+            {/* Cancel */}
+            <Button type="reset" onClick={() => setEditingTodo(null)}>
+              <FontAwesomeIcon icon={faStop} />
+            </Button>
           </div>
-          {errors && <span>{errors.description}</span>}
         </Form>
       )}
     </Formik>
