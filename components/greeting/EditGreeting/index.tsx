@@ -103,14 +103,22 @@ export default function EditGreeting({
       }}
       validationSchema={validationSchema}
     >
-      {({ values: { title, id }, setFieldValue, errors }) => (
+      {({ values: { id, title, comment }, setFieldValue, errors }) => (
         <Form className="flex">
           <Input
-            placeholder="Something greeting..."
+            placeholder="Some title..."
             error={errors.title}
             value={title}
             onChange={(event) => {
               setFieldValue("title", event.target.value);
+            }}
+          />
+          <Input
+            placeholder="Some comment..."
+            error={errors.comment}
+            value={comment}
+            onChange={(event) => {
+              setFieldValue("comment", event.target.value);
             }}
           />
           <div className="flex">

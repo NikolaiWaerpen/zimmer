@@ -3,15 +3,15 @@ import { BACKEND_CLIENT } from "lib/graphql-client";
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 
-type CreateUserInDBArgs = {
+type createOrUpdateUserInDBArgs = {
   email: string;
   name: string;
   image: string;
 };
 
-async function createOrUpdateUserInDB(user: CreateUserInDBArgs) {
+async function createOrUpdateUserInDB(user: createOrUpdateUserInDBArgs) {
   const createUser = gql`
-    mutation CreateUser($input: CreateOrUpdateUserInput!) {
+    mutation CreateOrUpdateUser($input: CreateOrUpdateUserInput!) {
       createOrUpdateUser(input: $input) {
         id
         name
@@ -43,7 +43,14 @@ export default NextAuth({
   secret: process.env.SECRET,
   callbacks: {
     signIn: async ({ user }) => {
-      if (!user ?? !user.name ?? !user.email ?? !user.image) return false;
+      if (!user || !user.name || !user.email || !user.image) return false;
+      // TODO: MOVE THIS LOGIC TO BACKEND
+      try {
+        // @ts-ignore
+        await createOrUpdateUserInDB(user);
+      } catch (error) {
+        console.log(error);
+      }
 
       return true;
     },
