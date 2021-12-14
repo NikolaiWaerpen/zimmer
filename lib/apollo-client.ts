@@ -3,7 +3,6 @@ import {
   ApolloClient,
   createHttpLink,
   from,
-  HttpLink,
   InMemoryCache,
 } from "@apollo/client";
 import { URL } from "../consts";
@@ -19,7 +18,9 @@ const authLink = setContext(async (_, { headers }: { headers: Headers }) => {
   const modifiedHeader = {
     headers: {
       ...headers,
-      from: session?.user?.email,
+      from: session
+        ? `${session?.user?.email},${session?.user?.name},${session?.user?.image}`
+        : "",
     },
   };
 
