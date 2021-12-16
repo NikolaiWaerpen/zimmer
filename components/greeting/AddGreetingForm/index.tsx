@@ -68,7 +68,7 @@ const validationSchema = yup.object({
     ),
 });
 
-export default function AddGreeting() {
+export default function AddGreetingForm() {
   return (
     <>
       <Formik

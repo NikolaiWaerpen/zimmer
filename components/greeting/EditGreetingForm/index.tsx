@@ -34,14 +34,14 @@ const deleteGreetingMutation = async (id: number) => {
   });
 };
 
-const editGreetingMutation = async (
+const EditGreetingFormMutation = async (
   id: number,
   title: string,
   comment: string
 ) => {
   const EDIT_GREETING = gql`
-    mutation EditGreeting($input: EditGreetingInput!) {
-      editGreeting(input: $input) {
+    mutation EditGreetingForm($input: EditGreetingFormInput!) {
+      EditGreetingForm(input: $input) {
         id
       }
     }
@@ -87,17 +87,17 @@ const validationSchema = yup.object({
     ),
 });
 
-type EditGreetingType = ViewGreetingProps & {};
+type EditGreetingFormType = ViewGreetingProps & {};
 
-export default function EditGreeting({
+export default function EditGreetingForm({
   greeting,
   setEditingGreeting,
-}: EditGreetingType) {
+}: EditGreetingFormType) {
   return (
     <Formik
       initialValues={greeting}
       onSubmit={async ({ id, title, comment }) => {
-        if (title && comment) editGreetingMutation(id, title, comment);
+        if (title && comment) EditGreetingFormMutation(id, title, comment);
         else deleteGreetingMutation(id);
         setEditingGreeting(null);
       }}
