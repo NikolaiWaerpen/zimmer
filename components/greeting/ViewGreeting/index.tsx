@@ -5,6 +5,7 @@ import Button from "components/Button";
 import { useSession } from "next-auth/react";
 import { GreetingType } from "pages/greeting";
 import { Dispatch, SetStateAction, useMemo } from "react";
+import formatDate from "utils/formatDate";
 
 export type ViewGreetingProps = {
   greeting: GreetingType;
@@ -44,13 +45,17 @@ export default function ViewGreeting({
             </Button>
           )}
           {/* TODO: Add functioning tooltip */}
+        </div>
+        <div className="flex flex-col justify-end items-end">
           <img
             className="inline-block h-10 w-10 rounded-full"
             src={imageSrc}
             alt={name}
           />
+          <p className="text-gray-500 font-thin text-right">
+            {formatDate({ date: createdAt, format: "DD.MM.YY HH:mm" })}
+          </p>
         </div>
-        <span>{createdAt}</span>
       </div>
     </div>
   );

@@ -158,7 +158,10 @@ export default function Layout({ children }: LayoutProps) {
         </Transition>
       </Popover>
 
-      <div>{children}</div>
+      {/* Container */}
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mt-8">{children}</div>
+      </div>
     </div>
   );
 }

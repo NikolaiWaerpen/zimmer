@@ -3,6 +3,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "components/Button";
 import Input from "components/Input";
+import TextArea from "components/TextArea";
 import { MAX_GREETING_COMMENT_LENGTH, MAX_GREETING_TITLE_LENGTH } from "consts";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
@@ -69,45 +70,52 @@ const validationSchema = yup.object({
 
 export default function AddGreeting() {
   return (
-    <Formik
-      initialValues={{ title: "", comment: "" }}
-      onSubmit={async ({ title, comment }, { resetForm }) => {
-        await createGreetingMutation(title, comment);
-        resetForm();
-      }}
-      validationSchema={validationSchema}
-    >
-      {({
-        values: { title, comment },
-        setFieldValue,
-        errors,
-        isSubmitting,
-      }) => (
-        <Form>
-          <div className="flex">
-            <Input
-              error={errors.title}
-              placeholder="Add a title..."
-              type="text"
-              value={title}
-              onChange={(event) => setFieldValue("title", event?.target.value)}
-            />
-            <Input
-              error={errors.comment}
-              placeholder="Add a comment..."
-              type="text"
-              value={comment}
-              onChange={(event) =>
-                setFieldValue("comment", event?.target.value)
-              }
-            />
-
-            <Button type="submit" loading={isSubmitting}>
-              <FontAwesomeIcon icon={faCheck} />
-            </Button>
-          </div>
-        </Form>
-      )}
-    </Formik>
+    <>
+      <Formik
+        initialValues={{ title: "", comment: "" }}
+        onSubmit={async ({ title, comment }, { resetForm }) => {
+          await createGreetingMutation(title, comment);
+          resetForm();
+        }}
+        validationSchema={validationSchema}
+      >
+        {({
+          values: { title, comment },
+          setFieldValue,
+          errors,
+          isSubmitting,
+        }) => (
+          <Form>
+            <div className="flex flex-col gap-4">
+              {/* TODO: Consider turning this into a title and pill actions (w/ emotions) https://tailwindui.com/components/application-ui/forms/textareas */}
+              <Input
+                label="Title"
+                required
+                error={errors.title}
+                placeholder="Hey Nikolai!"
+                type="text"
+                value={title}
+                onChange={(event) =>
+                  setFieldValue("title", event?.target.value)
+                }
+              />
+              <TextArea
+                label="Comment"
+                error={errors.comment}
+                placeholder="Awesome website! Good job"
+                value={comment}
+                rows={5}
+                onChange={(event) =>
+                  setFieldValue("comment", event?.target.value)
+                }
+              />
+              <Button type="submit" loading={isSubmitting}>
+                <FontAwesomeIcon icon={faCheck} />
+              </Button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import Divider from "components/Divider";
 import Error from "components/Error";
 import AddGreeting from "components/greeting/AddGreeting";
 import EditGreeting from "components/greeting/EditGreeting";
@@ -48,31 +49,29 @@ export default function Greeting() {
   const { greetings } = data;
 
   return (
-    <div className="grid place-items-center h-screen">
-      <div className="space-y-2">
-        <h1 className="text-2xl text-center">Add greeting:</h1>
-        <AddGreeting />
-        <h1 className="text-2xl text-center">Greeting board</h1>
-        <div className="grid gap-4 grid-cols-3">
-          {greetings.map((greeting) => {
-            const { id } = greeting;
-            return (
-              <div key={id}>
-                {editGreeting !== id ? (
-                  <ViewGreeting
-                    greeting={greeting}
-                    setEditingGreeting={setEditingGreeting}
-                  />
-                ) : (
-                  <EditGreeting
-                    greeting={greeting}
-                    setEditingGreeting={setEditingGreeting}
-                  />
-                )}
-              </div>
-            );
-          })}
-        </div>
+    <div className="grid place-items-center space-y-16">
+      <AddGreeting />
+
+      <Divider label="Greetings" />
+      <div className="grid gap-4 grid-cols-3">
+        {greetings.map((greeting) => {
+          const { id } = greeting;
+          return (
+            <div key={id}>
+              {editGreeting !== id ? (
+                <ViewGreeting
+                  greeting={greeting}
+                  setEditingGreeting={setEditingGreeting}
+                />
+              ) : (
+                <EditGreeting
+                  greeting={greeting}
+                  setEditingGreeting={setEditingGreeting}
+                />
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
