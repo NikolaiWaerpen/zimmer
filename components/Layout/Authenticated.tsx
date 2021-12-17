@@ -1,13 +1,9 @@
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import CustomError from "components/CustomError";
+import { NAVIGATION } from "consts";
 import { signOut, useSession } from "next-auth/react";
 import { Fragment, ReactNode } from "react";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Greeting", href: "/greeting" },
-];
 
 function Profile() {
   const { data: session } = useSession();
@@ -71,13 +67,13 @@ export default function Authenticated({ children }: AuthenticatedProps) {
               </Popover.Button>
             </div>
             <Popover.Group as="nav" className="hidden md:flex space-x-10">
-              {navigation.map((link) => (
+              {NAVIGATION.map(({ name, href }) => (
                 <a
-                  key={link.name}
-                  href={link.href}
+                  key={name}
+                  href={href}
                   className="text-base font-medium text-gray-500 hover:text-gray-900"
                 >
-                  {link.name}
+                  {name}
                 </a>
               ))}
             </Popover.Group>
@@ -120,13 +116,13 @@ export default function Authenticated({ children }: AuthenticatedProps) {
               </div>
               <div className="py-6 px-5 space-y-6">
                 <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                  {navigation.map((link) => (
+                  {NAVIGATION.map(({ name, href }) => (
                     <a
-                      key={link.name}
-                      href={link.href}
+                      key={name}
+                      href={href}
                       className="text-base font-medium text-gray-900 hover:text-gray-700"
                     >
-                      {link.name}
+                      {name}
                     </a>
                   ))}
                 </div>
