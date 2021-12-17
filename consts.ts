@@ -5,3 +5,5 @@ export const URL =
 
 export const MAX_GREETING_TITLE_LENGTH = 30,
   MAX_GREETING_COMMENT_LENGTH = 150;
+
+export const MAIL_TO = "mailto:nikolaiwaerpen@gmail.com?subject=Hei Nikolai!";

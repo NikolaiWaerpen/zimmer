@@ -34,27 +34,32 @@ export default function ViewGreeting({
   const userCanEdit = useMemo(() => email === data?.user?.email, [data, email]);
 
   return (
-    <div className="bg-white overflow-hidden shadow sm:rounded-lg">
-      <div className="px-4 py-5 sm:p-6">
-        <div className="flex">
-          <h3>{title}</h3>
-          {comment && <p>{comment}</p>}
+    <div className="bg-white overflow-hidden shadow sm:rounded-lg h-full">
+      <div className="px-4 py-5 sm:p-6 space-y-8 h-full flex flex-col justify-between">
+        <h3 className="font-semibold">{title}</h3>
+
+        {comment && <p className="text-gray-500">{comment}</p>}
+
+        <div></div>
+        <div className="flex justify-between h-10">
+          <div className="h-full flex">
+            <img
+              className="inline-block h-full w-10 rounded-full"
+              src={imageSrc}
+              alt={name}
+            />
+            <div className="grid place-items-center ml-2">
+              <p className="text-gray-500 font-thin text-right">
+                {formatDate({ date: createdAt, format: "DD.MM.YY HH:mm" })}
+              </p>
+            </div>
+            {/* TODO: Add functioning tooltip */}
+          </div>
           {userCanEdit && (
             <Button type="button" onClick={() => setEditingGreeting(id)}>
               <FontAwesomeIcon icon={faPencilAlt} />
             </Button>
           )}
-          {/* TODO: Add functioning tooltip */}
-        </div>
-        <div className="flex flex-col justify-end items-end">
-          <img
-            className="inline-block h-10 w-10 rounded-full"
-            src={imageSrc}
-            alt={name}
-          />
-          <p className="text-gray-500 font-thin text-right">
-            {formatDate({ date: createdAt, format: "DD.MM.YY HH:mm" })}
-          </p>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
+import CustomError from "components/CustomError";
 import Divider from "components/Divider";
-import Error from "components/Error";
 import AddGreetingForm from "components/greeting/AddGreetingForm";
 import EditGreetingForm from "components/greeting/EditGreetingForm";
 import ViewGreeting from "components/greeting/ViewGreeting";
@@ -44,13 +44,13 @@ export default function Greeting() {
   const [editingGreeting, setEditingGreeting] = useState<null | number>(null);
 
   if (loading) return <Loader />;
-  if (error ?? !data) return <Error error={error} />;
+  if (error ?? !data) return <CustomError error={error} />;
 
   const { greetings } = data;
 
   return (
     <div className="grid place-items-center">
-      <main className="flex my-32">
+      <main className="flex justify-evenly items-center my-32">
         <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
           <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
             <span className="block xl:inline">Leave me a</span>{" "}
@@ -64,9 +64,8 @@ export default function Greeting() {
             polite :)
           </p>
         </div>
-        <div className="h-full grid place-items-center">
-          <AddGreetingForm />
-        </div>
+
+        <AddGreetingForm />
       </main>
 
       <div className="space-y-16 w-full grid place-items-center">

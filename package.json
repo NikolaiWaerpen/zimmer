@@ -21,6 +21,8 @@
     "formik": "^2.2.9",
     "graphql": "15.8.0",
     "graphql-request": "^3.7.0",
+    "lottie-colorify": "^0.8.0",
+    "lottie-web": "^5.8.1",
     "next": "latest",
     "next-auth": "^4.0.5",
     "react": "^17.0.2",

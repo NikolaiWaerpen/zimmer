@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import Error from "components/Error";
+import CustomError from "components/CustomError";
 import Loader from "components/Loader";
 
 const GET_USER = gql`
@@ -22,7 +22,7 @@ export default function Test() {
     },
   });
 
-  if (error) return <Error error={error} />;
+  if (error) return <CustomError error={error} />;
   if (loading ?? !data) return <Loader />;
 
   return (

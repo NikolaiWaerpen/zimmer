@@ -2,11 +2,13 @@ import { gql } from "@apollo/client";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "components/Button";
+import CustomError from "components/CustomError";
 import Input from "components/Input";
 import TextArea from "components/TextArea";
 import { MAX_GREETING_COMMENT_LENGTH, MAX_GREETING_TITLE_LENGTH } from "consts";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
+import { useSession } from "next-auth/react";
 import * as yup from "yup";
 import { GET_GREETINGS } from "../../../pages/greeting";
 
@@ -69,6 +71,11 @@ const validationSchema = yup.object({
 });
 
 export default function AddGreetingForm() {
+  const { data: session } = useSession();
+
+  if (session === null)
+    return <CustomError error={new Error("Not authenticated")} />;
+
   return (
     <>
       <Formik
@@ -102,7 +109,9 @@ export default function AddGreetingForm() {
               <TextArea
                 label="Comment"
                 error={errors.comment}
-                placeholder="Awesome website! Good job"
+                placeholder={`Awesome website! Good job.\nLove, ${
+                  session.user?.name?.split(" ")[0]
+                }`}
                 value={comment}
                 rows={5}
                 onChange={(event) =>
