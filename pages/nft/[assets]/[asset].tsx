@@ -1,11 +1,9 @@
-import { Fragment } from "react";
-import { StarIcon } from "@heroicons/react/solid";
-import { Tab } from "@headlessui/react";
-import { useRouter } from "next/router";
 import { gql, useQuery } from "@apollo/client";
-import { AssetType } from ".";
-import Loader from "components/Loader";
+import { Tab } from "@headlessui/react";
 import CustomError from "components/CustomError";
+import Loader from "components/Loader";
+import { useRouter } from "next/router";
+import { AssetType } from ".";
 
 const getAsset = gql`
   query GetAsset($input: GetAssetInput!) {
