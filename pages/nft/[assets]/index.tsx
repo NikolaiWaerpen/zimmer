@@ -3,16 +3,17 @@ import CustomError from "components/CustomError";
 import Loader from "components/Loader";
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const getAssets = gql`
-  query GetAssets {
-    assets {
+  query GetAssets($input: GetAssetsInput!) {
+    assets(input: $input) {
+      tokenId
+      tokenAddress
       name
       description
       imageUrl
       imagePreviewUrl
-      tokenAddress
-      tokenId
     }
   }
 `;
@@ -31,7 +32,16 @@ type Data = {
 };
 
 export default function Assets() {
-  const { loading, error, data } = useQuery<Data>(getAssets);
+  const { query } = useRouter();
+  const { assets: tokenAddress } = query;
+
+  const { loading, error, data } = useQuery<Data>(getAssets, {
+    variables: {
+      input: {
+        owner: tokenAddress,
+      },
+    },
+  });
 
   if (error) return <CustomError error={error} />;
   if (loading ?? !data) return <Loader />;

@@ -27,10 +27,8 @@ function classNames(...classes: string[]) {
 }
 
 export default function Asset() {
-  const { asPath } = useRouter();
-  const urlParams = asPath.split("/");
-  const tokenAddress = urlParams[2];
-  const tokenId = urlParams[3];
+  const { query } = useRouter();
+  const { assets: tokenAddress, asset: tokenId } = query;
 
   const { loading, error, data } = useQuery<Data>(getAsset, {
     variables: {
