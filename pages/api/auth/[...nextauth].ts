@@ -21,7 +21,7 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    session({ session, token, user }) {
+    session({ session }) {
       return session;
     },
   },

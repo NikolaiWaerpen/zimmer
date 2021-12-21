@@ -33,9 +33,7 @@ export default function CustomError({ error }: CustomErrorProps) {
               <h1 className="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
                 An error occurred.
               </h1>
-              {/* <p className="mt-2 text-base text-gray-500">
-              Sorry, I couldn't find the page you're looking for.
-            </p> */}
+              {error && <div>{JSON.stringify(error.message, null, 2)}</div>}
               <div className="mt-6">
                 <Link href="">
                   <a className="text-base font-medium text-indigo-600 hover:text-indigo-500">

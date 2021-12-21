@@ -12,24 +12,24 @@ import { useSession } from "next-auth/react";
 import * as yup from "yup";
 import { GET_GREETINGS } from "../../../pages/greeting";
 
-const CREATE_GREETING = gql`
-  mutation CreateGreeting($input: CreateGreetingInput!) {
-    createGreeting(input: $input) {
-      id
-      title
-      comment
-      createdAt
-      author {
+const createGreetingMutation = async (title: string, comment: string) => {
+  const CREATE_GREETING = gql`
+    mutation CreateGreeting($input: CreateGreetingInput!) {
+      createGreeting(input: $input) {
         id
-        email
-        image
-        name
+        title
+        comment
+        createdAt
+        author {
+          id
+          email
+          image
+          name
+        }
       }
     }
-  }
-`;
+  `;
 
-const createGreetingMutation = async (title: string, comment: string) => {
   await apolloClient.mutate({
     mutation: CREATE_GREETING,
     variables: {
