@@ -9,13 +9,13 @@ import { useEffect } from "react";
 
 const noNFT = [
   {
-    name: "Rude Boys",
-    collection: "rude-boys",
-  },
-  {
     name: "CLONE X - X TAKASHI MURAKAMI",
     collection: "clonex",
     url: "",
+  },
+  {
+    name: "Rude Boys",
+    collection: "rude-boys",
   },
   {
     name: "CryptoPunks",
@@ -60,7 +60,7 @@ async function updatePublicAddress(email: string, publicAddress: string) {
   });
 }
 
-const GET_USER = gql`
+export const GET_USER = gql`
   query User($input: GetUserInput!) {
     user(input: $input) {
       id
@@ -72,7 +72,7 @@ const GET_USER = gql`
   }
 `;
 
-export type UserType = {
+type UserType = {
   id: string;
   name: string;
   email: string;
@@ -80,13 +80,13 @@ export type UserType = {
   publicAddress: string | null;
 };
 
-type DataType = {
+export type UserDataType = {
   user: UserType;
 };
 
 export default function NFT() {
   const { data: session } = useSession();
-  const { loading, error, data } = useQuery<DataType>(GET_USER, {
+  const { loading, error, data } = useQuery<UserDataType>(GET_USER, {
     variables: {
       input: {
         email: session!.user!.email,

@@ -4,19 +4,10 @@ import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
-
-export type AssetType = {
-  name: string;
-  description: string;
-  image_url: string;
-  imagePreviewUrl: string;
-  tokenAddress: string;
-  tokenId: string;
-  animation_url: string;
-};
+import { CollectionType } from "types/CollectionTypes";
 
 type DataType = {
-  assets: AssetType[];
+  assets: CollectionType[];
 };
 
 export default function Assets() {
@@ -41,21 +32,10 @@ export default function Assets() {
         <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {assets.map(
             (
-              {
-                name,
-                image_url,
-                imagePreviewUrl,
-                animation_url,
-                tokenId,
-                tokenAddress,
-              },
+              { name, image_url, animation_url, token_id, asset_contract },
               key
             ) => (
-              <Link
-                key={key}
-                // href={`${tokenAddress}/${tokenId}`}
-                href="#"
-              >
+              <Link key={key} href={`${asset_contract.address}/${token_id}`}>
                 <a className="group">
                   <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                     <img
