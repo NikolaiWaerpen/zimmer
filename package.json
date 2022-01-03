@@ -4,7 +4,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "apollo:generate": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/**\" --includes \"components/**\" --excludes generated generated --outputFlat"
+    "apollo:generate": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/**\" --includes \"components/**\" --excludes generated generated --outputFlat",
+    "hh:compile": "npx hardhat compile ",
+    "hh:test": "npx hardhat test",
+    "hh:abyss": "npx hardhat run utils/deploy-contract.js",
+    "hh:ropsten": "npx hardhat run utils/deploy-contract.js --network ropsten"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
@@ -34,12 +38,18 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
     "@types/graphql": "^14.5.0",
     "@types/react": "^17.0.37",
     "apollo": "2.33.9",
     "autoprefixer": "^10.4.0",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.2",
+    "hardhat": "^2.8.0",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.1",
     "typescript": "^4.5.2"

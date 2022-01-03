@@ -5,7 +5,7 @@ import Button from "components/Button";
 import { useSession } from "next-auth/react";
 import { GreetingType } from "pages/greeting";
 import { Dispatch, SetStateAction, useMemo } from "react";
-import formatDate from "utils/formatDate";
+import formatDate from "utils/format-date";
 
 export type ViewGreetingProps = {
   greeting: GreetingType;

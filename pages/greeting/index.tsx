@@ -24,7 +24,7 @@ export const GET_GREETINGS = gql`
   }
 `;
 
-// temp manual typing, until I get apollo codegen to work
+// TODO: fix this temp manual typing, until I get apollo codegen to work
 export type GreetingType = {
   id: number;
   title: string;
