@@ -4,30 +4,6 @@ import CustomError from "components/CustomError";
 import Loader from "components/Loader";
 import { apolloClient } from "lib/apollo-client";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
-import { useEffect } from "react";
-
-const noNFT = [
-  {
-    name: "CLONE X - X TAKASHI MURAKAMI",
-    collection: "clonex",
-    url: "",
-  },
-  {
-    name: "Rude Boys",
-    collection: "rude-boys",
-  },
-  {
-    name: "CryptoPunks",
-    collection: "cryptopunks",
-    url: "",
-  },
-  {
-    name: "Bored Ape Yacht Club",
-    collection: "boredapeyachtclub",
-    url: "",
-  },
-];
 
 async function updatePublicAddress(email: string, publicAddress: string) {
   const UPDATE_PUBLIC_ADDRESS = gql`
@@ -126,18 +102,6 @@ export default function NFT() {
           <h1 className="block text-center">
             Your public address: {publicAddress}
           </h1>
-          <br />
-          <br />
-          <br />
-          <ul className="grid place-items-center gap-16 text-6xl">
-            {noNFT.map(({ name, collection, url }, key) => (
-              <li key={key}>
-                <Link href={`nft/${collection}`}>
-                  <a>{name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       )}
     </div>
