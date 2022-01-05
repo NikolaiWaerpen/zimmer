@@ -4,7 +4,6 @@ import Loader from "components/Loader";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import createCryptoPlantContract from "utils/create-cryptoplant-contract";
 import formatDate from "utils/format-date";
-import getEthereum from "utils/get-ethereum";
 
 type PlantType = {
   name: string;
