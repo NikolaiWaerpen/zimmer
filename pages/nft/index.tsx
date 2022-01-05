@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import Button from "components/Button";
+import CryptoPlants from "components/CryptoPlants";
 import CustomError from "components/CustomError";
 import Loader from "components/Loader";
 import { apolloClient } from "lib/apollo-client";
@@ -99,9 +100,7 @@ export default function NFT() {
         </Button>
       ) : (
         <div>
-          <h1 className="block text-center">
-            Your public address: {publicAddress}
-          </h1>
+          <CryptoPlants />
         </div>
       )}
     </div>
