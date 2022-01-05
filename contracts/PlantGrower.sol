@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.9;
 
+import "hardhat/console.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract PlantGrower is ERC721 {
@@ -8,14 +9,14 @@ contract PlantGrower is ERC721 {
         createRandomPlant("Let's see Paul Allen's card");
     }
 
-    uint8 dnaDigits = 8;
+    uint8 dnaDigits = 16;
     uint256 dnaModulus = 10**dnaDigits;
     uint256 growCooldown = 1 hours;
 
     struct PlantStruct {
         string name;
         uint16 dna;
-        uint16 growSize;
+        uint16 size;
         uint32 nextGrowTime;
     }
 

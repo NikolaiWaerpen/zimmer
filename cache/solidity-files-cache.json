@@ -74,8 +74,8 @@
       ]
     },
     "/Users/nikolaiwaerpen/workspace/zimmer/contracts/PlantGrower.sol": {
-      "lastModificationDate": 1641412369122,
-      "contentHash": "4e4badb13666378e5c6ce6d5bc535978",
+      "lastModificationDate": 1641416740535,
+      "contentHash": "b7b4b0f71a9bf25b5ef153cc25cf0b8c",
       "sourceName": "contracts/PlantGrower.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -101,6 +101,7 @@
         }
       },
       "imports": [
+        "hardhat/console.sol",
         "@openzeppelin/contracts/token/ERC721/ERC721.sol"
       ],
       "versionPragmas": [

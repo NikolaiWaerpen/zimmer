@@ -1,68 +1,68 @@
-import detectEthereumProvider from "@metamask/detect-provider";
-import Button from "components/Button";
-import usePlantContext from "hooks/usePlantContext";
-import { useEffect, useState } from "react";
-import Web3 from "web3";
-import plantGrower from "../../artifacts/contracts/PlantGrower.sol/PlantGrower.json";
+import { faSeedling } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loader from "components/Loader";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import createCryptoPlantContract from "utils/create-cryptoplant-contract";
+import formatDate from "utils/format-date";
+import getEthereum from "utils/get-ethereum";
+
+type PlantType = {
+  name: string;
+  dna: number;
+  size: number;
+  nextGrowTime: number;
+};
+
+export async function getPlants(
+  setPlants: Dispatch<SetStateAction<null | PlantType[]>>
+) {
+  const cryptoPlantContract = createCryptoPlantContract();
+  const plants = await cryptoPlantContract.getPlants();
+
+  console.log(plants);
+
+  setPlants(plants);
+}
 
 export default function CryptoPlants() {
-  const { currentAccount, connectWallet } = usePlantContext();
-  console.log(currentAccount, connectWallet);
+  const [plants, setPlants] = useState<null | PlantType[]>(null);
+
+  useEffect(() => {
+    getPlants(setPlants);
+  }, []);
+
+  if (!plants) return <Loader />;
 
   return (
-    <div>
-      <h1>Blockchain Plants</h1>
+    <div className="flex flex-col items-center gap-16">
+      <h1 className="text-center text-6xl">Blockchain Plants</h1>
+      {plants && (
+        <div>
+          {plants.map((plant) => {
+            const { name, dna, size, nextGrowTime } = plant;
+
+            return (
+              <div
+                className="flex flex-col items-center gap-2"
+                key={nextGrowTime}
+              >
+                <FontAwesomeIcon
+                  icon={faSeedling}
+                  size={size < 2 ? "5x" : "10x"}
+                />
+                <span>{name}</span>
+                <span>{size}</span>
+                <span>
+                  {formatDate({
+                    date: new Date(nextGrowTime),
+                    format: "DD.MM.YY HH:mm:ss",
+                  })}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
-
-// const cryptoPlantsContractAdress = "0x3E148913c7719Bf8653655c36E89383D72c0cB7c";
-// const web3js = new Web3(
-//   new Web3.providers.HttpProvider(
-//     "https://eth-ropsten.alchemyapi.io/v2/tkteCUDiE40sqIH7WkYq1Gh4fyAhoYbs"
-//   )
-// );
-
-// const cryptoPlants = new web3js.eth.Contract(
-//   cryptoPlantsABI,
-//   cryptoPlantsContractAdress
-// );
-
-// const [provider, setProvider] = useState<null | any>(null);
-// useEffect(() => {
-//   async function detectProvider() {
-//     const responseProvider = await detectEthereumProvider();
-//     return responseProvider;
-//   }
-
-//   setProvider(async () => {
-//     const e = await detectProvider();
-//     return e;
-//   });
-// }, []);
-
-// if (!provider) return <div>Provider undefined</div>;
-// // @ts-ignore
-// const web3js = new Web3(ethereum);
-
-// console.log(provider);
-
-// const cryptoPlants = new web3js.eth.Contract(
-//   // @ts-ignore
-//   plantGrower.abi,
-//   "0x3E148913c7719Bf8653655c36E89383D72c0cB7c"
-// );
-
-// // console.log(cryptoPlants.methods);
-
-// async function createPlant() {
-//   const action = await cryptoPlants.methods
-//     .createRandomPlant("Let's see Paul Allen's card")
-//     .call();
-//   console.log(action);
-// }
-
-// async function getPlant() {
-//   const plant = await cryptoPlants.methods.plants(0).call();
-//   console.log(plant);
-// }
