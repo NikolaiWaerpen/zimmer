@@ -4,20 +4,22 @@ pragma solidity 0.8.9;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract PlantGrower is ERC721 {
-    constructor() ERC721("PlantGrower", "plantGrower") {}
+    constructor() ERC721("PlantGrower", "plantGrower") {
+        createRandomPlant("Let's see Paul Allen's card");
+    }
 
     uint8 dnaDigits = 8;
     uint256 dnaModulus = 10**dnaDigits;
     uint256 growCooldown = 1 hours;
 
-    struct Plant {
+    struct PlantStruct {
         string name;
         uint16 dna;
         uint16 growSize;
         uint32 nextGrowTime;
     }
 
-    Plant[] public plants;
+    PlantStruct[] public plants;
 
     mapping(uint256 => address) public plantToFarmer;
 
@@ -34,7 +36,7 @@ contract PlantGrower is ERC721 {
 
     function _createPlant(string memory _name, uint8 _dna) internal {
         plants.push(
-            Plant(_name, _dna, 1, uint32(block.timestamp + growCooldown))
+            PlantStruct(_name, _dna, 1, uint32(block.timestamp + growCooldown))
         );
         uint256 createdPlantId = plants.length - 1;
         plantToFarmer[createdPlantId] = msg.sender;
@@ -44,5 +46,9 @@ contract PlantGrower is ERC721 {
         uint8 randomDna = _generateRandomDna(_name);
         randomDna = randomDna - (randomDna % 100);
         _createPlant(_name, randomDna);
+    }
+
+    function getPlants() external view returns (PlantStruct[] memory) {
+        return plants;
     }
 }

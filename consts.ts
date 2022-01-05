@@ -1,3 +1,5 @@
+import plantGrower from "./artifacts/contracts/PlantGrower.sol/PlantGrower.json";
+
 export const URL =
   process.env.NODE_ENV === "production"
     ? "https://keller-fffdb.ondigitalocean.app"
@@ -13,3 +15,6 @@ export const NAVIGATION = [
   { name: "Greeting", href: "/greeting" },
   { name: "NFT", href: "/nft" },
 ];
+
+export const contractAddress = "0xef913fc91dbcba911a476bd4838895db823610c2",
+  contractAbi = plantGrower.abi;

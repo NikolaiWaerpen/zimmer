@@ -74,8 +74,8 @@
       ]
     },
     "/Users/nikolaiwaerpen/workspace/zimmer/contracts/PlantGrower.sol": {
-      "lastModificationDate": 1641400587617,
-      "contentHash": "79c1df86d05b0744c671f5613ec0b8d0",
+      "lastModificationDate": 1641412369122,
+      "contentHash": "4e4badb13666378e5c6ce6d5bc535978",
       "sourceName": "contracts/PlantGrower.sol",
       "solcConfig": {
         "version": "0.8.9",

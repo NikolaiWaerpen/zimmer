@@ -5,6 +5,7 @@ import CustomError from "components/CustomError";
 import Loader from "components/Loader";
 import { apolloClient } from "lib/apollo-client";
 import { useSession } from "next-auth/react";
+import { PlantContext, PlantProvider } from "providers/PlantContext";
 
 async function updatePublicAddress(email: string, publicAddress: string) {
   const UPDATE_PUBLIC_ADDRESS = gql`
@@ -100,7 +101,9 @@ export default function NFT() {
         </Button>
       ) : (
         <div>
-          <CryptoPlants />
+          <PlantProvider>
+            <CryptoPlants />
+          </PlantProvider>
         </div>
       )}
     </div>
