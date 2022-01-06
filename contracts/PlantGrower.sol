@@ -1,55 +1,26 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.9;
 
-import "hardhat/console.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "./CryptoPlants.sol";
 
-contract PlantGrower is ERC721 {
-    constructor() ERC721("PlantGrower", "plantGrower") {
-        createRandomPlant("Let's see Paul Allen's card");
+contract PlantGrower is CryptoPlants {
+    modifier onlyOwnerOf(uint256 _plantId) {
+        require(msg.sender == plantToFarmer[_plantId]);
+        _;
     }
 
-    uint8 dnaDigits = 16;
-    uint256 dnaModulus = 10**dnaDigits;
-    uint256 growCooldown = 1 hours;
-
-    struct PlantStruct {
-        string name;
-        uint16 dna;
-        uint16 size;
-        uint32 nextGrowTime;
+    function _triggerGrowCooldown(PlantStruct storage _plant) internal {
+        _plant.nextGrowTime = uint32(block.timestamp + growCooldown);
     }
 
-    PlantStruct[] public plants;
-
-    mapping(uint256 => address) public plantToFarmer;
-
-    function _generateRandomDna(string memory _randomizerString)
-        private
-        view
-        returns (uint8)
-    {
-        uint256 random = uint256(
-            keccak256(abi.encodePacked(_randomizerString))
-        );
-        return uint8(random % dnaModulus);
+    function _isReady(PlantStruct storage _plant) internal view returns (bool) {
+        return (_plant.nextGrowTime <= block.timestamp);
     }
 
-    function _createPlant(string memory _name, uint8 _dna) internal {
-        plants.push(
-            PlantStruct(_name, _dna, 1, uint32(block.timestamp + growCooldown))
-        );
-        uint256 createdPlantId = plants.length - 1;
-        plantToFarmer[createdPlantId] = msg.sender;
-    }
-
-    function createRandomPlant(string memory _name) public {
-        uint8 randomDna = _generateRandomDna(_name);
-        randomDna = randomDna - (randomDna % 100);
-        _createPlant(_name, randomDna);
-    }
-
-    function getPlants() external view returns (PlantStruct[] memory) {
-        return plants;
+    function waterPlant(uint256 _plantId) public onlyOwnerOf(_plantId) {
+        PlantStruct storage myPlant = plants[_plantId];
+        require(_isReady(myPlant));
+        myPlant.size++; // TODO: SAFEMATH
+        _triggerGrowCooldown(myPlant);
     }
 }

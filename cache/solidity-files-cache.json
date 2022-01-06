@@ -37,8 +37,8 @@
       ]
     },
     "/Users/nikolaiwaerpen/workspace/zimmer/contracts/PlantGrower.sol": {
-      "lastModificationDate": 1641416740535,
-      "contentHash": "b7b4b0f71a9bf25b5ef153cc25cf0b8c",
+      "lastModificationDate": 1641510145039,
+      "contentHash": "770c7f4a03dc2f222b6fd39c54904ae6",
       "sourceName": "contracts/PlantGrower.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -64,8 +64,7 @@
         }
       },
       "imports": [
-        "hardhat/console.sol",
-        "@openzeppelin/contracts/token/ERC721/ERC721.sol"
+        "./CryptoPlants.sol"
       ],
       "versionPragmas": [
         "0.8.9"
@@ -401,6 +400,44 @@
       ],
       "artifacts": [
         "IERC165"
+      ]
+    },
+    "/Users/nikolaiwaerpen/workspace/zimmer/contracts/CryptoPlants.sol": {
+      "lastModificationDate": 1641510444519,
+      "contentHash": "0bf64f5424de62e83b5b932b3690db8b",
+      "sourceName": "contracts/CryptoPlants.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol",
+        "@openzeppelin/contracts/token/ERC721/ERC721.sol"
+      ],
+      "versionPragmas": [
+        "0.8.9"
+      ],
+      "artifacts": [
+        "CryptoPlants"
       ]
     }
   }

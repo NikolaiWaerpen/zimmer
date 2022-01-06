@@ -100,7 +100,7 @@ export default function NFT() {
         </Button>
       ) : (
         <div>
-          <CryptoPlants />
+          <CryptoPlants publicAddress={publicAddress} />
         </div>
       )}
     </div>
