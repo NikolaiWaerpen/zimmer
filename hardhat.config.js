@@ -1,3 +1,5 @@
+import "@nomiclabs/hardhat-ethers";
+
 require("@nomiclabs/hardhat-waffle");
 require("dotenv").config({ path: __dirname + "/.env" });
 
