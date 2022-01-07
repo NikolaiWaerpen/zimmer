@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract CryptoPlants is ERC721 {
     constructor() ERC721("CryptoPlants", "CryptoPlants") {
-        createRandomPlant("Let's see Paul Allen's card");
+        createRandomPlant("Thea");
     }
 
     event NewPlant(string name, address farmer, uint256 dna);
@@ -17,7 +17,7 @@ contract CryptoPlants is ERC721 {
 
     struct PlantStruct {
         string name;
-        address farmer; // new
+        address farmer;
         uint16 dna; // TODO: FIX THE DNA
         uint16 size;
         uint32 nextGrowTime; // TODO: FIX BUG IN THE 1970 growtime thing
@@ -26,7 +26,8 @@ contract CryptoPlants is ERC721 {
     PlantStruct[] public plants;
 
     mapping(address => bool) public hasPlant;
-    mapping(uint256 => address) public plantToFarmer;
+    mapping(uint256 => address) public plantIdToFarmer;
+    mapping(address => uint256) public farmerToPlantId;
 
     function _generateRandomDna(string memory _randomizerString)
         private
@@ -49,9 +50,10 @@ contract CryptoPlants is ERC721 {
                 uint32(block.timestamp + growCooldown)
             )
         );
-        // TODO: BEGIN HERE TO GET THE BALL ROLLIN'
-        // zombieToOwner[id] = msg.sender;
-        // ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
+        uint256 plantId = plants.length - 1;
+        plantIdToFarmer[plantId] = msg.sender;
+        farmerToPlantId[msg.sender] = plantId;
+        hasPlant[msg.sender] = true;
         emit NewPlant(_name, msg.sender, _dna);
     }
 
@@ -64,5 +66,9 @@ contract CryptoPlants is ERC721 {
 
     function getPlants() external view returns (PlantStruct[] memory) {
         return plants;
+    }
+
+    function getPlant() public view returns (uint256) {
+        return farmerToPlantId[msg.sender];
     }
 }

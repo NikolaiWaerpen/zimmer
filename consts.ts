@@ -16,5 +16,5 @@ export const NAVIGATION = [
   { name: "NFT", href: "/nft" },
 ];
 
-export const contractAddress = "0x606F265aaD160BE295a5BcD833ffC2d7c8162e6B",
-  contractAbi = plantGrower.abi;
+export const CONTRACT_ADDRESS = "0x1797Ada57B236452830A08c50ea19DaaDE32db4b",
+  CONTRACT_ABI = plantGrower.abi;

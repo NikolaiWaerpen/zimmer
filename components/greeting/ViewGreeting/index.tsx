@@ -40,7 +40,6 @@ export default function ViewGreeting({
 
         {comment && <p className="text-gray-500">{comment}</p>}
 
-        <div></div>
         <div className="flex justify-between h-10">
           <div className="h-full flex">
             <img

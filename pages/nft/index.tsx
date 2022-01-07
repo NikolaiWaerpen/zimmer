@@ -49,7 +49,7 @@ export const GET_USER = gql`
   }
 `;
 
-type UserType = {
+export type UserType = {
   id: string;
   name: string;
   email: string;
@@ -99,9 +99,7 @@ export default function NFT() {
           Connect ethereum
         </Button>
       ) : (
-        <div>
-          <CryptoPlants publicAddress={publicAddress} />
-        </div>
+        <CryptoPlants publicAddress={publicAddress} />
       )}
     </div>
   );

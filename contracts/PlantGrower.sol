@@ -5,7 +5,7 @@ import "./CryptoPlants.sol";
 
 contract PlantGrower is CryptoPlants {
     modifier onlyOwnerOf(uint256 _plantId) {
-        require(msg.sender == plantToFarmer[_plantId]);
+        require(msg.sender == plantIdToFarmer[_plantId]);
         _;
     }
 
