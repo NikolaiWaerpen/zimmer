@@ -1,11 +1,14 @@
-import { gql } from "@apollo/client";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "components/Button";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { useSession } from "next-auth/react";
 import { GreetingType } from "pages/greeting";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import formatDate from "utils/format-date";
+
+dayjs.extend(relativeTime);
 
 export type ViewGreetingProps = {
   greeting: GreetingType;
@@ -50,7 +53,7 @@ export default function ViewGreeting({
             />
             <div className="grid place-items-center ml-2">
               <p className="text-gray-500 font-thin text-right">
-                {formatDate({ date: createdAt, format: "DD.MM.YY HH:mm" })}
+                {dayjs(createdAt).fromNow()}
               </p>
             </div>
             {/* TODO: Add functioning tooltip */}

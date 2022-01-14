@@ -60,6 +60,7 @@ const validationSchema = yup.object({
     ),
   comment: yup
     .string()
+    .required("Comment required")
     .test(
       "len",
       `Must be less than ${MAX_GREETING_COMMENT_LENGTH} characters`,
@@ -91,14 +92,15 @@ export default function AddGreetingForm() {
           setFieldValue,
           errors,
           isSubmitting,
+          isValid,
         }) => (
           <Form>
             <div className="flex flex-col gap-4">
               {/* TODO: Consider turning this into a title and pill actions (w/ emotions) https://tailwindui.com/components/application-ui/forms/textareas */}
               <Input
                 label="Title"
-                required
-                error={errors.title}
+                // required
+                // error={errors.title}
                 placeholder="Hey Nikolai!"
                 type="text"
                 value={title}
@@ -108,7 +110,8 @@ export default function AddGreetingForm() {
               />
               <TextArea
                 label="Comment"
-                error={errors.comment}
+                // error={errors.comment}
+                // required
                 placeholder={`Awesome website! Good job.\nLove, ${
                   session.user?.name?.split(" ")[0]
                 }`}
@@ -118,7 +121,11 @@ export default function AddGreetingForm() {
                   setFieldValue("comment", event?.target.value)
                 }
               />
-              <Button type="submit" loading={isSubmitting}>
+              <Button
+                type="submit"
+                disabled={!isValid ?? isSubmitting}
+                loading={isSubmitting}
+              >
                 <FontAwesomeIcon icon={faCheck} />
               </Button>
             </div>
