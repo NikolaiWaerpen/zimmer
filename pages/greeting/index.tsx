@@ -8,9 +8,7 @@ import Loader from "components/Loader";
 import { useState } from "react";
 
 // TODO:
-// Input verification when no comment
-// Submit button disabled when not valid
-// Date is how long ago the comment was added
+// make comment required
 
 export const GET_GREETINGS = gql`
   query Greetings {

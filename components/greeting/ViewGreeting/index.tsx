@@ -1,6 +1,7 @@
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "components/Button";
+import UserImage from "components/UserImage";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useSession } from "next-auth/react";
@@ -43,14 +44,9 @@ export default function ViewGreeting({
 
         {comment && <p className="text-gray-500">{comment}</p>}
 
-        <div></div>
         <div className="flex justify-between h-10">
           <div className="h-full flex">
-            <img
-              className="inline-block h-full w-10 rounded-full"
-              src={imageSrc}
-              alt={name}
-            />
+            <UserImage src={imageSrc} alt={name} />
             <div className="grid place-items-center ml-2">
               <p className="text-gray-500 font-thin text-right">
                 {dayjs(createdAt).fromNow()}

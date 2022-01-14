@@ -5,6 +5,7 @@ import Button from "components/Button";
 import CustomError from "components/CustomError";
 import Input from "components/Input";
 import TextArea from "components/TextArea";
+import UserImage from "components/UserImage";
 import { MAX_GREETING_COMMENT_LENGTH, MAX_GREETING_TITLE_LENGTH } from "consts";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
@@ -90,7 +91,6 @@ export default function AddGreetingForm() {
         {({
           values: { title, comment },
           setFieldValue,
-          errors,
           isSubmitting,
           isValid,
         }) => (
@@ -99,8 +99,6 @@ export default function AddGreetingForm() {
               {/* TODO: Consider turning this into a title and pill actions (w/ emotions) https://tailwindui.com/components/application-ui/forms/textareas */}
               <Input
                 label="Title"
-                // required
-                // error={errors.title}
                 placeholder="Hey Nikolai!"
                 type="text"
                 value={title}
@@ -110,8 +108,6 @@ export default function AddGreetingForm() {
               />
               <TextArea
                 label="Comment"
-                // error={errors.comment}
-                // required
                 placeholder={`Awesome website! Good job.\nLove, ${
                   session.user?.name?.split(" ")[0]
                 }`}
@@ -121,13 +117,20 @@ export default function AddGreetingForm() {
                   setFieldValue("comment", event?.target.value)
                 }
               />
-              <Button
-                type="submit"
-                disabled={!isValid ?? isSubmitting}
-                loading={isSubmitting}
-              >
-                <FontAwesomeIcon icon={faCheck} />
-              </Button>
+              <div className="flex gap-2 items-center ">
+                <UserImage
+                  src={session.user!.image!}
+                  alt={`${session.user!.name!}`}
+                />
+                <Button
+                  className="w-full h-full"
+                  type="submit"
+                  disabled={!isValid ?? isSubmitting}
+                  loading={isSubmitting}
+                >
+                  <FontAwesomeIcon icon={faCheck} />
+                </Button>
+              </div>
             </div>
           </Form>
         )}

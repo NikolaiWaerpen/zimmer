@@ -19,12 +19,13 @@ export default function Button({
   type,
   disabled,
   loading = false,
+  className,
 }: ButtonProps) {
   return (
     <button
       onClick={onClick}
       type={type}
-      className={`inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+      className={`${className} inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 ${
         disabled
           ? "focus:ring-gray-500 text-white bg-gray-600 hover:bg-gray-700 hover:cursor-not-allowed"
           : "focus:ring-indigo-500 text-white bg-indigo-600 hover:bg-indigo-700"
