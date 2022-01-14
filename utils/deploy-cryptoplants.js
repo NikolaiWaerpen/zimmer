@@ -9,6 +9,14 @@ async function deployContract() {
   const cryptoPlantsContract = await cryptoPlantsFactory.deploy();
 
   console.log("CryptoPlants address:", cryptoPlantsContract.address);
+
+  console.log("");
+  console.log(
+    `Check on etherscan (ropsten): https://ropsten.etherscan.io/address/${deployer.address}`
+  );
+  console.log(
+    `Check on etherscan (ropsten): https://rinkeby.etherscan.io/address/${deployer.address}`
+  );
 }
 
 async function runDeployContract() {

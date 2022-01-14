@@ -7,8 +7,12 @@
     "apollo:generate": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/**\" --includes \"components/**\" --excludes generated generated --outputFlat",
     "hh:compile": "npx hardhat compile ",
     "hh:test": "npx hardhat test",
-    "hh:abyss": "npx hardhat run utils/deploy-cryptoplants.js",
-    "hh:ropsten": "npx hardhat run utils/deploy-cryptoplants.js --network ropsten"
+    "hh:cryptotest-abyss": "npx hardhat run utils/deploy-cryptotest.js",
+    "hh:cryptotest-rinkeby": "npx hardhat run utils/deploy-cryptotest.js --network rinkeby",
+    "hh:cryptotest-ropsten": "npx hardhat run utils/deploy-cryptotest.js --network ropsten",
+    "hh:cryptoplants-abyss": "npx hardhat run utils/deploy-cryptoplants.js",
+    "hh:cryptoplants-ropsten": "npx hardhat run utils/deploy-cryptoplants.js --network ropsten",
+    "hh:cryptoplants-rinkeby": "npx hardhat run utils/deploy-cryptoplants.js --network rinkeby"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",

@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "test/Token.js"  ],
+, "test/Token.js", "utils/send-transaction.js"  ],
   "exclude": [
     "node_modules"
   ]
