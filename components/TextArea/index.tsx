@@ -3,7 +3,7 @@ import { ExclamationCircleIcon } from "@heroicons/react/solid";
 type InputProps = React.ComponentPropsWithoutRef<"textarea"> & {
   label?: string;
   description?: string;
-  error: string | undefined;
+  error?: string | undefined;
 };
 
 export default function TextArea({
@@ -13,6 +13,7 @@ export default function TextArea({
   label,
   description,
   error,
+  className,
   onChange,
   rows,
 }: InputProps) {
@@ -35,7 +36,7 @@ export default function TextArea({
         )}
         {description && <p>{description}</p>}
         <textarea
-          className={`block w-full border-0 p-0 focus:ring-0 sm:text-sm ${
+          className={`${className} block w-full border-0 p-0 focus:ring-0 sm:text-sm ${
             error
               ? "text-red-900 placeholder-red-300"
               : "text-gray-900 placeholder-gray-500"

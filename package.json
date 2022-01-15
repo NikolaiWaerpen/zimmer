@@ -22,6 +22,7 @@
     "@metamask/detect-provider": "^1.2.0",
     "@openzeppelin/contracts": "^4.4.1",
     "@tailwindcss/forms": "^0.4.0",
+    "@tippyjs/react": "^4.2.6",
     "@types/react-query": "^1.2.9",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
@@ -35,7 +36,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.34.5",
-    "react-tooltip": "^4.2.21",
     "web3": "^1.6.1",
     "yup": "^0.32.11"
   },

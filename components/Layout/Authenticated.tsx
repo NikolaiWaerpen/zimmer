@@ -1,6 +1,7 @@
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import CustomError from "components/CustomError";
+import UserImage from "components/UserImage";
 import { NAVIGATION } from "consts";
 import { signOut, useSession } from "next-auth/react";
 import { Fragment, ReactNode } from "react";
@@ -13,13 +14,7 @@ function Profile() {
   return (
     <button onClick={() => signOut()} className="flex-shrink-0 group block">
       <div className="flex items-center">
-        <div>
-          <img
-            className="inline-block h-9 w-9 rounded-full"
-            src={image!}
-            alt={`Image of ${name}`}
-          />
-        </div>
+        <UserImage src={image!} />
         <div className="ml-3 text-left">
           <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
             {name!}
