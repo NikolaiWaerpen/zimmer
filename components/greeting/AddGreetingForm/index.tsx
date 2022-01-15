@@ -108,7 +108,7 @@ export default function AddGreetingForm() {
               />
               <TextArea
                 label="Comment"
-                placeholder={`Awesome site! Good job.\nLove, ${
+                placeholder={`Awesome site! Good job. \nLove, ${
                   session.user?.name?.split(" ")[0]
                 }`}
                 className="resize-none"
