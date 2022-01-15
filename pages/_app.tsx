@@ -1,4 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
+import CustomHead from "components/CustomHead";
 import { apolloClient } from "lib/apollo-client";
 import { queryClient } from "lib/react-query-client";
 import { SessionProvider } from "next-auth/react";
@@ -13,14 +14,18 @@ export default function MyApp({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <ApolloProvider client={apolloClient}>
-        <QueryClientProvider client={queryClient}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </QueryClientProvider>
-      </ApolloProvider>
-    </SessionProvider>
+    <>
+      <CustomHead />
+
+      <SessionProvider session={session}>
+        <ApolloProvider client={apolloClient}>
+          <QueryClientProvider client={queryClient}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </QueryClientProvider>
+        </ApolloProvider>
+      </SessionProvider>
+    </>
   );
 }
