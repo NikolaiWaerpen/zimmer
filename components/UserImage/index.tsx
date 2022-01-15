@@ -5,7 +5,7 @@ export default function UserImage({ src, alt }: UserImageProps) {
     <img
       className="inline-block h-full w-10 rounded-full"
       src={src}
-      alt={alt}
+      alt={!alt ? alt : "/images/duck.jpg"}
     />
   );
 }

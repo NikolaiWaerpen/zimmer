@@ -1,12 +1,16 @@
-import ReactTooltip from "react-tooltip";
+import Tippy, { TippyProps } from "@tippyjs/react";
 
-type TooltipProps = {};
+type TooltipProps = TippyProps & {};
 
-export default function Tooltip({}: TooltipProps) {
+export default function Tooltip({
+  children,
+  className,
+  ...props
+}: TooltipProps) {
   return (
-    <div>
-      <p data-for="tooltip">AYO</p>
-      <ReactTooltip place="top" effect="solid" />
-    </div>
+    // TODO: Make tippy work
+    <Tippy className={`${className} z-1 shadow-lg w-12 h-12`} {...props}>
+      {children}
+    </Tippy>
   );
 }

@@ -47,7 +47,7 @@ const createGreetingMutation = async (title: string, comment: string) => {
   });
 };
 
-const validationSchema = yup.object({
+export const validationSchema = yup.object({
   title: yup
     .string()
     .required("Title required")
@@ -111,6 +111,7 @@ export default function AddGreetingForm() {
                 placeholder={`Awesome website! Good job.\nLove, ${
                   session.user?.name?.split(" ")[0]
                 }`}
+                className="resize-none"
                 value={comment}
                 rows={5}
                 onChange={(event) =>
@@ -118,10 +119,6 @@ export default function AddGreetingForm() {
                 }
               />
               <div className="flex gap-2 items-center ">
-                <UserImage
-                  src={session.user!.image!}
-                  alt={`${session.user!.name!}`}
-                />
                 <Button
                   className="w-full h-full"
                   type="submit"
@@ -130,6 +127,10 @@ export default function AddGreetingForm() {
                 >
                   <FontAwesomeIcon icon={faCheck} />
                 </Button>
+                <UserImage
+                  src={session.user!.image!}
+                  alt={`${session.user!.name!}`}
+                />
               </div>
             </div>
           </Form>

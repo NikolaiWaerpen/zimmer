@@ -6,9 +6,11 @@ import EditGreetingForm from "components/greeting/EditGreetingForm";
 import ViewGreeting from "components/greeting/ViewGreeting";
 import Loader from "components/Loader";
 import { useState } from "react";
+import dateToUnix from "utils/date-to-unix";
 
 // TODO:
 // make comment required
+//
 
 export const GET_GREETINGS = gql`
   query Greetings {
@@ -53,8 +55,8 @@ export default function Greeting() {
 
   return (
     <div className="grid place-items-center">
-      <main className="flex justify-evenly items-center my-32">
-        <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
+      <div className="flex flex-col gap-8 my-16 lg:gap-0 lg:flex-row lg:justify-evenly lg:items-center lg:my-32">
+        <div className="lg:w-1/2 xl:pr-16">
           <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
             <span className="block xl:inline">Leave me a</span>{" "}
             <span className="block text-indigo-600 xl:inline">greeting!</span>
@@ -69,29 +71,31 @@ export default function Greeting() {
         </div>
 
         <AddGreetingForm />
-      </main>
+      </div>
 
       <div className="space-y-16 w-full grid place-items-center">
         <Divider label="Greetings" />
-        <div className="grid gap-8 grid-cols-3">
-          {greetings.map((greeting) => {
-            const { id } = greeting;
-            return (
-              <div key={id}>
-                {editingGreeting !== id ? (
-                  <ViewGreeting
-                    greeting={greeting}
-                    setEditingGreeting={setEditingGreeting}
-                  />
-                ) : (
-                  <EditGreetingForm
-                    greeting={greeting}
-                    setEditingGreeting={setEditingGreeting}
-                  />
-                )}
-              </div>
-            );
-          })}
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {[...greetings]
+            .sort((a, b) => dateToUnix(a.createdAt) + dateToUnix(b.createdAt))
+            .map((greeting) => {
+              const { id } = greeting;
+              return (
+                <div key={id}>
+                  {editingGreeting !== id ? (
+                    <ViewGreeting
+                      greeting={greeting}
+                      setEditingGreeting={setEditingGreeting}
+                    />
+                  ) : (
+                    <EditGreetingForm
+                      greeting={greeting}
+                      setEditingGreeting={setEditingGreeting}
+                    />
+                  )}
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
