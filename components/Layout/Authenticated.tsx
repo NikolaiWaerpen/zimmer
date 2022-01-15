@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import CustomError from "components/CustomError";
+import Footer from "components/Footer";
 import UserImage from "components/UserImage";
 import { NAVIGATION } from "consts";
 import { signOut, useSession } from "next-auth/react";
@@ -42,6 +44,7 @@ export default function Authenticated({ children }: AuthenticatedProps) {
 
   return (
     <div>
+      {/* Top navigation */}
       <Popover className="relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
@@ -62,7 +65,7 @@ export default function Authenticated({ children }: AuthenticatedProps) {
               </Popover.Button>
             </div>
             <Popover.Group as="nav" className="hidden md:flex space-x-10">
-              {NAVIGATION.map(({ name, href }) => (
+              {NAVIGATION.main.map(({ name, href }) => (
                 <a
                   key={name}
                   href={href}
@@ -111,7 +114,7 @@ export default function Authenticated({ children }: AuthenticatedProps) {
               </div>
               <div className="py-6 px-5 space-y-6">
                 <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                  {NAVIGATION.map(({ name, href }) => (
+                  {NAVIGATION.main.map(({ name, href }) => (
                     <a
                       key={name}
                       href={href}
@@ -134,6 +137,42 @@ export default function Authenticated({ children }: AuthenticatedProps) {
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-8">{children}</div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-white mt-36">
+        <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+          <nav
+            className="-mx-5 -my-2 flex flex-wrap justify-center"
+            aria-label="Footer"
+          >
+            {NAVIGATION.main.map(({ name, href }) => (
+              <div key={name} className="px-5 py-2">
+                <a
+                  href={href}
+                  className="text-base text-gray-500 hover:text-gray-900"
+                >
+                  {name}
+                </a>
+              </div>
+            ))}
+          </nav>
+          <div className="mt-8 flex justify-center space-x-6">
+            {NAVIGATION.social.map(({ name, href, icon }) => (
+              <a
+                key={name}
+                href={href}
+                className="text-gray-400 hover:text-gray-500"
+              >
+                <span className="sr-only">{name}</span>
+                <FontAwesomeIcon icon={icon} className="w-6 h-6" />
+              </a>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-base text-gray-400">
+            &copy; 2022 Nikolai Wærpen. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
