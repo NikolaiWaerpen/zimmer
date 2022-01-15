@@ -99,7 +99,7 @@ export default function Authenticated({ children }: AuthenticatedProps) {
                   <div>
                     <img
                       className="h-8 w-auto"
-                      src="images/leaf.png"
+                      src="images/logo.png"
                       alt="logo"
                     />
                   </div>

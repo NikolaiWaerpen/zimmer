@@ -62,7 +62,8 @@ export default function Greeting() {
             <span className="block text-themecolor4 xl:inline">greeting!</span>
           </h1>
           <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
-            Leave a greeting to me to tell me how much you like the site!
+            Feel free to leave a greeting to tell me that you've visited and
+            enjoyed the site!
           </p>
           <p className="mt-3 max-w-md mx-auto text-sm text-gray-500 sm:medium md:mt-5 md:max-w-3xl">
             There are no filters or banned words. This is trust-based. Please be

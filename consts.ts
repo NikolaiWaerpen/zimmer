@@ -18,7 +18,7 @@ export const MAIL_TO = "mailto:nikolaiwaerpen@gmail.com?subject=Hei Nikolai!";
 export const NAVIGATION = {
   main: [
     { name: "Home", href: "/" },
-    { name: "Guest book", href: "/greeting" },
+    { name: "Guest Book", href: "/greeting" },
     { name: "NFT", href: "/nft" },
   ],
   social: [
