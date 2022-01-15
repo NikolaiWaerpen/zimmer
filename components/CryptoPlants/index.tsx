@@ -92,7 +92,7 @@ export default function CryptoPlants({ publicAddress }: CryptoPlantsType) {
         <h1 className="text-center text-6xl">Blockchain Plants</h1>
         <a
           href={`https://ropsten.etherscan.io/address/${CONTRACT_ADDRESS}`}
-          className="text-indigo-700"
+          className="text-themecolor5"
           target="_blank"
         >
           (View smart contract)

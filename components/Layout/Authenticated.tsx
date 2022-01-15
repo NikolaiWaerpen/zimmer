@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import CustomError from "components/CustomError";
-import Footer from "components/Footer";
 import UserImage from "components/UserImage";
 import { NAVIGATION } from "consts";
 import { signOut, useSession } from "next-auth/react";
@@ -21,7 +20,7 @@ function Profile() {
           <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
             {name!}
           </p>
-          <p className="text-xs font-medium text-gray-500 group-hover:text-indigo-600">
+          <p className="text-xs font-medium text-gray-500 group-hover:text-themecolor4">
             Log out
           </p>
         </div>
@@ -53,13 +52,13 @@ export default function Authenticated({ children }: AuthenticatedProps) {
                 <span className="sr-only">Workflow</span>
                 <img
                   className="h-8 w-auto sm:h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                  alt=""
+                  src="images/logo.png"
+                  alt="logo"
                 />
               </a>
             </div>
             <div className="-mr-2 -my-2 md:hidden">
-              <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-themecolor3">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
@@ -100,12 +99,12 @@ export default function Authenticated({ children }: AuthenticatedProps) {
                   <div>
                     <img
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                      alt="Workflow"
+                      src="images/leaf.png"
+                      alt="logo"
                     />
                   </div>
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-themecolor3">
                       <span className="sr-only">Close menu</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>

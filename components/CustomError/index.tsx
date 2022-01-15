@@ -27,7 +27,7 @@ export default function CustomError({ error }: CustomErrorProps) {
           </div>
           <div className="py-16">
             <div className="text-center">
-              <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
+              <p className="text-sm font-semibold text-themecolor4 uppercase tracking-wide">
                 Oh snap!
               </p>
               <h1 className="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
@@ -36,7 +36,7 @@ export default function CustomError({ error }: CustomErrorProps) {
               {error && <div>{JSON.stringify(error.message, null, 2)}</div>}
               <div className="mt-6">
                 <Link href="">
-                  <a className="text-base font-medium text-indigo-600 hover:text-indigo-500">
+                  <a className="text-base font-medium text-themecolor4 hover:text-themecolor3">
                     <span aria-hidden="true"> &larr;</span> Go back home
                   </a>
                 </Link>
