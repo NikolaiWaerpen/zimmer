@@ -3,7 +3,6 @@ import {
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import plantGrower from "./artifacts/contracts/PlantGrower.sol/PlantGrower.json";
 
 export const URL =
   process.env.NODE_ENV === "production"
@@ -13,13 +12,12 @@ export const URL =
 export const MAX_GREETING_TITLE_LENGTH = 30,
   MAX_GREETING_COMMENT_LENGTH = 150;
 
-export const MAIL_TO = "mailto:nikolaiwaerpen@gmail.com?subject=Hei Nikolai!";
+export const MAIL_TO = "mailto:nikolaiwaerpen@gmail.com?subject=Hi Nikolai!";
 
 export const NAVIGATION = {
   main: [
     { name: "Home", href: "/" },
     { name: "Guest Book", href: "/greeting" },
-    { name: "NFT", href: "/nft" },
   ],
   social: [
     {
@@ -44,6 +42,3 @@ export const NAVIGATION = {
     },
   ],
 };
-
-export const CONTRACT_ADDRESS = "0x1797Ada57B236452830A08c50ea19DaaDE32db4b",
-  CONTRACT_ABI = plantGrower.abi;

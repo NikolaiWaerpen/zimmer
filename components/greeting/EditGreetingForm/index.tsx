@@ -80,7 +80,13 @@ export default function EditGreetingForm({
       }}
       validationSchema={validationSchema}
     >
-      {({ values: { id, title, comment }, setFieldValue, errors }) => (
+      {({
+        values: { id, title, comment },
+        setFieldValue,
+        errors,
+        isValid,
+        isSubmitting,
+      }) => (
         <Form>
           <div className="bg-white overflow-hidden shadow-xl sm:rounded-lg h-full w-72 transition duration-300 ">
             <div className="px-4 py-5 sm:p-6 space-y-4 h-full flex flex-col justify-between">
@@ -107,7 +113,11 @@ export default function EditGreetingForm({
 
               <div className="flex gap-1 items-center h-10">
                 {/* Save */}
-                <Button type="submit" className="flex-1">
+                <Button
+                  type="submit"
+                  className="flex-1"
+                  disabled={!isValid ?? isSubmitting}
+                >
                   <FontAwesomeIcon icon={faCheck} />
                 </Button>
                 {/* Delete */}
@@ -124,8 +134,6 @@ export default function EditGreetingForm({
               </div>
             </div>
           </div>
-
-          <div className="flex"></div>
         </Form>
       )}
     </Formik>

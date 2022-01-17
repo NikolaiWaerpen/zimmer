@@ -9,6 +9,8 @@ import "styles/styles.css";
 import "tailwindcss/tailwind.css";
 import Layout from "../components/Layout";
 
+// Loader bug due to footer (fullscreen container necessary)
+
 export default function MyApp({
   Component,
   pageProps: { session, ...pageProps },

@@ -168,7 +168,7 @@ export default function Authenticated({ children }: AuthenticatedProps) {
             ))}
           </div>
           <p className="mt-8 text-center text-base text-gray-400">
-            &copy; 2022 Nikolai Wærpen. All rights reserved.
+            &copy; 2022 Nikolai Waerpen. All rights reserved.
           </p>
         </div>
       </footer>
