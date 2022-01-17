@@ -38,7 +38,7 @@ export default function ViewGreeting({
   const userCanEdit = useMemo(() => email === data?.user?.email, [data, email]);
 
   return (
-    <div className="bg-white overflow-hidden shadow hover:shadow-xl sm:rounded-lg h-full w-72 transition duration-300 group">
+    <div className="bg-white overflow-hidden shadow hover:shadow-lg sm:rounded-lg h-full w-72 transition duration-300 group">
       <div className="px-4 py-5 sm:p-6 space-y-8 h-full flex flex-col justify-between">
         <h3 className="font-semibold">{title}</h3>
 

@@ -88,7 +88,7 @@ export default function EditGreetingForm({
         isSubmitting,
       }) => (
         <Form>
-          <div className="bg-white overflow-hidden shadow-xl sm:rounded-lg h-full w-72 transition duration-300 ">
+          <div className="bg-white overflow-hidden shadow-lg sm:rounded-lg h-full w-72 transition duration-300 ">
             <div className="px-4 py-5 sm:p-6 space-y-4 h-full flex flex-col justify-between">
               <Input
                 label="Title"

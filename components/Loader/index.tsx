@@ -15,6 +15,7 @@ export default function Loader({ message }: LoaderProps) {
       animationData: replaceColor("#eeeeee", "#eeeeee", loaderAnimation),
     });
   }, []);
+
   return (
     <AbsoluteContainer>
       <div id="animationContainer" className="w-56" />
