@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import classNames from "classnames";
 import CustomError from "components/CustomError";
-import FullscreenContainer from "components/FullscreenContainer";
 import UserImage from "components/UserImage";
 import { NAVIGATION } from "consts";
 import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { Fragment, ReactNode } from "react";
 
 function Profile() {
@@ -42,6 +43,8 @@ export default function Authenticated({ children }: AuthenticatedProps) {
     ),
   });
 
+  const { route } = useRouter();
+
   return (
     <div>
       {/* Top navigation */}
@@ -66,15 +69,23 @@ export default function Authenticated({ children }: AuthenticatedProps) {
                 </Popover.Button>
               </div>
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
-                {NAVIGATION.main.map(({ name, href }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    className="text-base font-medium text-gray-500 hover:text-gray-900"
-                  >
-                    {name}
-                  </a>
-                ))}
+                {NAVIGATION.main.map(({ name, href }) => {
+                  const currentlyActive = route === href;
+                  return (
+                    <a
+                      key={name}
+                      href={href}
+                      className={classNames(
+                        currentlyActive
+                          ? "text-gray-900 hover:text-gray-700"
+                          : "text-gray-500 hover:text-gray-900",
+                        "text-base font-medium "
+                      )}
+                    >
+                      {name}
+                    </a>
+                  );
+                })}
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                 <Profile />
@@ -115,15 +126,23 @@ export default function Authenticated({ children }: AuthenticatedProps) {
                 </div>
                 <div className="py-6 px-5 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                    {NAVIGATION.main.map(({ name, href }) => (
-                      <a
-                        key={name}
-                        href={href}
-                        className="text-base font-medium text-gray-900 hover:text-gray-700"
-                      >
-                        {name}
-                      </a>
-                    ))}
+                    {NAVIGATION.main.map(({ name, href }) => {
+                      const currentlyActive = route === href;
+                      return (
+                        <a
+                          key={name}
+                          href={href}
+                          className={classNames(
+                            currentlyActive
+                              ? "text-gray-900 hover:text-gray-700"
+                              : "text-gray-500 hover:text-gray-900",
+                            "text-base font-medium "
+                          )}
+                        >
+                          {name}
+                        </a>
+                      );
+                    })}
                   </div>
                   <div>
                     <Profile />
