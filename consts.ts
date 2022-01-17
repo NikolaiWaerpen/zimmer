@@ -30,15 +30,15 @@ export const NAVIGATION = {
     //   href: "",
     //   icon: faFacebookF,
     // },
-    {
-      name: "Instagram",
-      href: "https://www.instagram.com/nikolaiwaerpen/",
-      icon: faInstagram,
-    },
-    {
-      name: "Twitter",
-      href: "https://twitter.com/waerpen",
-      icon: faTwitter,
-    },
+    // {
+    //   name: "Instagram",
+    //   href: "https://www.instagram.com/nikolaiwaerpen/",
+    //   icon: faInstagram,
+    // },
+    // {
+    //   name: "Twitter",
+    //   href: "https://twitter.com/waerpen",
+    //   icon: faTwitter,
+    // },
   ],
 };

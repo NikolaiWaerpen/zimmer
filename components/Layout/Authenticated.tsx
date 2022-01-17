@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import CustomError from "components/CustomError";
+import FullscreenContainer from "components/FullscreenContainer";
 import UserImage from "components/UserImage";
 import { NAVIGATION } from "consts";
 import { signOut, useSession } from "next-auth/react";
@@ -134,7 +135,7 @@ export default function Authenticated({ children }: AuthenticatedProps) {
 
       {/* Container */}
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mt-8">{children}</div>
+        <div className="mt-8 h-screen">{children}</div>
       </div>
 
       {/* Footer */}
@@ -160,6 +161,8 @@ export default function Authenticated({ children }: AuthenticatedProps) {
               <a
                 key={name}
                 href={href}
+                target="_blank"
+                rel="noreferrer"
                 className="text-gray-400 hover:text-gray-500"
               >
                 <span className="sr-only">{name}</span>

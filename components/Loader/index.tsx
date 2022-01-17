@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import lottie from "lottie-web";
-import { replaceColor } from "lottie-colorify";
-import loaderAnimation from "public/lottie/loader.json";
 import AbsoluteContainer from "components/AbsoluteContainer";
+import { replaceColor } from "lottie-colorify";
+import lottie from "lottie-web";
+import loaderAnimation from "public/lottie/loader.json";
+import { useEffect } from "react";
 
 type LoaderProps = {
   message?: string;
