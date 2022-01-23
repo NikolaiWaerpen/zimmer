@@ -32,10 +32,10 @@ export default function Hero() {
                     .typeString("beautiful websites.")
                     .pauseFor(1500)
                     .deleteAll()
-                    .typeString("reliant APIs.")
+                    .typeString("performant APIs.")
                     .pauseFor(1500)
                     .deleteAll()
-                    .typeString("performat web applications.")
+                    .typeString("scalable web applications.")
                     .pauseFor(1500)
                     .deleteAll();
                 }}
