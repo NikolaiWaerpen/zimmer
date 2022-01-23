@@ -37,12 +37,20 @@ function Profile() {
   );
 }
 
-function NotSignedIn() {
+type NotSignedInProps = {
+  status: "loading" | "unauthenticated";
+};
+
+function NotSignedIn({ status }: NotSignedInProps) {
+  const isLoading = status === "loading";
+
   return (
     <div>
       <Link href="/login">
         <a>
-          <Button icon={faUser}>Sign in</Button>
+          <Button icon={faUser} loading={isLoading} disabled={isLoading}>
+            Sign in
+          </Button>
         </a>
       </Link>
     </div>
@@ -51,7 +59,7 @@ function NotSignedIn() {
 
 export default function Layout({ children }: LayoutProps) {
   const { route } = useRouter();
-  const { status, data: session } = useSession();
+  const { status } = useSession();
 
   return (
     <div>
@@ -96,11 +104,16 @@ export default function Layout({ children }: LayoutProps) {
                 })}
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                {status === "authenticated" ? <Profile /> : <NotSignedIn />}
+                {status === "authenticated" ? (
+                  <Profile />
+                ) : (
+                  <NotSignedIn status={status} />
+                )}
               </div>
             </div>
           </div>
 
+          {/* TODO: Close menu if an item is click on - control state */}
           <Transition
             as={Fragment}
             enter="duration-200 ease-out"
@@ -153,7 +166,11 @@ export default function Layout({ children }: LayoutProps) {
                     })}
                   </div>
                   <div>
-                    {status === "authenticated" ? <Profile /> : <NotSignedIn />}
+                    {status === "authenticated" ? (
+                      <Profile />
+                    ) : (
+                      <NotSignedIn status={status} />
+                    )}
                   </div>
                 </div>
               </div>

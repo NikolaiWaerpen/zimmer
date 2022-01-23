@@ -80,8 +80,8 @@ export default function AddGreetingForm() {
     return (
       <Alert
         state="warning"
-        title="Sign in"
-        description="Sign in to leave me a greeting :)"
+        title="Sign in to leave a greeting"
+        // description="Sign in to leave me a greeting :)"
       />
     );
 
