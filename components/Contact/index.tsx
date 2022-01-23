@@ -23,8 +23,9 @@ export default function Contact() {
                   Get in touch
                 </h2>
                 <p className="mt-4 text-lg leading-6 text-gray-500">
-                  My inbox is always open. Whether you have a question or just
-                  want to say hi, I'll try my best to get back to you!
+                  Whether you have a question or just want to say hi, my inbox
+                  is always open. I'll try to get back to you as soon as
+                  possible!
                 </p>
               </div>
               <div className="mt-12">
@@ -61,7 +62,7 @@ export default function Contact() {
                       label="Message"
                       id="message"
                       name="message"
-                      placeholder="Hey Nikolai! We're interested in working with you on an exciting new project..."
+                      placeholder="Hi Nikolai! I'm interested in working with you on an exciting new project..."
                       rows={5}
                       className="resize-none"
                     />
