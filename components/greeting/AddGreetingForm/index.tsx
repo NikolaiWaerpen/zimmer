@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Alert from "components/Alert";
 import Button from "components/Button";
 import CustomError from "components/CustomError";
 import Input from "components/Input";
@@ -76,7 +77,13 @@ export default function AddGreetingForm() {
   const { data: session } = useSession();
 
   if (session === null)
-    return <CustomError error={new Error("Not authenticated")} />;
+    return (
+      <Alert
+        state="warning"
+        title="Sign in"
+        description="Sign in to leave me a greeting :)"
+      />
+    );
 
   return (
     <>

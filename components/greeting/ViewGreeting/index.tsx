@@ -1,7 +1,6 @@
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "components/Button";
-import Tooltip from "components/Tooltip";
 import UserImage from "components/UserImage";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -62,9 +61,7 @@ export default function ViewGreeting({
             </p>
             {/* TODO: Add functioning tooltip */}
             <div className="h-full flex">
-              <Tooltip content={<div>{name}</div>}>
-                <UserImage src={imageSrc} />
-              </Tooltip>
+              <UserImage src={imageSrc} />
             </div>
           </div>
         </div>

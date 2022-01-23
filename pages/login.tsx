@@ -5,16 +5,22 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { signIn } from "next-auth/react";
+import FullscreenContainer from "components/FullscreenContainer";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Login() {
-  // TODO: if authenticated - throw user back whence they came
-
   const router = useRouter();
+  const { status } = useSession();
+
+  useEffect(() => {
+    // TODO: figure out how to throw user back whence they came after login, not just back to home
+    if (status === "authenticated") router.push("/");
+  }, [status]);
 
   return (
-    <>
+    <FullscreenContainer>
       {/* <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -208,6 +214,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </>
+    </FullscreenContainer>
   );
 }

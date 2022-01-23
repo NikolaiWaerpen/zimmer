@@ -7,13 +7,13 @@ module.exports = {
     extend: {
       colors: {
         // AW's color pallette
-        themecolor1: "#000201",
-        themecolor2: "#0D2611",
-        themecolor3: "#1D4A24",
-        themecolor3: "#306E38",
-        themecolor4: "#47924F",
-        themecolor4: "#61B668",
-        themecolor5: "#7EDA84",
+        "theme-1": "#000201",
+        "theme-2": "#0D2611",
+        "theme-3": "#1D4A24",
+        "theme-4": "#306E38",
+        "theme-5": "#47924F",
+        "theme-6": "#61B668",
+        "theme-7": "#7EDA84",
       },
     },
   },
