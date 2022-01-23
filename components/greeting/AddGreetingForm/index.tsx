@@ -77,13 +77,7 @@ export default function AddGreetingForm() {
   const { data: session } = useSession();
 
   if (session === null)
-    return (
-      <Alert
-        state="warning"
-        title="Sign in to leave a greeting"
-        // description="Sign in to leave me a greeting :)"
-      />
-    );
+    return <Alert state="warning" title="Sign in to leave a greeting" />;
 
   return (
     <>

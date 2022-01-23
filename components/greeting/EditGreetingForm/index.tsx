@@ -10,6 +10,8 @@ import { GET_GREETINGS } from "pages/greeting";
 import { validationSchema } from "../AddGreetingForm";
 import { ViewGreetingProps } from "../ViewGreeting";
 
+// TODO: Merge edit and add form into one
+
 const deleteGreetingMutation = async (id: number) => {
   const DELETE_GREETING = gql`
     mutation DeleteGreeting($input: DeleteGreetingInput!) {
