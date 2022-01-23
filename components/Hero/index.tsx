@@ -20,7 +20,7 @@ export default function Hero() {
             </h1>
           </div>
           <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl flex justify-center lg:justify-start">
-            <span className="text-gray-500">I build things for the&nbsp;</span>
+            <span className="text-gray-500">I make&nbsp;</span>
             <span className="text-theme-5">
               <Typewriter
                 options={{
@@ -29,14 +29,14 @@ export default function Hero() {
                 onInit={(typewriter: any) => {
                   typewriter
                     .start()
-                    .typeString("web.")
-                    .pauseFor(2500)
+                    .typeString("beautiful websites.")
+                    .pauseFor(1500)
                     .deleteAll()
-                    .typeString("internet.")
-                    .pauseFor(2500)
+                    .typeString("reliant APIs.")
+                    .pauseFor(1500)
                     .deleteAll()
-                    .typeString("people.")
-                    .pauseFor(2500)
+                    .typeString("performat web applications.")
+                    .pauseFor(1500)
                     .deleteAll();
                 }}
               />
