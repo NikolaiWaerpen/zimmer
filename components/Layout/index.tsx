@@ -1,15 +1,4 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import classNames from "classnames";
-import Button from "components/Button";
-import UserImage from "components/UserImage";
-import { NAVIGATION } from "consts";
-import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { Fragment, ReactNode } from "react";
+import { ReactNode } from "react";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
