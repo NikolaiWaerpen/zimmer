@@ -16,6 +16,7 @@ export default function TextArea({
   className,
   onChange,
   rows,
+  ...props
 }: InputProps) {
   return (
     <div>
@@ -46,6 +47,7 @@ export default function TextArea({
           onChange={onChange}
           value={value}
           aria-invalid="true"
+          {...props}
         />
         {error && (
           <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">

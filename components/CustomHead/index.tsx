@@ -3,7 +3,7 @@ import Head from "next/head";
 export default function CustomHead() {
   return (
     <Head>
-      <title>Nikolai Waerpen</title>
+      <title>Nikolai Wærpen</title>
       <meta
         name="description"
         content="Everything begins with an idea | Nikolai Waerpen"
