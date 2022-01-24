@@ -1,4 +1,4 @@
-import heroAnimation from "public/lottie/hero.json";
+import heroAnimation from "public/lottie/coolhackerman.json";
 import Lottie from "lottie-react";
 import Link from "next/link";
 import Typewriter from "typewriter-effect";
