@@ -19,7 +19,10 @@ export default function Contact() {
           ) : (
             <>
               <div className="text-center">
-                <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <h2 className="text-base font-semibold text-theme-5 tracking-wide uppercase">
+                  What now?
+                </h2>
+                <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
                   Get in touch
                 </h2>
                 <p className="mt-4 text-lg leading-6 text-gray-500">

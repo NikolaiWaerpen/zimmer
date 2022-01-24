@@ -15,8 +15,8 @@ export default function Home() {
           This is no standard portfolio.
         </p>
         <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
-          This portfolio is a colllection of all my projects. The work speaks
-          for itself. Go ahead and&nbsp;
+          This portfolio is a collection of all my projects. The work speaks for
+          itself. Go ahead and&nbsp;
           <span className="text-theme-5">explore!</span>
         </p>
       </div>
