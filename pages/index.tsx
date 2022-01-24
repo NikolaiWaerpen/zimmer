@@ -5,7 +5,9 @@ import Timeline from "components/Timeline";
 export default function Home() {
   return (
     <div className="flex flex-col gap-96 lg:gap-[480px]">
-      <Hero />
+      <div className="sm:mb-56 md:mb-96 lg:mb-0">
+        <Hero />
+      </div>
 
       <div className="text-center">
         <h2 className="text-base font-semibold text-theme-5 tracking-wide uppercase">
