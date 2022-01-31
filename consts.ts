@@ -4,10 +4,18 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-export const URL =
-  process.env.NODE_ENV === "production"
-    ? "https://keller-fffdb.ondigitalocean.app"
-    : "http://localhost:4000";
+const { NODE_ENV } = process.env;
+
+export const URL = {
+  BACKEND:
+    NODE_ENV === "production"
+      ? "https://keller-fffdb.ondigitalocean.app"
+      : "http://localhost:4000",
+  FRONTEND:
+    NODE_ENV === "production"
+      ? "https://www.waerpen.com"
+      : "http://localhost:3000",
+};
 
 export const MAX_GREETING_TITLE_LENGTH = 30,
   MAX_GREETING_COMMENT_LENGTH = 150;
@@ -18,6 +26,7 @@ export const NAVIGATION = {
   main: [
     { name: "Home", href: "/" },
     { name: "Guest Book", href: "/greeting" },
+    { name: "Blog", href: "/blog" },
   ],
   social: [
     {

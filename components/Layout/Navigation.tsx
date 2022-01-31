@@ -1,7 +1,7 @@
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import classNames from "classnames";
-import { NAVIGATION } from "consts";
+import { NAVIGATION, URL } from "consts";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -23,7 +23,7 @@ export default function Navigation() {
                 <span className="sr-only">Nikolai Waerpen</span>
                 <img
                   className="h-8 w-auto sm:h-10"
-                  src="images/logo.png"
+                  src={`${URL.FRONTEND}/images/logo.png`}
                   alt="logo"
                 />
               </a>

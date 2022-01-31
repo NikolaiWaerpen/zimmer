@@ -9,7 +9,7 @@ import { URL } from "../consts";
 import { getSession } from "next-auth/react";
 
 const httpLink = createHttpLink({
-  uri: URL,
+  uri: URL.BACKEND,
   credentials: "same-origin",
 });
 

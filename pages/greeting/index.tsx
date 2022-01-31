@@ -8,10 +8,6 @@ import Loader from "components/Loader";
 import { useState } from "react";
 import dateToUnix from "utils/date-to-unix";
 
-// TODO:
-// make comment required
-//
-
 export const GET_GREETINGS = gql`
   query Greetings {
     greetings {
