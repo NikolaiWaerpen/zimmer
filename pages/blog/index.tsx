@@ -3,6 +3,16 @@ import path from "path";
 import matter from "gray-matter";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
+import dayjs from "dayjs";
+
+export type FrontMatterType = {
+  title: string;
+  banner: string;
+  bannerAlt: string;
+  bannerCredit: string;
+  categories: string[];
+  date: string;
+};
 
 export default function Blog({
   posts,
@@ -21,25 +31,20 @@ export default function Blog({
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {posts.map(({ frontMatter, slug }) => {
-            const {
-              title,
-              bannerUrl,
-              bannerCredit,
-              categories,
-              description,
-              date,
-            } = frontMatter;
+            const { title, banner, bannerAlt, bannerCredit, categories, date } =
+              frontMatter as FrontMatterType;
 
             return (
               <Link href={`blog/${slug}`} key={title}>
-                <a className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                <a className="flex flex-col rounded-lg shadow overflow-hidden hover:shadow-lg transition duration-300">
                   <div>
                     <div className="flex-shrink-0">
                       {/* TODO: REPLACE WITH NEXT/IMAGE */}
                       <img
                         className="h-48 w-full object-cover"
-                        src={bannerUrl}
-                        alt={bannerCredit}
+                        src={banner}
+                        title={bannerCredit}
+                        alt={bannerAlt}
                       />
                     </div>
                     <div className="flex-1 bg-white p-6 flex flex-col justify-between">
@@ -47,25 +52,22 @@ export default function Blog({
                         <div className="flex gap-2">
                           {categories.map((category: string) => (
                             <p
-                              className="text-sm font-medium text-indigo-600"
+                              className="text-sm font-medium text-theme-4 uppercase"
                               key={category}
                             >
                               {category}
                             </p>
                           ))}
                         </div>
-                        <p className="text-xl font-semibold text-gray-900">
+                        <p className="text-xl font-semibold text-gray-900 mt-2">
                           {title}
-                        </p>
-                        <p className="mt-3 text-base text-gray-500">
-                          {description}
                         </p>
                       </div>
                       <div className="mt-6 flex items-center">
                         <div className="flex space-x-1 text-sm text-gray-500">
                           <time dateTime={date}>{date}</time>
-                          <span aria-hidden="true">&middot;</span>
-                          {/* TODO: FIGURE THIS OUT */}
+                          {/* TODO: EVENTUALLY ADD THIS */}
+                          {/* <span aria-hidden="true">&middot;</span> */}
                           {/* <span>{frontMatter.readingTime} read</span> */}
                         </div>
                       </div>
@@ -82,11 +84,13 @@ export default function Blog({
 }
 
 export const getStaticProps = async () => {
-  const files = fs.readdirSync(path.join("public/posts"));
+  const files = fs.readdirSync(path.join("content/posts"));
+
+  console.log(files);
 
   const posts = files.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
-      path.join("public/posts", filename),
+      path.join("content/posts", filename),
       "utf-8"
     );
     const { data: frontMatter } = matter(markdownWithMeta);
