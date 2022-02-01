@@ -22,6 +22,8 @@ export const MAX_GREETING_TITLE_LENGTH = 30,
 
 export const MAIL_TO = "mailto:nikolaiwaerpen@gmail.com?subject=Hi Nikolai!";
 
+export const WPM = 250;
+
 export const NAVIGATION = {
   main: [
     { name: "Home", href: "/" },

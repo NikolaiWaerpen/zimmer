@@ -36,8 +36,9 @@ export default function Navigation() {
             </div>
             <Popover.Group as="nav" className="hidden md:flex space-x-10">
               {NAVIGATION.main.map(({ name, href }) => {
-                // TODO: Fix bug where nested routes are not showing as active ex: blog/[slug]
-                const currentlyActive = route === href;
+                const currentlyActive =
+                  route.split("/")[1] === href.split("/")[1];
+
                 return (
                   <Link key={name} href={href}>
                     <a
