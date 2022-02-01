@@ -1,0 +1,90 @@
+---
+title: My fullstack portfolio
+date: 01.02.2022
+categories:
+  - react
+  - nextjs
+  - graphql
+banner: https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80
+bannerAlt: JavaScript code on Mac
+bannerCredit: Photo by Juanjo Jaramillo(https://unsplash.com/@juanjodev02)
+---
+
+I started this project in early December 2021. I did it as a challenge to
+myself - I've never before made my own application with both a frontend and
+backend under my own name. As well as a challenge it is a great playground to
+experiment with new exciting technologies I am interested in learning. This blog is a
+great example of exactly that. I wanted to learn [MDX](https://mdxjs.com/) and to
+integrate it in a React app. Through the power of MDX I can write markdown, as well as include
+JSX in the markdown. Check out the button below!
+
+<Button onClick={() => alert("Yay!")}>It's interactive!</Button>
+
+Isn't that super cool?
+
+## Project plan
+
+This is supposed to be no average developer portfolio site. It is supposed to serve as
+a place for me to learn, share my learning process in public (through this blog) as well as
+being able to show off the work I do during my learning process on the site itself!
+Instead of listing a bunch of things I say I've done I can instead show it off with full
+transparancy and have interactive demos at the same time! If this were an average portfolio
+the techstack I've landed on would be waaaay overkill, but for my use-case it is perfect (hopefully - we'll
+see if it scales to all future use-cases 😄).
+
+## Github overview
+
+The project is split into two parts:
+
+1. Zimmer (the frontend) - [View the GitHub repo](https://github.com/NikolaiWaerpen/zimmer)
+2. Keller (the backend) - [View the GitHub repo](https://github.com/NikolaiWaerpen/keller)
+
+## Technology overview
+
+Here are the primary technologies used in this project (in no particular order):
+
+- [React](https://reactjs.org): For the UI
+- [NextJS](https://nextjs.org/): Framework for the Client/Server/Routing
+- [Next Auth](https://next-auth.js.org/): Authentication for Next.js
+- [TypeScript](https://www.typescriptlang.org): Typed JavaScript (necessary for
+  any project you plan to maintain)
+- [Prisma](https://www.prisma.io): Fantastic ORM with stellar migrations and
+  TypeScript client support
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server/): GraphQL server framework
+- [Apollo Client](https://www.apollographql.com/docs/react/): Working with GraphQL APIs on the frontend
+- [GraphQL](https://graphql.org/): 'Cause GraphQL APIs are cooler than REST APIs 😎
+- [Tailwind CSS](https://tailwindcss.com): Utility classes for
+  consistent/maintainable styling (w/ TailwindUI)
+- [Postcss](https://postcss.org/): CSS processor (pretty much just use it for
+  autoprefixer and tailwind)
+- [Nexus](https://nexusjs.org/) Declarative, Code-First GraphQL Schemas for TypeScript
+- [Postgres](https://www.postgresql.org/): Battle tested SQL database
+- [Formik](https://formik.org/): Build forms in React, without the tears
+- [Yup](https://www.npmjs.com/package/yup): Seamless form validation with Formik
+- [Lottie](https://lottiefiles.com/): Lightweight & scalable animations
+
+Here are the services this site uses:
+
+- [Vercel](https://vercel.com/dashboard): For the frontend deployment & hosting
+- [Digital Ocean](https://www.digitalocean.com/): For the backend hosting, deployment as well as DB hosting
+- [Docker](https://www.docker.com/): Containerize the backend for easier deployment
+
+## Technologies I want to integrate in the future
+
+- [Cypress](https://cypress.io): E2E testing framework
+- [Jest](https://jestjs.io): Unit/Component testing framework
+- [Testing Library](https://testing-library.com): Simple utilities for testing
+  DOM-based user interfaces
+- [MSW](https://mswjs.io): Fantastic tool for mocking HTTP requests in the
+  browser/node
+- [Framer Motion](https://www.framer.com/motion/): Great React Animation library
+- [Redis](https://redis.io/): In-memory database–key/value store.
+- [React Query](https://react-query.tanstack.com/): For simplifying working with external REST APIs
+- [Turborepo](https://turborepo.org/): Easier TypeScript monorepos
+
+## Conclusion
+
+I can't tell you how much I've learned from building this website. It's been a
+ton of fun and I'm excited to put my learnings into blog posts to
+teach you the specifics of how I did this stuff so you can do it too. The project is
+constantly changing, so it'll be exciting to look at this post in a couple of months.
