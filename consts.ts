@@ -13,7 +13,7 @@ export const URL = {
       : "http://localhost:4000",
   FRONTEND:
     NODE_ENV === "production"
-      ? "https://www.waerpen.com"
+      ? "https://www.nikolaiwaerpen.com"
       : "http://localhost:3000",
 };
 

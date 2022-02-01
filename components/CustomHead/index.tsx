@@ -3,14 +3,11 @@ import Head from "next/head";
 export default function CustomHead() {
   return (
     <Head>
-      <title>Nikolai Wærpen</title>
-      <meta
-        name="description"
-        content="Everything begins with an idea | Nikolai Waerpen"
-      />
+      <title>Nikolai Waerpen</title>
+      <meta name="description" content="My portfolio | Nikolai Waerpen" />
       <meta
         name="keywords"
-        content="Nikolai Wærpen, nikolai wærpen, nikolaiwærpen, nikolai, wærpen, Nikolai Waerpen, nikolai waerpen, nikolaiwaerpen, nikolai, waerpen"
+        content="Nikolai Waerpen, nikolai waerpen, nikolaiwaerpen, nikolai, waerpen, Nikolai Waerpen, nikolai waerpen, nikolaiwaerpen, nikolai, waerpen"
       />
       <meta name="author" content="Nikolai Waerpen" />
 
