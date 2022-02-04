@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
     baseURL: "http://localhost:3000",
     storageState: TEST_STATE_PATH,
   },
-  globalSetup: require.resolve("./tests/global-setup"),
+  // globalSetup: require.resolve("./tests/global-setup"),
 };
 
 export default config;

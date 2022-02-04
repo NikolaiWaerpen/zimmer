@@ -18,11 +18,11 @@ export default async function globalSetup(config: FullConfig) {
 
   await page.locator("text=Continue with Google").click();
 
-  const emailInput = await page.locator("input[name='identifier']");
+  const emailInput = page.locator("input[name='identifier']");
   await emailInput.fill(EMAIL);
   await emailInput.press("Enter");
 
-  const passwordInput = await page.locator("input[name='password']");
+  const passwordInput = page.locator("input[name='password']");
   await passwordInput.fill(ENDTOEND_PASSWORD);
   await passwordInput.press("Enter");
 
