@@ -48,3 +48,5 @@ export const NAVIGATION = {
     },
   ],
 };
+
+export const TEST_STATE_PATH = "./tests/testState.json";

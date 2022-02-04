@@ -1,4 +1,5 @@
 import { PlaywrightTestConfig } from "@playwright/test";
+import { TEST_STATE_PATH } from "./consts";
 
 const config: PlaywrightTestConfig = {
   use: {
@@ -7,7 +8,9 @@ const config: PlaywrightTestConfig = {
     ignoreHTTPSErrors: true,
     video: "on-first-retry",
     baseURL: "http://localhost:3000",
+    storageState: TEST_STATE_PATH,
   },
+  globalSetup: require.resolve("./tests/global-setup"),
 };
 
 export default config;

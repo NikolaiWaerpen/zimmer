@@ -1,0 +1,94 @@
+{
+  "cookies": [
+    {
+      "sameSite": "Lax",
+      "name": "next-auth.csrf-token",
+      "value": "d96f5f8dca6a3ac9878c6dc155304f2742a3d8b0acbf0b8000a8191e3f0d3273%7Ce9c2a699b8dd4ef746d690a34b5348c7aee6a6dd783174e29ba0b520fa7fdb74",
+      "domain": "localhost",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false
+    },
+    {
+      "sameSite": "Lax",
+      "name": "next-auth.callback-url",
+      "value": "http%3A%2F%2Flocalhost%3A3000%2Flogin",
+      "domain": "localhost",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false
+    },
+    {
+      "sameSite": "Lax",
+      "name": "next-auth.state",
+      "value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..q6uKkUMDe4JpOwHR.T21LjSSRQwwYGYlgcBXi1kpily39QrkN2OXF4jmgaP6f72p846FZmC6JNEyerYBvktMiwzFW7w9hZOg9dcarI7dyW72NGJ7MICE8rNYifRRx5x0IDyMYUlEaqD7ZpFZaFZxgDMDL5htmr0qSyeR_yBm6CHv7UWHgJrzDQO86CMJYKIux94c.7YINVKSQ5c4g-HOZF0B8gg",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1643995081.783507,
+      "httpOnly": true,
+      "secure": false
+    },
+    {
+      "sameSite": "Lax",
+      "name": "next-auth.pkce.code_verifier",
+      "value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..dmC-IyV1B5BVxhLl.5MMlLEBH8nQ8XO15JwF_Pj3y_-YtoYrMGg4aw4MRrMrLwFEKmgv6ysAvg6v_9iONUe0zTbV_V-fNeHBgU64bnQhREVEJwvMw6JCFuhjVI4SrGbihVSD-Fcea3NK2jm1F3tgDc_-oGdJw1zccGns0DxpBt__DcpyNK2hbTom5CDrbU3GQqngFfRFHGasD2w.ZbNajGL_BueNS3D-B6ng2w",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1643995081.783545,
+      "httpOnly": true,
+      "secure": false
+    },
+    {
+      "sameSite": "Lax",
+      "name": "CONSENT",
+      "value": "PENDING+653",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": 1707066182.445148,
+      "httpOnly": false,
+      "secure": true
+    },
+    {
+      "sameSite": "None",
+      "name": "NID",
+      "value": "511=a9LRrbZ_fAlNZ0TetIpjkRIo4h5lm63MEuTs0x-b_bifuWtrx6CuWizmUd7bkyx10ouvQYsmG7mZkzf7NGe0D9ixDMHVCAZ73PQrabDAu69J99j9hOCNIlYvvUkmhFzemZ3txCRQSlyTvafeqW2tkjEJxdSnGwDIUH-iE-uV-D0",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": 1659805382.483185,
+      "httpOnly": true,
+      "secure": true
+    },
+    {
+      "sameSite": "Lax",
+      "name": "__Host-GAPS",
+      "value": "1:aBTQvh7m4QKTv9mb6bhWKgRkSaEgpQ:I8-XrmTyGt6Xknmf",
+      "domain": "accounts.google.com",
+      "path": "/",
+      "expires": 1707066183.083791,
+      "httpOnly": true,
+      "secure": true
+    }
+  ],
+  "origins": [
+    {
+      "origin": "http://localhost:3000",
+      "localStorage": [
+        {
+          "name": "nextauth.message",
+          "value": "{\"event\":\"session\",\"data\":{\"trigger\":\"getSession\"},\"timestamp\":1643994181}"
+        }
+      ]
+    },
+    {
+      "origin": "https://accounts.google.com",
+      "localStorage": [
+        {
+          "name": "promo",
+          "value": "{}"
+        }
+      ]
+    }
+  ]
+}
