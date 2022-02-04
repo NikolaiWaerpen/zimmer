@@ -1,0 +1,88 @@
+---
+title: Developer Resources
+date: 04.02.2022
+categories:
+  - tips
+banner: https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80
+bannerAlt: Pencil
+bannerCredit: Photo by Kelly Sikkema(https://unsplash.com/@kellysikkema)
+---
+
+This is a note to myself for helpful resources that I use on a day-to-day basis.
+The function of this post is to aggregate them all into one place that is easily accessible.
+
+_\*This article will be regularly updated as I make additions and edits._
+
+## Articles
+
+- [How to know what to test](https://kentcdodds.com/blog/how-to-know-what-to-test) - Kent C. Dodds
+- [7 principles of rich web applications](https://rauchg.com/2014/7-principles-of-rich-web-applications) - Guillermo Rauch
+
+## VS Code
+
+### Useful shortcuts:
+
+<SyntaxHighlighter language="javascript">
+  {`
+    // Instant multi-line cursor on all instances of a highlight / current word
+    cmd + shift + l
+    // command palette
+    cmd + shift + p
+    // quick file palette
+    cmd + p
+    // multi-line cursor on word after word
+    cmd + d
+    // sort imports & removes unused imports
+    option + shift + o
+    // jump to specific section in current window
+    cmd + shift + o
+    // split current window
+    cmd + 0
+    // split current terminal
+    cmd + shift + 0
+  `}
+</SyntaxHighlighter>
+
+## Git
+
+- [Reset local branch with remote](https://stackoverflow.com/questions/1628088/reset-local-repository-branch-to-be-just-like-remote-repository-head)
+- [Remove cached file(untrack)](https://stackoverflow.com/questions/1274057/how-can-i-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitign)
+- [Delete git branch](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
+- [Master to main](https://stevenmortimer.com/5-steps-to-change-github-default-branch-from-master-to-main/)
+- [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+### Useful shortcuts:
+
+<SyntaxHighlighter language="javascript">
+  {`
+    // formatted log
+    git log --oneline -n 20
+    // formatted status
+    git status -sb
+    // create & checkout new branch
+    git checkout -b
+    // push no ci pipeline
+    git push -o ci.skip
+  `}
+</SyntaxHighlighter>
+
+## Bash/zshell
+
+### Useful shortcuts:
+
+<SyntaxHighlighter language="javascript">
+  {`
+    // find process running on specific port
+    // syntax: lsof -i :[PORT]
+    lsof -i :3000
+    // kill found process
+    // syntax: kill -9 [PID]
+    kill -9 2550
+  `}
+</SyntaxHighlighter>
+
+## Cheat sheets
+
+- [Flexbox](https://flexbox.malven.co/)
+- [Grid](https://grid.malven.co/)
+- [Emmet](https://docs.emmet.io/cheat-sheet/)
