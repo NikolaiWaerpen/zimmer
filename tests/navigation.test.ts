@@ -1,16 +1,27 @@
 import test, { expect } from "@playwright/test";
+import { NAVIGATION } from "../consts";
 
-test.describe("navigation", () => {
-  test("guest book", async ({ page, baseURL }) => {
-    await page.goto(baseURL as string);
+const { main } = NAVIGATION;
 
-    const link = page.locator("a[href='/greeting']").first();
-    await link.click();
+test.describe("Navigation", () => {
+  test.describe("Header", () => {
+    main.map(({ name, href }) => {
+      test(name, async ({ page }) => {
+        await page.goto("");
 
-    const text = page.locator("Leave me a greeting!");
+        await page.click(`text=${name}`);
+        await expect(page).toHaveURL(href);
+      });
+    });
+  });
+  test.describe("Footer", () => {
+    main.map(({ name, href }) => {
+      test(name, async ({ page }) => {
+        await page.goto("");
 
-    // TODO: pick up here to fix this test - it's always truthy
-
-    expect(text).toBeTruthy();
+        await page.click(`[aria-label="Footer"] >> text=${name}`);
+        await expect(page).toHaveURL(href);
+      });
+    });
   });
 });

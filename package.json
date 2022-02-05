@@ -6,7 +6,8 @@
     "start": "next start",
     "e2e": "npx playwright test",
     "e2e:head": "npx playwright test --headed",
-    "apollo:generate": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/**\" --includes \"components/**\" --excludes generated generated --outputFlat"
+    "e2e:codegen": "npx playwright codegen",
+    "apollo:codegen": "apollo client:codegen --endpoint \"http://localhost:4000/\" --target=typescript --includes \"pages/**\" --includes \"components/**\" --excludes generated generated --outputFlat"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
