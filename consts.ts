@@ -26,7 +26,7 @@ export const WPM = 250;
 
 export const NAVIGATION = {
   main: [
-    { name: "Home", href: "/" },
+    { name: "Home", href: "" },
     { name: "Guest Book", href: "/greeting" },
     { name: "Blog", href: "/blog" },
   ],
@@ -43,7 +43,7 @@ export const NAVIGATION = {
     },
     {
       name: "Twitter",
-      href: "https://twitter.com/waerpen",
+      href: "https://twitter.com/waerpen/",
       icon: faTwitter,
     },
   ],
