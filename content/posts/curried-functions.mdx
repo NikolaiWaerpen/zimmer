@@ -1,0 +1,75 @@
+---
+title: What is a Curried Function?
+date: 17.02.2022
+categories:
+  - javascript
+  - typescript
+banner: https://images.unsplash.com/photo-1509475826633-fed577a2c71b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80
+bannerAlt: Glasses on top of paper
+bannerCredit: Photo by Sigmund (https://unsplash.com/@sigmund)
+---
+
+Let's start with a short explanation of what a curried function is:
+
+> A curried function is a function that takes multiple arguments _one_ at a time.
+
+## Here's an example
+
+### Case:
+
+A function called _addTwo()_ that takes the following parameters: _a_ and _b_ and returns the sum.
+
+### Normal implementation:
+
+<SyntaxHighlighter language="typescript">
+  {`
+    function addTwo(a: number, b: number) {
+      const sum = a + b;
+      return sum;
+    }
+    addTwo(9, 10) // 19
+`}
+</SyntaxHighlighter>
+
+or the more concise ES6 arrow function way:
+
+<SyntaxHighlighter language="typescript">
+  {`
+    const addTwo = (a: number, b: number) => a + b
+    addTwo(9, 10) // 19
+`}
+</SyntaxHighlighter>
+
+### Curried implementation:
+
+<SyntaxHighlighter language="typescript">
+  {`
+    function addTwoCurried(a: number) {
+      return function (b: number) {
+        const sum = a + b;
+        return sum;
+      }
+    }
+    addTwoCurried(9)(10) // 19
+`}
+</SyntaxHighlighter>
+
+...and the arrow function way:
+
+<SyntaxHighlighter language="typescript">
+  {`
+    const addTwoCurried = (a: number) => (b: number) => a + b
+    addTwoCurried(9)(10) // 19
+`}
+</SyntaxHighlighter>
+
+### Taking curried functions to the next level
+
+We can keep nesting functions like this (but it's ugly and I don't recommend it):
+
+<SyntaxHighlighter language="typescript">
+  {`
+    const addManyCurried = (a: number) => (b: number) => (c: number) => (d: number) => (e: number) => a + b + c + d + e;
+    addManyCurried(1)(2)(3)(4)(5) // 15
+`}
+</SyntaxHighlighter>
