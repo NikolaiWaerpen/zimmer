@@ -15,7 +15,7 @@ module.exports = {
         "theme-6": "#61B668",
         "theme-7": "#7EDA84",
         // EXTRA
-        "real-transparent": "00FFFFFF",
+        "real-transparent": "rgb(0,0,0,0%)",
       },
     },
   },
