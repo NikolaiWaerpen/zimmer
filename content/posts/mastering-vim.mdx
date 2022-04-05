@@ -1,0 +1,136 @@
+---
+title: Mastering Vim
+date: 15.03.2022
+categories:
+  - vim
+banner: https://images.unsplash.com/photo-1627556704302-624286467c65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80
+bannerAlt: Graduating
+bannerCredit: Photo by RUT MIIT (https://unsplash.com/@rutmiit)
+---
+
+## Vim
+
+## Configuration:
+
+- Replace "esc" to exit insert mode with j:
+
+<SyntaxHighlighter language="typescript">
+  {`
+"vim.insertModeKeyBindings": [
+    {
+        "before": [
+            "j",
+            "k"
+        ],
+        "after": [
+            "<esc>"
+        ]
+    }
+] 
+`}
+</SyntaxHighlighter>
+
+- Add vim-surround & vim-easymotion:
+
+<SyntaxHighlighter language="typescript">
+  {`
+"vim.surround": true,
+`}
+</SyntaxHighlighter>
+
+### Navigation:
+
+<SyntaxHighlighter language="typescript">
+  {`
+// Move down
+j 
+// Move up
+k
+// Move left
+h
+// Move right
+l
+// Move x distance in any direction
+[number][direction]
+// First line of the file
+gg
+// Last line of the file
+G
+// Specific line of the file
+:[number]
+// Beginning of current line
+0
+// End of current line
+$
+// Move to matching parenthesis, bracket or space
+%
+// Top line on screen
+H
+// Middle line on screen
+M
+// Bottom line on screen
+L
+// The end of the current word
+e
+// Beginning of current word
+b
+// Beginning of next word
+w
+`}
+</SyntaxHighlighter>
+
+### Editing:
+
+<SyntaxHighlighter language="typescript">
+  {`
+// Insert before current character
+i
+// Insert after current character
+a
+// Insert at the first non-whitespace character of the line
+I
+// Insert a line below the current line, then enter insert mode
+o
+// Insert a line above the current line, then enter insert mode
+O
+// Overwrite one character and return to command mode
+r
+// Undo
+U
+// Redo
+ctrl + r
+`}
+</SyntaxHighlighter>
+
+## Shortcuts:
+
+<SyntaxHighlighter language="typescript">
+  {`
+// Search
+1. shift + /
+2. search pattern
+3. enter
+4. n for next instance, N for previous instance
+// Highlight whole line (enter Visual mode)
+V
+// Highlight line from cursor (enter Visual mode)
+v
+`}
+</SyntaxHighlighter>
+
+dt + symbol
+// change inner word on selected word
+ciw // changej inner word
+diw // changej inner word
+ci[symbol]
+ci[symbol]
+
+dit // delete inside current elemtn
+dat // delete element
+dst // delete surrounding tag
+
+a / i = inner / outer
+
+vim surround:
+ds[symbol] // delete sorrunding symbol
+cs[symbol to replace][symbol to replcae with]
