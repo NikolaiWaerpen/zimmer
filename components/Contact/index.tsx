@@ -41,14 +41,14 @@ export default function Contact() {
                     name="first_name"
                     id="first_name"
                     autoComplete="given-name"
-                    placeholder="Thomas"
+                    placeholder="John"
                   />
                   <Input
                     label="Last name"
                     name="first_name"
                     id="first_name"
                     autoComplete="given-name"
-                    placeholder="Shelby"
+                    placeholder="Doe"
                   />
                   <div className="sm:col-span-2">
                     <Input
@@ -56,7 +56,7 @@ export default function Contact() {
                       id="email"
                       name="email"
                       autoComplete="email"
-                      placeholder="thomas@shelby.com"
+                      placeholder="johndoe@gmail.com"
                     />
                   </div>
 
@@ -65,7 +65,7 @@ export default function Contact() {
                       label="Message"
                       id="message"
                       name="message"
-                      placeholder="Hi Nikolai! I'm interested in working with you on an exciting new project..."
+                      placeholder="Hi Nikolai! I'm interested in collaborating on an exciting new project..."
                       rows={5}
                       className="resize-none"
                     />
