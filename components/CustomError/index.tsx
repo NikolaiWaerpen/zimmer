@@ -37,7 +37,7 @@ export default function CustomError({ error }: CustomErrorProps) {
                 </h1>
                 {error && <div>{JSON.stringify(error.message, null, 2)}</div>}
                 <div className="mt-6">
-                  <Link href="">
+                  <Link href="/">
                     <a className="text-base font-medium text-theme-4 hover:text-theme-3">
                       <span aria-hidden="true"> &larr;</span> Go back home
                     </a>
