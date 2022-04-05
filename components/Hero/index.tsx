@@ -4,7 +4,7 @@ import Link from "next/link";
 import Typewriter from "typewriter-effect";
 import { useEffect, useRef, useState } from "react";
 import Birds from "components/Birds";
-import { TYPING_SPEED } from "consts";
+import { TYPE_SPEED } from "consts";
 
 export default function Hero() {
   return (
@@ -34,16 +34,16 @@ export default function Hero() {
                     typewriter
                       .start()
                       .typeString("beautiful websites.")
-                      .pauseFor(TYPING_SPEED)
+                      .pauseFor(TYPE_SPEED)
                       .deleteAll()
                       .typeString("powerful APIs.")
-                      .pauseFor(TYPING_SPEED)
+                      .pauseFor(TYPE_SPEED)
                       .deleteAll()
                       .typeString("test-driven software.")
-                      .pauseFor(TYPING_SPEED)
+                      .pauseFor(TYPE_SPEED)
                       .deleteAll()
                       .typeString("scalable web applications.")
-                      .pauseFor(TYPING_SPEED)
+                      .pauseFor(TYPE_SPEED)
                       .deleteAll();
                   }}
                 />

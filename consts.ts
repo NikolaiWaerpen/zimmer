@@ -55,4 +55,4 @@ export const TEST_STATE_PATH = "tests/testState.json";
 export const TEST_EMAIL = "nikolaiendtoend@gmail.com";
 export const TEST_PASSWORD = "WFiha2t7QwTqCTj";
 
-export const TYPING_SPEED = 400;
+export const TYPE_SPEED = 400;
