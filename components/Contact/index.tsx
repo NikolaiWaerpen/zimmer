@@ -27,8 +27,7 @@ export default function Contact() {
                 </h2>
                 <p className="mt-4 text-lg leading-6 text-gray-500">
                   Whether you have a question or just want to say hi, my inbox
-                  is always open. I'll try to get back to you as soon as
-                  possible!
+                  is always open. I'll get back to you as soon as possible!
                 </p>
               </div>
               <div className="mt-12">

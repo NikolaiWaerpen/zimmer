@@ -28,7 +28,7 @@ export const NAVIGATION = {
   main: [
     { name: "Home", href: "/" },
     { name: "Guest Book", href: "/greeting" },
-    { name: "Blog", href: "/blog" },
+    { name: "Articles", href: "/article" },
   ],
   social: [
     {

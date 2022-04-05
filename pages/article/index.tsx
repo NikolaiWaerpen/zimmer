@@ -14,7 +14,7 @@ export type FrontMatterType = {
   date: string;
 };
 
-export default function Blog({
+export default function Article({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -22,7 +22,7 @@ export default function Blog({
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center">
           <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-            My little development blog
+            My development articles
           </h2>
           <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
             Find the latest of my writing here.
@@ -34,7 +34,7 @@ export default function Blog({
               frontMatter as FrontMatterType;
 
             return (
-              <Link href={`blog/${slug}`} key={title}>
+              <Link href={`article/${slug}`} key={title}>
                 <a className="flex flex-col rounded-lg shadow overflow-hidden hover:shadow-lg transition duration-300">
                   <div>
                     <div className="flex-shrink-0">
