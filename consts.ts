@@ -57,3 +57,5 @@ export const TEST_EMAIL = "nikolaiendtoend@gmail.com";
 export const TEST_PASSWORD = "WFiha2t7QwTqCTj";
 
 export const TYPE_SPEED = 400;
+
+export const OPENSEA_API_URL = "https://api.opensea.io/api/v1";
