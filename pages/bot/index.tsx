@@ -2,11 +2,6 @@ import { gql, useQuery } from "@apollo/client";
 import CustomError from "components/CustomError";
 import Loader from "components/Loader";
 
-// TODO: LOOP THROUGH AND FETCH ALL OF THESE
-// MOVE TO BACKEND
-// DISPLAY IN A TABLE OR SOMETHING
-// FILTER ON THE ONES FLIPPED VS THE ONES ONLY BOUGHT
-
 const GET_GREETINGS = gql`
   query BotTrades($input: GetBotTrades!) {
     botTrades(input: $input) {
@@ -31,6 +26,23 @@ type BotTradesType = {
   profit: string;
 };
 
+type StatisticsBoxProps = {
+  name: string;
+  stat: string;
+};
+
+function StatisticsBox({ name, stat }: StatisticsBoxProps) {
+  return (
+    <div
+      key={name}
+      className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6"
+    >
+      <dt className="text-sm font-medium text-gray-500 truncate">{name}</dt>
+      <dd className="mt-1 text-3xl font-semibold text-theme-4">{stat}</dd>
+    </div>
+  );
+}
+
 export default function Bot() {
   const { loading, error, data } = useQuery<{ botTrades: BotTradesType[] }>(
     GET_GREETINGS,
@@ -50,6 +62,15 @@ export default function Bot() {
 
   return (
     <div>
+      <br />
+
+      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-4">
+        <StatisticsBox name="Net profit (trades this week)" stat="2000 kr" />
+        <StatisticsBox name="Net profit (total trades)" stat="8000 kr" />
+        <StatisticsBox name="Average profit margin" stat="10%" />
+        <StatisticsBox name="Wallet balance" stat="230000 kr" />
+      </dl>
+      <br />
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
@@ -57,6 +78,7 @@ export default function Bot() {
             <p className="mt-2 text-sm text-gray-700">All trades by bot</p>
           </div>
         </div>
+
         <div className="mt-8 flex flex-col">
           <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -104,16 +126,14 @@ export default function Bot() {
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {botTrades.map(
-                      ({
-                        tokenId,
-                        collection,
-                        fees,
-                        link,
-                        buy,
-                        sell,
-                        profit,
-                      }) => (
-                        <tr key={tokenId}>
+                      (
+                        { tokenId, collection, fees, link, buy, sell, profit },
+                        idx
+                      ) => (
+                        <tr
+                          key={tokenId}
+                          className={idx % 2 === 0 ? "" : "bg-gray-50"}
+                        >
                           <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">
                             {collection}
                           </td>
