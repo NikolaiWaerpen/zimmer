@@ -1,8 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
+import NetProfitTotal from "components/bot/NetProfitTotal";
+import StatisticsBox from "components/bot/StatisticsBox";
 import CustomError from "components/CustomError";
 import Loader from "components/Loader";
+import formatDate from "utils/format-date";
 
-const GET_GREETINGS = gql`
+const GET_TRADES = gql`
   query BotTrades($input: GetBotTrades!) {
     botTrades(input: $input) {
       tokenId
@@ -10,8 +13,11 @@ const GET_GREETINGS = gql`
       link
       fees
       buy
+      buyDate
       sell
+      sellDate
       profit
+      nokProfit
     }
   }
 `;
@@ -22,34 +28,21 @@ type BotTradesType = {
   link: string;
   fees: string;
   buy: string;
+  buyDate: string;
   sell: string;
+  sellDate: string;
   profit: string;
+  nokProfit: string;
 };
-
-type StatisticsBoxProps = {
-  name: string;
-  stat: string;
-};
-
-function StatisticsBox({ name, stat }: StatisticsBoxProps) {
-  return (
-    <div
-      key={name}
-      className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6"
-    >
-      <dt className="text-sm font-medium text-gray-500 truncate">{name}</dt>
-      <dd className="mt-1 text-3xl font-semibold text-theme-4">{stat}</dd>
-    </div>
-  );
-}
 
 export default function Bot() {
   const { loading, error, data } = useQuery<{ botTrades: BotTradesType[] }>(
-    GET_GREETINGS,
+    GET_TRADES,
     {
       variables: {
         input: {
-          address: "0x1022E8731677efC814b937FB0d1AFc83D9773b20",
+          // address: "0x1022E8731677efC814b937FB0d1AFc83D9773b20",
+          address: "0x9570c76b22D0654F0c21903Be86a38e4eB5550B4",
         },
       },
     }
@@ -64,11 +57,10 @@ export default function Bot() {
     <div>
       <br />
 
-      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-4">
-        <StatisticsBox name="Net profit (trades this week)" stat="2000 kr" />
-        <StatisticsBox name="Net profit (total trades)" stat="8000 kr" />
-        <StatisticsBox name="Average profit margin" stat="10%" />
-        <StatisticsBox name="Wallet balance" stat="230000 kr" />
+      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <NetProfitTotal />
+        <StatisticsBox name="Average profit margin" stat="11.3%" />
+        <StatisticsBox name="Wallet balance" stat="23012 kr" />
       </dl>
       <br />
       <div className="px-4 sm:px-6 lg:px-8">
@@ -108,13 +100,13 @@ export default function Bot() {
                         scope="col"
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Sell
+                        Buy
                       </th>
                       <th
                         scope="col"
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Buy
+                        Sell
                       </th>
                       <th
                         scope="col"
@@ -127,7 +119,18 @@ export default function Bot() {
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {botTrades.map(
                       (
-                        { tokenId, collection, fees, link, buy, sell, profit },
+                        {
+                          tokenId,
+                          collection,
+                          fees,
+                          link,
+                          buy,
+                          buyDate,
+                          sell,
+                          sellDate,
+                          profit,
+                          nokProfit,
+                        },
                         idx
                       ) => (
                         <tr
@@ -146,13 +149,13 @@ export default function Bot() {
                             {fees}
                           </td>
                           <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                            {buy}
+                            {buy} ({formatDate({ date: new Date(buyDate) })})
                           </td>
                           <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                            {sell}
+                            {sell} ({formatDate({ date: new Date(sellDate) })})
                           </td>
                           <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                            {profit}
+                            {profit} ({nokProfit})
                           </td>
                         </tr>
                       )
