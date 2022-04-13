@@ -4,7 +4,7 @@ import {
   faSort,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BotTradesType } from "pages/bot";
+import { BotTradesType } from "..";
 import { useMemo } from "react";
 import { useSortBy, useTable } from "react-table";
 import stringToFloatString from "utils/string-to-floatstring";
@@ -38,7 +38,13 @@ const columns = [
     Header: "Profit",
     accessor: "profit",
   },
+  {
+    Header: "Profit Margin",
+    accessor: "profitMargin",
+  },
 ];
+
+// TODO: ADD PAGINATION
 
 export default function TradesTable({ botTrades }: TradesTableProps) {
   const data = useMemo(
@@ -53,6 +59,7 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
           sell,
           sellDate,
           profit,
+          profitMargin,
         }) => {
           return {
             collection,
@@ -61,6 +68,9 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
             buy: stringToFloatString(buy),
             sell: sell ? stringToFloatString(sell) : "N/A",
             profit: profit ? stringToFloatString(profit) : "N/A",
+            profitMargin: profitMargin
+              ? stringToFloatString(profitMargin)
+              : "N/A",
           };
         }
       ),
