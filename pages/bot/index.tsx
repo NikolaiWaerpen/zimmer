@@ -1,9 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import NetProfitTotal from "components/trade/NetProfitTotal";
-import StatisticsBox from "components/trade/StatisticsBox";
+import TradesTable from "components/bot/NetProfitTotal/TradesTable";
+import StatisticsBox from "components/bot/StatisticsBox";
 import CustomError from "components/CustomError";
 import Loader from "components/Loader";
-import formatDate from "utils/format-date";
 
 const GET_TRADES = gql`
   query BotTrades($input: GetBotTrades!) {
@@ -21,7 +20,7 @@ const GET_TRADES = gql`
   }
 `;
 
-type BotTradesType = {
+export type BotTradesType = {
   tokenId: string;
   collection: string;
   link: string;
@@ -40,8 +39,12 @@ export default function Bot() {
       variables: {
         input: {
           addresses: [
+            // "0x1022E8731677efC814b937FB0d1AFc83D9773b20",
             "0x9570c76b22D0654F0c21903Be86a38e4eB5550B4",
-            "0x1022E8731677efC814b937FB0d1AFc83D9773b20",
+            // "0xCeeeB66C5b2DDbA1f581f2D62fa5FE6eA90Aaa14",
+            // "0x52B775cA78d703a3a1c5fC09aE1812cf34DE40d7",
+            // "0x50Fc27c8B7D554E4aB56435e0D5F88A44bB65212",
+            // "0x82108750050F84707359D9285E65A43C7C430f24",
           ],
         },
       },
@@ -76,108 +79,7 @@ export default function Bot() {
         <StatisticsBox name="Another cool stat" stat={"0"} />
       </dl>
 
-      <div>
-        <div className="mt-8 flex flex-col">
-          <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-              <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-300">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
-                      >
-                        Collection
-                      </th>
-                      <th
-                        scope="col"
-                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                      >
-                        Token ID
-                      </th>
-                      <th
-                        scope="col"
-                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                      >
-                        Fees
-                      </th>
-                      <th
-                        scope="col"
-                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                      >
-                        Buy
-                      </th>
-                      <th
-                        scope="col"
-                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                      >
-                        Sell
-                      </th>
-                      <th
-                        scope="col"
-                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                      >
-                        Profit
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200 bg-white">
-                    {botTrades.map(
-                      (
-                        {
-                          tokenId,
-                          collection,
-                          fees,
-                          link,
-                          buy,
-                          buyDate,
-                          sell,
-                          sellDate,
-                          profit,
-                        },
-                        idx
-                      ) => (
-                        <tr
-                          key={tokenId}
-                          className={idx % 2 === 0 ? "" : "bg-gray-50"}
-                        >
-                          <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">
-                            {collection}
-                          </td>
-                          <td className="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-500">
-                            <a href={link} target="_blank" rel="noreferrer">
-                              {tokenId}
-                            </a>
-                          </td>
-                          <td className="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-500">
-                            {fees}
-                          </td>
-                          <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                            {buy} ({formatDate({ date: new Date(buyDate) })})
-                          </td>
-                          <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                            {sell ? sell : "N/A"}
-                            {sellDate && (
-                              <span>
-                                {" "}
-                                ({formatDate({ date: new Date(sellDate) })})
-                              </span>
-                            )}
-                          </td>
-                          <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                            {profit ? profit : "N/A"}
-                          </td>
-                        </tr>
-                      )
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TradesTable botTrades={botTrades} />
     </div>
   );
 }
