@@ -48,7 +48,7 @@
     "@types/graphql": "^14.5.0",
     "@types/react": "^17.0.37",
     "@types/react-syntax-highlighter": "^13.5.2",
-    "@types/react-table": "^7.7.10",
+    "@types/react-table": "7.7.0",
     "apollo": "2.33.9",
     "autoprefixer": "^10.4.0",
     "faker": "5.5.3",

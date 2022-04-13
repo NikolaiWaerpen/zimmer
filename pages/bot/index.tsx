@@ -1,13 +1,12 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Alert from "components/Alert";
 import Insights from "components/bot/Insights";
 import AddressForm from "components/bot/Insights/AddressForm";
 import { useState } from "react";
 
 export default function Bot() {
   const [addresses, setAddresses] = useState<string[]>([]);
-
-  console.log(addresses);
 
   return (
     <div className="pt-8 space-y-8">
@@ -18,7 +17,6 @@ export default function Bot() {
         </div>
       </div>
 
-      {/* TODO: FORMIK FIELD FOR THIS */}
       <AddressForm setAddresses={setAddresses} />
 
       {addresses.length > 0 && (
@@ -30,7 +28,7 @@ export default function Bot() {
                 <div className="min-w-0 flex-1 text-sm">
                   <label
                     htmlFor="comments"
-                    className="font-medium text-gray-700"
+                    className="font-medium text-gray-700 ml-4"
                   >
                     {address}
                   </label>
@@ -51,7 +49,18 @@ export default function Bot() {
         </fieldset>
       )}
 
-      {addresses.length > 0 && <Insights addresses={addresses} />}
+      {addresses.length > 0 ? (
+        <Insights addresses={addresses} />
+      ) : (
+        <div className="h-[72rem] flex justify-center">
+          <div className="mt-48">
+            <Alert
+              state="warning"
+              title="Input a wallet address to get trading performance insights"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

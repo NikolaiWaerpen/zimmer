@@ -40,11 +40,11 @@ export default function AddressForm({ setAddresses }: AddressFormProps) {
           isValid,
           errors,
         }) => (
-          <Form>
+          <Form autoComplete="none">
             <div className="flex gap-2">
               <div className="w-96">
                 <Input
-                  // autoComplete="new-password"
+                  autoComplete="none"
                   label="Address"
                   placeholder="0xCeeeB66C5..."
                   type="text"

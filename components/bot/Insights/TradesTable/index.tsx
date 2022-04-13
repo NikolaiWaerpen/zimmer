@@ -5,9 +5,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BotTradesType } from "..";
-import { useMemo } from "react";
-import { useSortBy, useTable } from "react-table";
+import { useEffect, useMemo, useState } from "react";
+import { useSortBy, useTable, usePagination } from "react-table";
 import stringToFloatString from "utils/string-to-floatstring";
+import Pagination from "components/Pagination";
+import Input from "components/Input";
 
 type TradesTableProps = {
   botTrades: BotTradesType[];
@@ -44,9 +46,16 @@ const columns = [
   },
 ];
 
-// TODO: ADD PAGINATION
+// const INITIAL_PAGE_SIZE = 15;
 
 export default function TradesTable({ botTrades }: TradesTableProps) {
+  const [reactPage, setReactPage] = useState(1);
+  // const [reactPageSize, setReactPageSize] = useState(INITIAL_PAGE_SIZE);
+
+  useEffect(() => {
+    gotoPage(reactPage - 1);
+  }, [reactPage]);
+
   const data = useMemo(
     () =>
       botTrades.map(
@@ -77,9 +86,25 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
     // @ts-ignore
-    useTable({ columns, data }, useSortBy);
+    page,
+    prepareRow,
+    // @ts-ignore
+    gotoPage,
+    state,
+    // TODO: DYNAMICALLY SET PAGE SIZE
+    // @ts-ignore
+    setPageSize,
+  } = useTable(
+    // @ts-ignore
+    { columns, data, initialState: { pageSize: 20 } },
+    useSortBy,
+    usePagination
+  );
 
   return (
     <div className="mt-8 flex flex-col">
@@ -129,11 +154,11 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
                 {...getTableBodyProps()}
                 className="divide-y divide-gray-200 bg-white"
               >
-                {rows.map((row) => {
+                {page.map((row: any) => {
                   prepareRow(row);
                   return (
                     <tr {...row.getRowProps()}>
-                      {row.cells.map((cell) => {
+                      {row.cells.map((cell: any) => {
                         return (
                           <td
                             {...cell.getCellProps()}
@@ -149,8 +174,24 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
               </tbody>
             </table>
           </div>
+          {/* <div className="flex justify-end mt-4">
+            <Input
+              label="Set page size"
+              value={reactPageSize}
+              onChange={(event) => {
+                event.preventDefault();
+                setReactPageSize(+event.target.value);
+              }}
+            />
+          </div> */}
         </div>
       </div>
+      <Pagination
+        page={reactPage}
+        pageSize={10}
+        setPage={setReactPage}
+        totalLength={botTrades.length}
+      />
     </div>
   );
 }
