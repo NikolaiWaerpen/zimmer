@@ -1,6 +1,8 @@
 import {
+  faDiscord,
   faGithub,
   faInstagram,
+  faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -37,14 +39,19 @@ export const NAVIGATION = {
       icon: faGithub,
     },
     {
-      name: "Instagram",
-      href: "https://www.instagram.com/nikolaiwaerpen/",
-      icon: faInstagram,
-    },
-    {
       name: "Twitter",
       href: "https://twitter.com/waerpen/",
       icon: faTwitter,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/nikolai-w%C3%A6rpen-035273154/",
+      icon: faLinkedin,
+    },
+    {
+      name: "Discord",
+      href: "https://discordapp.com/users/Nikolai#1691",
+      icon: faDiscord,
     },
   ],
 };
