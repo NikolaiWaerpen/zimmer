@@ -10,6 +10,7 @@ import { useSortBy, useTable, usePagination } from "react-table";
 import stringToFloatString from "utils/string-to-floatstring";
 import Pagination from "components/Pagination";
 import Input from "components/Input";
+import classNames from "classnames";
 
 type TradesTableProps = {
   botTrades: BotTradesType[];
@@ -46,7 +47,7 @@ const columns = [
   },
 ];
 
-// const INITIAL_PAGE_SIZE = 15;
+const INITIAL_PAGE_SIZE = 20;
 
 export default function TradesTable({ botTrades }: TradesTableProps) {
   const [reactPage, setReactPage] = useState(1);
@@ -101,7 +102,7 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
     setPageSize,
   } = useTable(
     // @ts-ignore
-    { columns, data, initialState: { pageSize: 20 } },
+    { columns, data, initialState: { pageSize: INITIAL_PAGE_SIZE } },
     useSortBy,
     usePagination
   );
@@ -136,8 +137,8 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
                                 column.isSorted
                                   ? // @ts-ignore
                                     column.isSortedDesc
-                                    ? faChevronUp
-                                    : faChevronDown
+                                    ? faChevronDown
+                                    : faChevronUp
                                   : faSort
                               }
                               className="ml-2 h-5 w-5 flex-none rounded text-gray-400"
@@ -154,10 +155,16 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
                 {...getTableBodyProps()}
                 className="divide-y divide-gray-200 bg-white"
               >
-                {page.map((row: any) => {
+                {page.map((row: any, idx: number) => {
                   prepareRow(row);
                   return (
-                    <tr {...row.getRowProps()}>
+                    <tr
+                      {...row.getRowProps()}
+                      className={classNames(
+                        idx % 2 === 0 ? undefined : "bg-gray-50",
+                        "hover:bg-gray-100 transition ease-in duration-75"
+                      )}
+                    >
                       {row.cells.map((cell: any) => {
                         return (
                           <td
@@ -188,7 +195,7 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
       </div>
       <Pagination
         page={reactPage}
-        pageSize={10}
+        pageSize={INITIAL_PAGE_SIZE}
         setPage={setReactPage}
         totalLength={botTrades.length}
       />
