@@ -31,6 +31,7 @@ export const NAVIGATION = {
     { name: "Home", href: "/" },
     { name: "Guest Book", href: "/greeting" },
     { name: "Articles", href: "/article" },
+    { name: "Bot", href: "/bot" },
   ],
   social: [
     {
@@ -63,3 +64,5 @@ export const TEST_EMAIL = "nikolaiendtoend@gmail.com";
 export const TEST_PASSWORD = "WFiha2t7QwTqCTj";
 
 export const TYPE_SPEED = 400;
+
+export const OPENSEA_API_URL = "https://api.opensea.io/api/v1";
