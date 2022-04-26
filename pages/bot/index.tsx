@@ -6,7 +6,9 @@ import AddressForm from "components/bot/Insights/AddressForm";
 import { useState } from "react";
 
 export default function Bot() {
-  const [addresses, setAddresses] = useState<string[]>([]);
+  const [addresses, setAddresses] = useState<string[]>([
+    "0xCeeeB66C5b2DDbA1f581f2D62fa5FE6eA90Aaa14",
+  ]);
 
   return (
     <div className="pt-8 space-y-8">
