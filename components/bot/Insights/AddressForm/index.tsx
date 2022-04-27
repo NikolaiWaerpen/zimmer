@@ -28,8 +28,8 @@ export default function AddressForm({ setAddresses }: AddressFormProps) {
       <Formik
         initialValues={{ address: "" }}
         onSubmit={async ({ address }, { resetForm }) => {
-          resetForm();
           setAddresses((previous) => [...previous, address]);
+          resetForm();
         }}
         validationSchema={validationSchema}
       >

@@ -67,3 +67,5 @@ export const TEST_PASSWORD = "WFiha2t7QwTqCTj";
 export const TYPE_SPEED = 400;
 
 export const OPENSEA_API_URL = "https://api.opensea.io/api/v1";
+
+export const QUOTE_COOLDOWN_MINUTES = 10;
