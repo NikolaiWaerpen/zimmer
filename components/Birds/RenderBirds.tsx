@@ -18,12 +18,21 @@ export default function RenderBirds({ children, ...props }: BirdsPropTypes) {
           THREE: THREE,
           mouseControls: true,
           touchControls: true,
-          gyroControls: false,
+          gyroControls: true,
           scale: 1.0,
           scaleMobile: 1.0,
+          quantity: 4,
+          // birdSize: 1,
+          // speedLimit: 5.5,
+          // alignment: 100,
+          // cohesion: 30,
+          separation: 18,
           color1: "#306E38",
           color2: "#7EDA84",
-          backgroundColor: "#ffffff",
+          colorMode: "lerp",
+          backgroundColor: "#000000",
+          // backgroundColor: "#ffffff",
+          backgroundAlpha: 0,
         })
       );
     }
