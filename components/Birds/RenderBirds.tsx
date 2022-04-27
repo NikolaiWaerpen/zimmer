@@ -20,8 +20,8 @@ export default function RenderBirds({ children, ...props }: BirdsPropTypes) {
           touchControls: true,
           gyroControls: false,
           scale: 1.0,
-          scaleMobile: 0.7,
-          quantity: 4,
+          // scaleMobile: 0.7,
+          // quantity: 4,
           // birdSize: 1,
           // speedLimit: 5.5,
           // alignment: 100,
@@ -30,9 +30,8 @@ export default function RenderBirds({ children, ...props }: BirdsPropTypes) {
           color1: "#306E38",
           color2: "#7EDA84",
           // colorMode: "lerp",
-          backgroundColor: "#000000",
-          // backgroundColor: "#ffffff",
-          backgroundAlpha: 0,
+          backgroundColor: "#ffffff",
+          // backgroundAlpha: 0,
         })
       );
     }
