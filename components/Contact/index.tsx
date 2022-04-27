@@ -6,7 +6,6 @@ import TextArea from "components/TextArea";
 const { FORM_KEY } = process.env;
 
 export default function Contact() {
-  console.log(FORM_KEY);
   const [state, handleSubmit] = useForm(FORM_KEY || "");
 
   // TODO: Make as a formik form
