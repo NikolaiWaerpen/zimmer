@@ -110,7 +110,7 @@ export default function Trump() {
               {beamedRecently ? (
                 <Alert
                   title="Check your phone"
-                  description={`You just recently got beamed a Trump thought. That took a lot of brainpower, and he's an old man, so now you gotta wait ${SMS_COOLDOWN_MINUTES} minutes \n(and also because it's a pricy API and I don't want to drain my wallet)`}
+                  description={`You just got beamed a Trump thought. That took a lot of brainpower, and he's an old man, so now you gotta wait ${SMS_COOLDOWN_MINUTES} minutes \n(and also because it's a pricy API and I don't want to drain my wallet)`}
                   state="default"
                 />
               ) : (
