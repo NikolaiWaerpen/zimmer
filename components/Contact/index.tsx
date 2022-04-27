@@ -3,8 +3,11 @@ import Button from "components/Button";
 import Input from "components/Input";
 import TextArea from "components/TextArea";
 
+const { FORM_KEY } = process.env;
+
 export default function Contact() {
-  const [state, handleSubmit] = useForm("mknyoenk"); // TODO: Bad security, move this to env
+  console.log(FORM_KEY);
+  const [state, handleSubmit] = useForm(FORM_KEY || "");
 
   // TODO: Make as a formik form
 

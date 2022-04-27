@@ -3,5 +3,6 @@ module.exports = {
   reactStrictMode: true,
   env: {
     OPENSEA_API_KEY: process.env.OPENSEA_API_KEY,
+    FORM_KEY: process.env.FORM_KEY,
   },
 };
