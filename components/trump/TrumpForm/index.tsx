@@ -1,12 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import Button from "components/Button";
-import CustomError from "components/CustomError";
 import Input from "components/Input";
-import Loader from "components/Loader";
 import Select from "components/Select";
-import { SMS_COOLDOWN_MINUTES } from "consts";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
+import { Dispatch, SetStateAction } from "react";
 import * as yup from "yup";
 
 const SEND_TRUMP_QUOTE = gql`
@@ -57,31 +55,21 @@ export const validationSchema = yup.object({
 
 type TrumpFromPropTypes = {
   tags: string[];
+  setBeamedRecently: Dispatch<SetStateAction<boolean>>;
 };
 
-export default function TrumpForm({ tags }: TrumpFromPropTypes) {
+export default function TrumpForm({
+  tags,
+  setBeamedRecently,
+}: TrumpFromPropTypes) {
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async ({ tag, recipient }, { resetForm }) => {
-        const lastQuote = localStorage.getItem("last-quote");
-
-        if (lastQuote) {
-          const submittedRecently =
-            parseInt(lastQuote) + SMS_COOLDOWN_MINUTES * 60000 > Date.now();
-
-          if (submittedRecently) {
-            console.log(`Trump is on a cooldown`);
-            return;
-            // TODO: some user show logic here
-          }
-        }
-
-        console.log(tag, recipient);
-
         await sendTrumpQuote({ tag, recipient });
 
+        await setBeamedRecently(true);
         localStorage.setItem("last-quote", `${Date.now()}`);
         resetForm();
       }}

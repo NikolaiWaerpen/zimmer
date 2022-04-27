@@ -1,17 +1,13 @@
 import { gql, useQuery } from "@apollo/client";
+import Alert from "components/Alert";
 import Button from "components/Button";
 import CustomError from "components/CustomError";
-import Input from "components/Input";
 import Loader from "components/Loader";
-import Select from "components/Select";
 import TrumpAnimation from "components/trump/TrumpAnimation";
 import TrumpForm from "components/trump/TrumpForm";
 import { SMS_COOLDOWN_MINUTES } from "consts";
-import { Form, Formik } from "formik";
-import { apolloClient } from "lib/apollo-client";
-import * as yup from "yup";
-import { InboxIcon, SparklesIcon } from "@heroicons/react/outline";
-import Alert from "components/Alert";
+import { useEffect, useState } from "react";
+import { Element, Link } from "react-scroll";
 
 const GET_QUOTE_TAGS = gql`
   query GetQuouteTags {
@@ -19,90 +15,29 @@ const GET_QUOTE_TAGS = gql`
   }
 `;
 
-const SEND_TRUMP_QUOTE = gql`
-  mutation SendTrumpQuote($input: SendTrumpQuoteInput!) {
-    sendTrumpQuote(input: $input)
-  }
-`;
-
-type SendTrumpQuoteParams = {
-  recipient: string;
-  tag: string;
-};
-
-async function sendTrumpQuote({ recipient, tag }: SendTrumpQuoteParams) {
-  try {
-    await apolloClient.mutate({
-      mutation: SEND_TRUMP_QUOTE,
-      variables: {
-        input: {
-          tag,
-          recipient: `47${recipient}`,
-        },
-      },
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
 type GetQuouteTagsType = {
   tags: string[];
 };
 
-type initialValuesType = {
-  tag: string;
-  recipient: string;
-};
-
-const initialValues: initialValuesType = {
-  tag: "Women",
-  recipient: "",
-};
-
-export const validationSchema = yup.object({
-  tag: yup.string().required("Tag required"),
-  // TODO: Improve this validation
-  recipient: yup
-    .string()
-    .test(
-      "length",
-      "Phone number has to be 8 digits",
-      (value) => value !== undefined && value.length === 8
-    )
-    .required("Phone number required"),
-});
-
 export default function Trump() {
   const { loading, error, data } = useQuery<GetQuouteTagsType>(GET_QUOTE_TAGS);
+  const [beamedRecently, setBeamedRecently] = useState(false);
+
+  useEffect(() => {
+    const lastSMS = localStorage.getItem("last-quote");
+
+    if (lastSMS)
+      setBeamedRecently(
+        parseInt(lastSMS) + SMS_COOLDOWN_MINUTES * 60000 > Date.now()
+      );
+  }, []);
 
   if (loading) return <Loader fullscreen />;
   if (error ?? !data) return <CustomError error={error} />;
 
   const { tags } = data;
 
-  const lastSMS = localStorage.getItem("last-quote");
-  let submittedRecently: boolean = false;
-
-  if (lastSMS)
-    submittedRecently =
-      parseInt(lastSMS) + SMS_COOLDOWN_MINUTES * 60000 > Date.now();
-
-  console.log(submittedRecently);
-
   return (
-    // <div>
-    //   <div>
-    //     <h1>Trump</h1>
-    //     <p>
-    //       Get an SMS with some divine knowlegde, straight from The Donald
-    //       himself!
-    //     </p>
-    //   </div>
-
-    //   <TrumpAnimation />
-    //   <TrumpForm tags={tags} />
-    // </div>
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">
       <div className="relative">
         <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
@@ -126,8 +61,9 @@ export default function Trump() {
                   press send! It's as easy as that.
                 </p>
                 <div className="mt-6">
-                  {/* TODO: SCROLL DOWN */}
-                  <Button>Try it out!</Button>
+                  <Link to="TrumpForm" spy={true} smooth={true} duration={500}>
+                    <Button>Try it out!</Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -170,15 +106,17 @@ export default function Trump() {
       <div className="mt-48">
         <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
           <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-32 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2">
-            {submittedRecently ? (
-              <Alert
-                title="Check your phone"
-                description={`You just recently got beamed a Trump thought. That took a lot of brainpower, and he's an old man, so now you gotta wait ${SMS_COOLDOWN_MINUTES} minutes \n(and also because it's a pricy API and I don't want to drain my wallet)`}
-                state="default"
-              />
-            ) : (
-              <TrumpForm tags={tags} />
-            )}
+            <Element name="TrumpForm">
+              {beamedRecently ? (
+                <Alert
+                  title="Check your phone"
+                  description={`You just recently got beamed a Trump thought. That took a lot of brainpower, and he's an old man, so now you gotta wait ${SMS_COOLDOWN_MINUTES} minutes \n(and also because it's a pricy API and I don't want to drain my wallet)`}
+                  state="default"
+                />
+              ) : (
+                <TrumpForm tags={tags} setBeamedRecently={setBeamedRecently} />
+              )}
+            </Element>
           </div>
           <div className="mt-12 sm:mt-16 lg:mt-0 lg:col-start-1">
             <img
