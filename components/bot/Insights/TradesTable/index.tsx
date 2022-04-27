@@ -128,7 +128,7 @@ export default function TradesTable({ botTrades }: TradesTableProps) {
                         scope="col"
                         className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                       >
-                        <a href="#" className="inline-flex">
+                        <a className="inline-flex">
                           {column.render("Header")}
                           <span className=" ml-2 flex-none rounded text-gray-400">
                             <FontAwesomeIcon
