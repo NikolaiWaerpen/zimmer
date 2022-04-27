@@ -68,7 +68,7 @@ export default function Alert({
           {description && (
             <div
               className={classNames("mt-2 text-sm", {
-                "text-theme-6": isDefault,
+                "text-theme-7": isDefault,
                 "text-yellow-700": isWarning,
                 "text-red-700": isError,
               })}

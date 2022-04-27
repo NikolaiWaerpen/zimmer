@@ -4,7 +4,7 @@ import CustomError from "components/CustomError";
 import Input from "components/Input";
 import Loader from "components/Loader";
 import Select from "components/Select";
-import { QUOTE_COOLDOWN_MINUTES } from "consts";
+import { SMS_COOLDOWN_MINUTES } from "consts";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
 import * as yup from "yup";
@@ -38,7 +38,7 @@ type initialValuesType = {
 };
 
 const initialValues: initialValuesType = {
-  tag: "Women",
+  tag: "Girlfriends",
   recipient: "",
 };
 
@@ -69,7 +69,7 @@ export default function TrumpForm({ tags }: TrumpFromPropTypes) {
 
         if (lastQuote) {
           const submittedRecently =
-            parseInt(lastQuote) + QUOTE_COOLDOWN_MINUTES * 60000 > Date.now();
+            parseInt(lastQuote) + SMS_COOLDOWN_MINUTES * 60000 > Date.now();
 
           if (submittedRecently) {
             console.log(`Trump is on a cooldown`);

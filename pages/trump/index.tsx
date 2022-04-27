@@ -6,11 +6,12 @@ import Loader from "components/Loader";
 import Select from "components/Select";
 import TrumpAnimation from "components/trump/TrumpAnimation";
 import TrumpForm from "components/trump/TrumpForm";
-import { QUOTE_COOLDOWN_MINUTES } from "consts";
+import { SMS_COOLDOWN_MINUTES } from "consts";
 import { Form, Formik } from "formik";
 import { apolloClient } from "lib/apollo-client";
 import * as yup from "yup";
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline";
+import Alert from "components/Alert";
 
 const GET_QUOTE_TAGS = gql`
   query GetQuouteTags {
@@ -79,6 +80,15 @@ export default function Trump() {
   if (error ?? !data) return <CustomError error={error} />;
 
   const { tags } = data;
+
+  const lastSMS = localStorage.getItem("last-quote");
+  let submittedRecently: boolean = false;
+
+  if (lastSMS)
+    submittedRecently =
+      parseInt(lastSMS) + SMS_COOLDOWN_MINUTES * 60000 > Date.now();
+
+  console.log(submittedRecently);
 
   return (
     // <div>
@@ -157,21 +167,25 @@ export default function Trump() {
           </div>
         </div>
       </div>
-      <div className="mt-24">
+      <div className="mt-48">
         <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
           <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-32 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2">
-            <div>
+            {submittedRecently ? (
+              <Alert
+                title="Check your phone"
+                description={`You just recently got beamed a Trump thought. That took a lot of brainpower, and he's an old man, so now you gotta wait ${SMS_COOLDOWN_MINUTES} minutes \n(and also because it's a pricy API and I don't want to drain my wallet)`}
+                state="default"
+              />
+            ) : (
               <TrumpForm tags={tags} />
-            </div>
+            )}
           </div>
           <div className="mt-12 sm:mt-16 lg:mt-0 lg:col-start-1">
-            <div className="pr-4 -ml-48 sm:pr-6 md:-ml-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
-              <img
-                className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-                src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg"
-                alt="Customer profile user interface"
-              />
-            </div>
+            <img
+              className="w-full rounded-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto object-cover"
+              src="https://i.imgflip.com/1a2ccv.jpg"
+              alt="'Merica"
+            />
           </div>
         </div>
       </div>
