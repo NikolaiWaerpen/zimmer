@@ -1,5 +1,5 @@
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Popover, Transition, Disclosure, Menu } from "@headlessui/react";
+import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import classNames from "classnames";
 import { NAVIGATION, URL } from "consts";
 import { useSession } from "next-auth/react";
@@ -16,109 +16,54 @@ export default function Navigation() {
   // TODO: Switch this out with one of the actual navs
   return (
     <div className="top-0 left-0 fixed w-full z-[420]">
-      <Popover className="relative bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-            <div className="flex justify-start lg:w-0 lg:flex-1">
-              <a href="/">
-                <span className="sr-only">Nikolai Waerpen</span>
-                <img
-                  className="h-8 w-auto sm:h-10"
-                  src={`${URL.FRONTEND}/images/logo.png`}
-                  alt="logo"
-                />
-              </a>
-            </div>
-            <div className="-mr-2 -my-2 md:hidden">
-              <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-theme-3">
-                <span className="sr-only">Open menu</span>
-                <MenuIcon className="h-6 w-6" aria-hidden="true" />
-              </Popover.Button>
-            </div>
-            <Popover.Group as="nav" className="hidden md:flex space-x-10">
-              {NAVIGATION.main.map(({ name, href }) => {
-                const currentlyActive =
-                  route.split("/")[1] === href.split("/")[1];
-
-                return (
-                  <Link key={name} href={href}>
-                    <a
-                      className={classNames(
-                        currentlyActive
-                          ? "text-gray-900 hover:text-gray-700"
-                          : "text-gray-500 hover:text-gray-900",
-                        "text-base font-medium "
-                      )}
-                    >
-                      {name}
+      <Disclosure as="nav" className="bg-white shadow">
+        {({ open }) => (
+          <>
+            <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+              <div className="relative flex justify-between h-16">
+                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                  {/* Mobile menu button */}
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-theme-5">
+                    <span className="sr-only">Open main menu</span>
+                    {open ? (
+                      <XIcon className="block h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    )}
+                  </Disclosure.Button>
+                </div>
+                <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                  <div className="flex justify-start items-center lg:w-0 lg:flex-1 ">
+                    <a href="/">
+                      <span className="sr-only">Nikolai Waerpen</span>
+                      <img
+                        className="h-8 w-auto sm:h-10"
+                        src={`${URL.FRONTEND}/images/logo.png`}
+                        alt="logo"
+                      />
                     </a>
-                  </Link>
-                );
-              })}
-            </Popover.Group>
-            <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-              {status === "authenticated" ? (
-                <Profile />
-              ) : (
-                <NotSignedIn status={status} />
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* TODO: Close menu if an item is click on - control state */}
-        <Transition
-          as={Fragment}
-          enter="duration-200 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="duration-100 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <Popover.Panel
-            focus
-            className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
-          >
-            <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-              <div className="pt-5 pb-6 px-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <img
-                      className="h-8 w-auto"
-                      src="images/logo.png"
-                      alt="logo"
-                    />
                   </div>
-                  <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-theme-3">
-                      <span className="sr-only">Close menu</span>
-                      <XIcon className="h-6 w-6" aria-hidden="true" />
-                    </Popover.Button>
+                  <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    {NAVIGATION.main.map(({ name, href }) => {
+                      const currentlyActive = route === href;
+                      return (
+                        <Link key={name} href={href}>
+                          <a
+                            className={classNames(
+                              currentlyActive
+                                ? "border-theme-5 text-gray-900"
+                                : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                              "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                            )}
+                          >
+                            {name}
+                          </a>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
-              </div>
-              <div className="py-6 px-5 space-y-6">
-                <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                  {NAVIGATION.main.map(({ name, href }) => {
-                    const currentlyActive = route === href;
-                    return (
-                      <Link key={name} href={href}>
-                        <a
-                          className={classNames(
-                            currentlyActive
-                              ? "text-gray-900 hover:text-gray-700"
-                              : "text-gray-500 hover:text-gray-900",
-                            "text-base font-medium "
-                          )}
-                        >
-                          {name}
-                        </a>
-                      </Link>
-                    );
-                  })}
-                </div>
-                <div>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {status === "authenticated" ? (
                     <Profile />
                   ) : (
@@ -127,9 +72,33 @@ export default function Navigation() {
                 </div>
               </div>
             </div>
-          </Popover.Panel>
-        </Transition>
-      </Popover>
+
+            <Disclosure.Panel className="sm:hidden">
+              <div className="pt-2 pb-4 space-y-1">
+                {NAVIGATION.main.map(({ name, href }) => {
+                  const currentlyActive = route === href;
+                  return (
+                    <Disclosure.Button as="div">
+                      <Link key={name} href={href}>
+                        <a
+                          className={classNames(
+                            currentlyActive
+                              ? "bg-green-50 border-theme-5 text-theme-5"
+                              : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700",
+                            "block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                          )}
+                        >
+                          {name}
+                        </a>
+                      </Link>
+                    </Disclosure.Button>
+                  );
+                })}
+              </div>
+            </Disclosure.Panel>
+          </>
+        )}
+      </Disclosure>
     </div>
   );
 }

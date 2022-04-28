@@ -120,14 +120,16 @@ export default function AddGreetingForm() {
                 }
               />
               <div className="flex gap-2 items-center ">
-                <Button
-                  className="w-full h-full"
-                  type="submit"
-                  disabled={!isValid ?? isSubmitting}
-                  loading={isSubmitting}
-                >
-                  <FontAwesomeIcon icon={faCheck} />
-                </Button>
+                <div className="flex-1">
+                  <Button
+                    className="w-full h-full"
+                    type="submit"
+                    disabled={!isValid ?? isSubmitting}
+                    loading={isSubmitting}
+                  >
+                    <FontAwesomeIcon icon={faCheck} />
+                  </Button>
+                </div>
                 <UserImage
                   src={session.user!.image!}
                   alt={`${session.user!.name!}`}
