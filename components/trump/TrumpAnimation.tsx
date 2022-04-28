@@ -14,7 +14,7 @@ export default function TrumpAnimation() {
   }, []);
 
   return (
-    <div className="w-96 h-96">
+    <div className="w-96 h-96 lg:w-[32rem] relative">
       <div className="absolute left-0 right-0 bottom-0 top-0">
         <div className="w-full h-full relative">
           <div className="absolute right-0 left-0 bottom-0 top-[80%] z-50">

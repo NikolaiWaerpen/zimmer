@@ -13,6 +13,7 @@ export default function Navigation() {
   const { route } = useRouter();
   const { status } = useSession();
 
+  // TODO: Switch this out with one of the actual navs
   return (
     <div className="top-0 left-0 fixed w-full z-[420]">
       <Popover className="relative bg-white">

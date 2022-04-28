@@ -60,7 +60,7 @@ export default function Trump() {
                   fill in what you want his thoughts on, your phone number and
                   press send! It's as easy as that.
                 </p>
-                <div className="mt-6">
+                <div className="mt-6 flex">
                   <Link to="TrumpForm" spy={true} smooth={true} duration={500}>
                     <Button>Try it out!</Button>
                   </Link>
