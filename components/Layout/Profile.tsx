@@ -2,7 +2,6 @@ import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import UserImage from "components/UserImage";
 import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
 import { Fragment } from "react";
 
 export default function Profile() {
@@ -11,19 +10,6 @@ export default function Profile() {
   const { image, name } = session!.user!;
 
   return (
-    // <button onClick={() => signOut()} className="flex-shrink-0 group block">
-    //   <div className="flex items-center">
-    //     <UserImage src={image!} />
-    //     <div className="ml-3 text-left">
-    //       <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-    //         {name!}
-    //       </p>
-    //       <p className="text-xs font-medium text-gray-500 group-hover:text-theme-4">
-    //         Log out
-    //       </p>
-    //     </div>
-    //   </div>
-    // </button>
     <Menu as="div" className="ml-3 relative">
       <div>
         <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-theme-5">

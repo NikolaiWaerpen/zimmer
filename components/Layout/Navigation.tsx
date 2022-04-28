@@ -1,11 +1,10 @@
-import { Popover, Transition, Disclosure, Menu } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Disclosure } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import classNames from "classnames";
 import { NAVIGATION, URL } from "consts";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Fragment } from "react";
 import Profile from "./Profile";
 import NotSignedIn from "./SignIn";
 
@@ -13,7 +12,6 @@ export default function Navigation() {
   const { route } = useRouter();
   const { status } = useSession();
 
-  // TODO: Switch this out with one of the actual navs
   return (
     <div className="top-0 left-0 fixed w-full z-[420]">
       <Disclosure as="nav" className="bg-white shadow">
