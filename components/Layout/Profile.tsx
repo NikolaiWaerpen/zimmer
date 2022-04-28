@@ -28,7 +28,7 @@ export default function Profile() {
       <div>
         <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-theme-5">
           <span className="sr-only">Open user menu</span>
-          <img className="h-8 w-8 rounded-full" src={image!} alt={name!} />
+          <UserImage src={image!} alt={name!} />
         </Menu.Button>
       </div>
       <Transition
