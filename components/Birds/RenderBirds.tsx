@@ -21,7 +21,7 @@ export default function RenderBirds({ children, ...props }: BirdsPropTypes) {
           gyroControls: false,
           scale: 1.0,
           // scaleMobile: 0.7,
-          quantity: 5,
+          quantity: 3,
           // birdSize: 1,
           // speedLimit: 5.5,
           // alignment: 100,
