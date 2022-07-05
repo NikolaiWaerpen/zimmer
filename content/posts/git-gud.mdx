@@ -1,0 +1,393 @@
+---
+title: Git gud
+date: 21.04.2022
+categories:
+  - git
+banner: https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80
+bannerAlt: Git
+bannerCredit: Photo by Roman Synkevych (https://unsplash.com/@synkevych)
+---
+
+As developers, one of the best pieces of advice is to get comfortable using Git.
+Linus Torvalds, the creator of Linux, also happens to be the guy who made Git.
+He is much smarter than all of us, and if he knew that if he made it too easy, it would make us weak.
+Instead of that he wished us the satisfaction of overcoming the sometimes confusing, albeit powerful, commands of Git.
+This is what I seek out to help with in this article
+
+Ask yourself: "could I be using Git more proficiently?". The answer is, most likely, a resounding YES!
+
+By the end of this article we will have gone through a bunch of different tips and tricks to help you on your way to
+become a better developer and being one step closer to that 6-digit salary.
+
+## Combine ADD and COMMIT
+
+To save a snapshot of your code, you use _add_ followed by a commit message.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git add .
+    git commit -m "New line added"
+  `}
+</SyntaxHighlighter>
+
+But, there's an actually a better way to get the job done.
+You can go straight to commit by using the _-am_ flag.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git commit -am "An easy way!"
+  `}
+</SyntaxHighlighter>
+This will automatically add all the files in the current working directory.
+
+> Important note: "git commit -a" will only automatically add changes to files git is already tracking. If you create a new file, you still need to "git add" it.
+
+## Aliases
+
+There's actually a more concise way to get the job done.
+The command git config provides a way to create aliases which are commonly used to
+shorten an existing command or create your own new custom commands.
+
+Let's look at an example:
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git config --global alias.ac "commit -am"
+    git ac "noice!"
+  `}
+</SyntaxHighlighter>
+
+We made an alias called ac that runs the _add_ and _commit_ command with just two letters.
+This allows us to run things faster, but sometimes going fast leads to mistakes.
+
+## Amend
+
+What if you made a typo in your last commit message: **git ac "noice!"**?
+
+![amend](https://cdn.hashnode.com/res/hashnode/image/upload/v1650956474068/rcltfQDF9.png?auto=compress,format&format=webp)
+
+Instead of resetting and committing a new commit, the _--amend_ flag followed by a new message will simply update the latest commit.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git commit --amend -m "nice!"
+  `}
+</SyntaxHighlighter>
+
+Or maybe you forgot to include or stage a couple of files with your last commit.
+You can also update your last commit with new files by using the _--amend_ flag.
+
+And if you want to keep the same commit message, add the _--no-edit_ flag as well.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git add .
+    git commit --amend --no-edit
+  `}
+</SyntaxHighlighter>
+
+## Force Push ⚠️
+
+Keep in mind, the above command only works when you haven't already pushed your code to a remote repository.
+If you want all your co-workers to hate you, you can do a **git push** with the _--force_ flag. This will completely
+disregard all other commits on the current branch and overwrite them with your local commits.
+
+If you don't want your fellow developers to hate you, use _--force-with-lease_, which will only allow you to push the
+code if there are no conficting changes with the current remote branch.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git push origin master --force
+  `}
+</SyntaxHighlighter>
+
+This will overwrite the remote commit with the state of your local code.
+However, if there are commits on the remote branch that you don't have, you'll lose them forever.
+
+## Revert
+
+But what happens if you push some code to a remote repository and then realize it's a complete garbage
+and never should've been there in the first place. The **git revert** command allows you to take
+one commit and go back to the state that was there previously.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git revert better-days
+    git log --oneline
+  `}
+</SyntaxHighlighter>
+
+![revert](https://cdn.hashnode.com/res/hashnode/image/upload/v1650956811114/W05yq2ZSE.png?auto=compress,format&format=webp)
+
+We will use the _revert_ command with the hash id of the latest commit.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git revert b4f4098
+  `}
+</SyntaxHighlighter>
+
+It's kind of like an undo but doesn't remove the original commit from the history.
+Instead, it just goes back to the original state.
+
+![original state](https://cdn.hashnode.com/res/hashnode/image/upload/v1650957043202/B69L7SQWO.png?auto=compress,format&format=webp)
+
+And, that's much easier 👍
+
+## Codespaces
+
+Another case is, you may need to work on a repository but not have access to your local machine.
+If you are in your Grandma's house without your laptop, you can use any computer that has a web browser.
+Go to the GitHub and find the repository that you want to want to work on. Then hit the period key on your keyboard.
+
+![period](https://cdn.hashnode.com/res/hashnode/image/upload/v1650875651815/_Z9Bk5ebx.png?auto=compress,format&format=webp)
+
+And like magic, it pulls up a browser-based version of VS Code where you can make edits,
+submit pull requests and do almost anything else you could do locally, well except for run the terminal.
+If you do need to run terminal commands, you can setup a GitHub code space in the
+cloud which will give you the full power of VS Code and is, likely, much faster than your Grandma's computer.
+
+## Stash
+
+Let's switch gears to Git stash. Have you ever spent time working on some changes that almost work,
+but they can't really be committed yet? **git stash** will remove the changes from your current working
+directory and save them for later use without committing them to the repo.
+
+The simple way to use it is,
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git stash
+    git stash pop
+  `}
+</SyntaxHighlighter>
+
+when you're ready to add those changes back into your code.
+But if you use the command a lot, you can use git stash save followed by a name to reference it later.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git stash save coolstuff
+  `}
+</SyntaxHighlighter>
+
+Then when you are ready to work on it again, use git stash list to find it and then
+git stash apply with the corresponding index to use it.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git stash list
+    git stash apply 0
+  `}
+</SyntaxHighlighter>
+
+Now if you want to use a "stash" at Grandma's house, you have now a solution.
+You can use a GitHub codespace in which case, your stashes would be saved in a file. That's pretty cool!
+
+![codespaces](https://cdn.hashnode.com/res/hashnode/image/upload/v1650881954242/XZBu8ENOL.webp?auto=compress,format&format=webp)
+
+## PC Master Branch
+
+Now, I have a public service announcement for developers in the modern era.
+Historically, the default branch in git is called the "master" branch, which is now referred to as "main".
+
+![master branch](https://cdn.hashnode.com/res/hashnode/image/upload/v1650884340875/AKDLYtZzm.png?auto=compress,format&format=webp)
+
+To change it, use **git branch** followed by the _-M_ flag to rename it to main, or maybe get creative and invent your own name.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git branch -M mucho
+  `}
+</SyntaxHighlighter>
+
+## Pretty Logs
+
+Another command, you might be probably familiar with, is git log to view a history of commits.
+The problem with this command is that the output is harder and harder to read as your project grows in complexity.
+
+To make the output more readable, add the options of _--graph_, _--oneline_ and _--decorate_.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git log --graph --oneline --decorate
+  `}
+</SyntaxHighlighter>
+
+You can now see a more concise breakdown and how different branches connect together.
+
+![branches](https://cdn.hashnode.com/res/hashnode/image/upload/v1650885288067/YWLBB2NH_.png?auto=compress,format&format=webp)
+
+But if you're looking at the _git log_, there's likely a commit in there that's currently breaking your app ;)
+
+## Searching Logs 🔍
+
+The log command can also be used to search for specific changes in the code.
+For example, you can search for the text "README file added by Nikolai Waerpen" as follows.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git log -S "README file added by Nikolai Waerpen"
+  `}
+</SyntaxHighlighter>
+
+This command returns the commit where the file is added in the Text directory.
+
+## Bisect
+
+Git bisect allows you to start from a commit that is known to have a bug, likely the most recent commit.
+But if you knew that the app was working a few hours ago, you can point bisect to the last working commit.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git bisect start
+  `}
+</SyntaxHighlighter>
+
+Then, it performs a binary search to walk you through each commit in between.
+
+![biselect](https://cdn.hashnode.com/res/hashnode/image/upload/v1650885738714/DyOfiV0hB.png?auto=compress,format&format=webp)
+
+If the commit looks good, type bisect good to move on to the next commit.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git bisect bad
+    git bisect good 5b010ef
+    git bisect bad
+  `}
+</SyntaxHighlighter>
+
+Eventually, you will find the bad one and know exactly which code needs to be fixed.
+
+## Autosquash
+
+Another advanced git technique that every developer should know is how to squash their commits.
+
+![autosquash](https://cdn.hashnode.com/res/hashnode/image/upload/v1650886738339/TRpN0rhed.png?auto=compress,format&format=webp)
+
+Imagine, you are working on a feature branch that has three different commits. And you are ready to merge it into the main branch.
+
+![merge](https://cdn.hashnode.com/res/hashnode/image/upload/v1650887016796/ptUEQMUb7.png?auto=compress,format&format=webp)
+
+But all these commit messages are kind of pointless, and it would be better if it was just one single commit.
+
+![rebase](https://cdn.hashnode.com/res/hashnode/image/upload/v1650887563534/e_ryRP3Tm.png?auto=compress,format&format=webp)
+
+We can do that from our feature branch by running **git rebase** with the _--interactive_ option for the main branch.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git rebase master --interactive
+  `}
+</SyntaxHighlighter>
+
+This will pull up a file with a list of commits on this branch.
+
+![commit list](https://cdn.hashnode.com/res/hashnode/image/upload/v1650888314151/gy6ts3_qY.png?auto=compress,format&format=webp)
+
+If we want to use a commit, we just use the pick command.
+We can also change a message using reword command.
+Or we can combine or squash everything into the original commit using squash command.
+
+![squash command](https://cdn.hashnode.com/res/hashnode/image/upload/v1650888348058/wn4LdsjG7.png?auto=compress,format&format=webp)
+
+Go ahead, save the file and close it.
+Git will pull up another file prompting you to update the commit message, which by default will be a combination of all the messages that you just squashed.
+
+![squashed](https://cdn.hashnode.com/res/hashnode/image/upload/v1650888466702/Dfbj4-SBC.png?auto=compress,format&format=webp)
+
+And if you don't like all the messages combined, you can use _fixup_ instead of _squash_ when doing the rebase.
+To be even more productive, you can also use _--fixup_ and _--squash_ flags when making commits on your branch.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git branch --fixup fb2f677
+    git command --squash fc2f55
+  `}
+</SyntaxHighlighter>
+
+On doing this, it tells git in advance that you want to squash them.
+So when you go to do a rebase with the --autosquash command, it can handle all the squashing automatically.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git rebase -i --autosquash
+  `}
+</SyntaxHighlighter>
+
+## Hooks 🪝
+
+Now, if you maintain a repo, one tool that can be very helpful is "Git hooks."
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git commit -m "It is fixed"
+  `}
+</SyntaxHighlighter>
+
+Whenever you perform an operation with git like a commit for example, it creates an event.
+And hooks allow you to run some code either before or after that event happens.
+If you look in the hidden git directory, you will see a directory called "hooks".
+And inside it, you will find a bunch of different scripts that can be configured to run when different events in git happen.
+
+![hooks](https://cdn.hashnode.com/res/hashnode/image/upload/v1650955010403/b006l5HXG.png?auto=compress,format&format=webp)
+
+> If you happen to be a JavaScript/TypeScript developer, there's a package called "husky" that makes it much easier to configure git hooks.
+
+![husky](https://cdn.hashnode.com/res/hashnode/image/upload/v1650955152081/sPd3Ltdm2.png?auto=compress,format&format=webp)
+
+For example, You might install it with npm, then create a script that will validate or link your code before each commit. And that can help improve your overall code quality.
+
+![test](https://cdn.hashnode.com/res/hashnode/image/upload/v1650955374236/d9MVglzom.png?auto=compress,format&format=webp)
+
+## Destroy Things 💥
+
+To wrap things up, let's talk about deleting things.
+
+Let's imagine you have a remote repository on GitHub than a local version on your machine that you have been making changes to. But, things haven't been going too well.
+
+![destroy](https://cdn.hashnode.com/res/hashnode/image/upload/v1650955498816/-Xs5E1mRG.png?auto=compress,format&format=webp)
+
+And you just want to go back to the original state in the remote repo.
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git fetch origin
+    git reset --hard origin/master
+  `}
+</SyntaxHighlighter>
+
+First, we do git fetch to grab the latest code in the remote repo. Then, use reset with the _--hard_ flag to override your local code with the remote code.
+
+- Be careful, your local changes will be lost forever.
+
+But you might still be left with some random untracked files or build artifacts here and there.
+Use the git clean _-df_ command to remove those files as well.
+If you want to get rid of it altogether, maybe you want to try out Apache subversion to change things up a bit.
+All you have to do is, delete that hidden git folder, and you are on your own again.
+
+![clean](https://cdn.hashnode.com/res/hashnode/image/upload/v1650955921284/FhfyfCpE9.png?auto=compress,format&format=webp)
+
+## Checkout to Last
+
+Oh! There's one other tip that comes in really handy. If you recently switched out of a branch and forgot its name, you can use:
+
+<SyntaxHighlighter language="typescript">
+  {`
+    git checkout -
+  `}
+</SyntaxHighlighter>
+
+It takes you directly back to the previous branch that you were working on.
+
+## Bonus tip
+
+If you don't want to rely on the cloud you can use **git init --bare** to create local repos without a working
+directory, you can then sync all your projects between devices using [syncthing](https://syncthing.net/).
+
+## Conclusion
+
+Hopefully, a few of these commands can help you in your Git journey. There are many other amazing Git commands. Explore and Learn!
+
+Source of the article: [Video by the ever amazing Fireship](https://www.youtube.com/watch?v=ecK3EnyGD8o&t=398s)
