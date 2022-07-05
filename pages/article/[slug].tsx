@@ -157,7 +157,6 @@ export default function Post({
           <div className="flex space-x-1 text-sm text-gray-500 mt-2">
             <time dateTime={date}>{date}</time>
             <span aria-hidden="true">&middot;</span>
-            {/* TODO: FIGURE THIS OUT */}
             <span>
               <span id="readTime" /> min read
             </span>
@@ -174,7 +173,7 @@ export default function Post({
         />
 
         <div
-          className="prose prose-indigo prose-lg text-gray-500 mx-auto"
+          className="prose prose-indigo prose-lg text-gray-500 md:mx-auto"
           id="article"
         >
           <MDXRemote
