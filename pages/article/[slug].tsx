@@ -177,7 +177,7 @@ export default function Post({
           id="article"
         >
           <MDXRemote
-            {...mdxSource}
+            {...(mdxSource as any)}
             components={{ Button, SyntaxHighlighter }}
           />
         </div>

@@ -45,7 +45,7 @@ export default function Navigation() {
                     {NAVIGATION.main.map(({ name, href }) => {
                       const currentlyActive = route === href;
                       return (
-                        <Link key={name} href={href}>
+                        <Link key={href} href={href}>
                           <a
                             className={classNames(
                               currentlyActive
@@ -76,7 +76,7 @@ export default function Navigation() {
                 {NAVIGATION.main.map(({ name, href }) => {
                   const currentlyActive = route === href;
                   return (
-                    <Disclosure.Button as="div">
+                    <Disclosure.Button as="div" key={href}>
                       <Link key={name} href={href}>
                         <a
                           className={classNames(
