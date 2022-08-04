@@ -1,11 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
-import TradesTable from "./TradesTable";
 import StatisticsBox from "components/bot/Insights/StatisticsBox";
 import CustomError from "components/CustomError";
-import Input from "components/Input";
 import Loader from "components/Loader";
-import { useState } from "react";
 import stringToFloatString from "utils/string-to-floatstring";
+import TradesTable from "./TradesTable";
 
 const GET_TRADES = gql`
   query BotTrades($input: GetBotTrades!) {
