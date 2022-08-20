@@ -33,6 +33,7 @@ export const NAVIGATION = {
     { name: "Articles", href: "/article" },
     { name: "Bot", href: "/bot" },
     { name: "Trump", href: "/trump" },
+    { name: "Arta", href: "/arta" },
   ],
   social: [
     {

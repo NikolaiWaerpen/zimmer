@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    OPENSEA_API_KEY: process.env.OPENSEA_API_KEY,
+    GOOGLE_MAP_KEY: process.env.GOOGLE_MAP_KEY,
     FORM_KEY: process.env.FORM_KEY,
   },
 };
