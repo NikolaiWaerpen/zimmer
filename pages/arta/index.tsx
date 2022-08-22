@@ -1,12 +1,12 @@
-import { faHouseUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHouseUser,
+  faLocationArrow,
+  faMapPin,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "components/Button";
 import GoogleMapReact from "google-map-react";
 import { useState } from "react";
-
-function Marker() {
-  return <FontAwesomeIcon icon={faHouseUser} size="2x" />;
-}
 
 const defaultProps = {
   center: {
@@ -77,16 +77,21 @@ const PARTNERS: PartnerType[] = [
 const key = process.env.GOOGLE_MAP_KEY;
 
 export default function Arta() {
-  const [selectedLocation, setSelectedLocation] = useState<LocationType | null>(
-    null
-  );
+  const [selectedViewLocation, setSelectedViewLocation] =
+    useState<LocationType | null>(null);
+
+  const [selectedLocation, setSelectedLocation] =
+    useState<GoogleMapReact.ClickEventValue>();
 
   if (!key) return "missing key";
 
-  const center = selectedLocation
-    ? { lat: selectedLocation.latitude, lng: selectedLocation.longitude }
+  const center = selectedViewLocation
+    ? {
+        lat: selectedViewLocation.latitude,
+        lng: selectedViewLocation.longitude,
+      }
     : defaultProps.center;
-  const zoom = selectedLocation ? 14 : defaultProps.zoom;
+  const zoom = selectedViewLocation ? 14 : defaultProps.zoom;
 
   const allLocations = PARTNERS.reduce((accumulator, { locations }) => {
     accumulator = [...accumulator, ...locations];
@@ -108,7 +113,7 @@ export default function Arta() {
                   {locations.map((location) => {
                     const { name } = location;
                     return (
-                      <Button onClick={() => setSelectedLocation(location)}>
+                      <Button onClick={() => setSelectedViewLocation(location)}>
                         <h2>{name}</h2>
                       </Button>
                     );
@@ -123,18 +128,30 @@ export default function Arta() {
             defaultZoom={defaultProps.zoom}
             center={center}
             zoom={zoom}
+            onClick={(event) => {
+              setSelectedLocation(event);
+            }}
           >
             {allLocations.map(({ name, latitude, longitude }) => {
               return (
                 <FontAwesomeIcon
                   color="" // TODO: Implement this
                   icon={faHouseUser}
-                  size={name === selectedLocation?.name ? "3x" : "2x"}
+                  size={name === selectedViewLocation?.name ? "3x" : "2x"}
                   lat={latitude}
                   lng={longitude}
                 />
               );
             })}
+            {selectedLocation && (
+              <FontAwesomeIcon
+                color="#0dcd94"
+                icon={faMapPin}
+                size="3x"
+                lat={selectedLocation.lat}
+                lng={selectedLocation.lng}
+              />
+            )}
           </GoogleMapReact>
         </div>
       </div>
