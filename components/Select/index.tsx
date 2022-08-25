@@ -61,7 +61,7 @@ export default function Select({
       >
         {({ open }) => (
           <div className="relative">
-            <Listbox.Label className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900 z-[100]">
+            <Listbox.Label className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900 z-[100000000000]">
               {label}
             </Listbox.Label>
             {description && <p>{description}</p>}
@@ -83,7 +83,7 @@ export default function Select({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+                <Listbox.Options className="absolute z-[1000000000] mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                   {formattedOptions.map((option) => {
                     const { id, value } = option;
 

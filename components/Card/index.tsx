@@ -21,7 +21,7 @@ export default function Card({
     <div
       className={classNames(
         className,
-        "bg-white overflow-hidden shadow rounded-lg min-h-[18rem]",
+        "bg-white overflow-hidden shadow rounded-lg min-h-[28rem] px-4 py-5 sm:p-6",
         {
           "w-[22rem]": size === "sm",
           "w-[28rem]": size === "md",
@@ -30,19 +30,18 @@ export default function Card({
       )}
       {...props}
     >
-      <div className="px-4 py-5 sm:p-6">
-        <div className="flex justify-between">
-          <div className="w-4/5">
-            {title && (
-              <h2 className="text-xl font-semibold text-gray-900 truncate">
-                {title}
-              </h2>
-            )}
-          </div>
-          {trailing && <>{trailing}</>}
+      <div className="flex justify-between">
+        <div className="w-4/5">
+          {title && (
+            <h2 className="text-xl font-semibold text-gray-900 truncate mb-4">
+              {title}
+            </h2>
+          )}
         </div>
-        {children}
+        {trailing && <>{trailing}</>}
       </div>
+      {/* TODO: Fix this css hack */}
+      <div className="h-full pb-10">{children}</div>
     </div>
   );
 }
