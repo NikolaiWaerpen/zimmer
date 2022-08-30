@@ -36,7 +36,7 @@ export default function Button({
             : "focus:ring-theme-3 text-white bg-theme-4 hover:bg-theme-5"
         } `}
       >
-        <div className="flex justify-center items-center gap-2 w-full">
+        <div className="flex justify-center items-center gap-2 w-full whitespace-nowrap">
           {/* Default icon */}
           {icon && !rightIcon && <FontAwesomeIcon icon={icon} />}
           {loading ? <ButtonSpinner /> : <>{children}</>}
