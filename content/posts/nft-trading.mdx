@@ -1,5 +1,5 @@
 ---
-title: Pay your rent by coding an NFT trading bot
+title: Code an NFT bot to finance your first home
 date: 28.8.2022
 categories:
   - crypto
@@ -11,42 +11,25 @@ bannerAlt: Ethereum trading
 bannerCredit: Photo by Dyllan Calluy (https://unsplash.com/@dylancalluy)
 ---
 
+Before we look at how to make money in NFTs (and there is a lot of money to be made), let's take a look at how _not_ to do it.
+
 ## How to lose $2 600 in less than a minute.
 
-<!-- TODO: SHORTEN THIS -->
+I had worked tirelessly and my bot had made some incredible trades. I was looking to blow off some steam, so I prepared some food, cracked open a beer, and put on a movie. During the movie, I got an idea.
+I went to the office, made some changes to the bot, and ran it. One minute later I saw some numbers that made my blood run cold.
 
-I had an incredible day trading and I wanted to blow off some steam, so I made myself some food, opened a beer and put on a movie. During the movie I got an idea,
-so I went to the office, made some changes to the bot and ran it. One minute later I saw some numbers that made my blood run cold.
-I had missed a decimal point and bid 0.85 ETH instead of the intended 0.085 ETH on almost 500 NFTs. A very lucky individual whom was the first to see this naturally accepted
-the idiodic bid and earned a nice profit amounting to more than the annual salary of the average citizen of India.
+In my confidence I and the slight buzz from the alcohol I had missed a decimal point and set my bot to bid 0.85 ETH instead of the intended 0.085 ETH. Before I stopped it my bot had made over 600 bids. _Oh no_.
+A very lucky individual who was the first to see the bot going haywire accepted one of the bids, earning them a nice profit amounting to more than the annual salary of the average citizen of India.
 
-More people saw my bids and jumped at the opportunity to accept them, but since my wallet was already drained they were all (luckily) too late. This was early on in my journey and I had lost nearly all my starting capital.
+More people saw my bids and jumped at the opportunity to accept, but since my wallet was already drained they were all (luckily) too late. This was early on in my journey and I had lost nearly all my starting capital.
+
 But I am getting ahead of myself. Let's go back to the beginning.
-
-<!--
-# Parts: TODO: LIST OVER PARTS (w/ hypelinks?)
-
-- How to lose 2 600 dollars in 1 minute because of a decimal point
-- Norwegian NFT marketplace
-- OpenSea developer discord support
-- Introduction to Tristan
-- Sander & I
-- NFT Butler, NFT Wingman, NFT Handshake
-- Moving hiatus
-- The difference between 0.85 & 0.085
-- Going all in
-- Rotating all the factors
-- Hiring help
-- Rinse & repeat
-- The drop of Ethereum
-- Conclusion TODO:
--->
 
 ## NFT
 
-This all started with how most good ideas come to life, scratching an idea that seemed good in the beginning and pivoting to another, luck and a healthy dose of random coincidence.
+This all started with how most good ideas come to life - luck, a healthy dose of coincidence and by scrapping an idea that seemed good at the beginning to start work on a better one.
 
-First, the basics. We need to know what an NFT is, otherwise the rest of this article won't make any sense.
+First, the basics. We need to know what an NFT is, otherwise, the rest of this article won't make any sense. If you're an NFT veteran; congratulations, you can skip ahead.
 
 ### What is an NFT? What does NFT stand for?
 
@@ -54,22 +37,23 @@ First, the basics. We need to know what an NFT is, otherwise the rest of this ar
 
 **Still confused? Yeah, same.**
 
-Fungibility isn't a new concept. Money you spend on a daily basis, a dollar, for example, is _fungible_ - I give you a dollar and you give me a dollar we'll both have exactly the same as we started with.
+Fungibility isn't a new concept. The money you spend daily, a dollar, for example, is _fungible_ - I give you a dollar, you give me a dollar we'll both have the same as we started with.
 
-A concert ticket, however, is _non-fungible_. If we traded concert tickets we'd have something completely different. This, essentially, is what an NFTs are; unique. I give you a ticket to an Elton John concert, and in return you give me your ticket to Nickelback.
-We no longer have the same thing we started with, and I will be really disappointed.
+A concert ticket, however, is _non-fungible_. If we traded concert tickets we'd both end up with something completely different. They are unique - and so are NFTs. I give you my ticket to an Elton John concert,
+and in return, you give me your ticket to Nickelback. We no longer have the same thing we started with, and I will be disappointed. Who would want to listen to Nickelback, let alone see them live?
 
 #### How do NFTs work?
 
-As a rule of thumb, all NFTs are part of the Ethereum blockchain. Like Bitcoin is a cryptocurrency, so is Ethereum, but it more. It's also a network that supports trading and keeping track of who owns NFTs. Think a new, decentralized, internet.
+As a rule of thumb, all NFTs are part of the Ethereum blockchain. Like Bitcoin is a cryptocurrency, so is Ethereum, but it's more. It's a network that supports trading and keeping track of who owns NFTs. Like a new, decentralized, internet. Sort of.
 
 #### What can an NFT be?
 
-NFTs can be anything that is stored as 1's and 0's. Put easily - everything digital. Music, drawings, a picture of you cat, heck, even this article could be an NFT. However, most of the excitement today is around digital art.
+NFTs can be anything that is stored as 1's and 0's. Put easily - everything digital. Music, drawings, a picture of your cat, heck, even this article could be an NFT. However, most of the excitement today is surrounding digital art.
 
-#### My take on NFTs.
+#### My take on NFTs
 
-I think the concept is interesting, and I believe NFTs can have many use-cases, but the way things are now with digital art is a little silly. Like this collection of Taco Bell Tacos sold for a _grand total of $69 million_.
+I think the concept is interesting, and I believe NFTs can have many use-cases. That being said, the state of market in the digital art world right now is a little silly.
+Take this collection of Taco Bell Tacos sold for a _grand total of $69 million_.
 
 <div align="center">
   <img
@@ -78,20 +62,15 @@ I think the concept is interesting, and I believe NFTs can have many use-cases, 
   />
 </div>
 
-But this proves one thing. There is money in NFTs. **Lots and lots of money**. I don't know about you, but that interested me.
+But to me, these tacos make one thing clear. There is money in NFTs. **Lots and lots of money**. I don't know about you, but that interests me.
 
-## How it began
+## How it all began
 
-Let's go back to the start. A while back a colleague and I decided to get into the Web3 space. We had the idea to create a Norwegian platform on which to trade NFTs. We both taught ourselves the programming language Solidity which is predominately used to
-implement smart contracts on the Ethereum network. After that I coded up a simple MVP for the frontend of the marketplace.
+Let's go back to the start. A while back a colleague and I decided to get into the Web3 space. We had the idea to create a Norwegian platform on which to trade NFTs. We both taught
+ourselves the programming language Solidity which is predominately used to implement smart contracts on the Ethereum network. After, I coded up a simple MVP for the frontend of the marketplace.
+It is still live [here](https://torden.vercel.app/), though most of it no longer works due to OpenSea making breaking changes to their APIs.
 
-<!---
-The idea was to leverage OpenSea's API & SDK on the backend, wrap our own backend around that and make the frontend easy to use and allow users to register and create crypto
-wallets using Vipps and Firi (Norwegian systems) to more easily target a broader user-base. The MVP is still live,
-though most of it does not work due to OpenSea making breaking changes to their APIs: https://torden.vercel.app/.
--->
-
-We decided to integrate features from [OpenSea](https://opensea.io/) (the largest marketplace for trading NFTs) to help kickstart the project. During development, I ran into some issues with the OpenSea's API,
+We decided to integrate features from [OpenSea](https://opensea.io/) (the largest marketplace for trading NFTs) to help kickstart the project. During development, I ran into some issues with OpenSea's API,
 so, naturally, I went to their Discord to ask for help from their developers. While I was corresponding with them, a message in the chat piqued my interest:
 
 <div align="center">
@@ -104,29 +83,36 @@ This was an absurd amount of requests. Why was this guy making so many bids at o
   <img src="/images/article/nft-trading/explanation.png" />
 </div>
 
-**The idea was as ingenious as it was simple**; find a collection of NFTs, bid a little under the floor price (the lowest 'buy now' price of that collection),
-someone accepts your offer, you list the NFT you just bought for sale and, once it sells, you pocket the change. Rinse and repeat.
+Not the most graceful way to put it, but the idea was solid. **It was ingenious as it was simple**.
 
-Most people would look at the offer made and roll their eyes at it, but the 0.1% out there would see the offer as a possibility; a possibilty to sell a piece of digital art they sorely did not want anymore.
+1. Find a collection of NFTs
+2. Bid a little under the floor price (the lowest 'buy now' price of that collection)
+3. Someone accepts the offer
+4. You list the NFT you just bought for sale a little under floor price
+5. Once it sells, you pocket the difference
+6. Rinse and repeat
+
+Most of the people receiving the offer will probably look at it and roll their eyes. But the 0.1% out there would see the offer as a possibility - a possibility to sell a piece of digital art they sorely did not want anymore.
 It was a numbers game. And the winner was the one who could code the bot with the fastest bid speed.
 
-_The game was on. Thus began 4 months of work and countless hours of coding._
+**The game was on.**
 
-I still had the NFT platform to work on, but as time went on the trading bot became an obsession and my sole point of focus. I shared the idea with my business partner, and he was just as excited as me. That very weekend after many
-hours of coding I had a working prototype. I ran it for the first time, and _it_. _was_. _*slow*_.
+Thus began 4 months of work and countless hours of coding. I still had the NFT platform to work on, but as time went on the trading bot became an obsession and my sole point of focus. I shared the idea with my business partner,
+and he was just as excited as I. That very weekend after many hours of coding I had a working prototype. I ran it for the first time and it managed around 22 bids per minute. _It_. _Was_. _*Slow*_.
 
 ## How buying and selling digital art works on OpenSea
 
-Before I can get to the nitty gritty details we have to know the basics of buying and selling digital art.
+Before I can get to the details of making the bot faster we have to know the basics of mass trading digital art.
 There are quite a few factors to consider: the bidding speed, the amount of concurrent outstanding bids, and, most crucially, **the fees**.
 
-> The economics of digital art is not like physical art.
+> The economics of digital art are nothing like their physical equivalent.
 
-#### Let's do a little mental exercise:
+#### Let's do a quick mental exercise:
 
-We get into a time machine and travel to a not so distant past where Picasso is a starving artist still perfecting his work. He has just finished a fantastic painting, however, he needs to eat, yet he has no money.
-He decides to sell his painting for $100 to a kind fellow on the street. Picasso isn't happy, but atleast he is fed.
-We get into our time machine and travel back to the present and Picasso is one of the most renowed artists in human history. That very same paiting he sold for $100 to feed himself
+We get into a time machine and travel to a not-so-distant past where Picasso is a starving artist still perfecting his work. He has just finished a fantastic painting, however, he needs to eat, yet he has no money.
+He can't eat his painting, so he decides to sell it for $100 to a kind fellow on the street. Picasso isn't happy, but at least he goes to bed with a full belly.
+
+We get into our time machine and travel back to the present and Picasso is one of the most renowned artists in human history. That very same painting he sold for $100 to feed himself
 has sold at auction for $10 000 000. How much of the money does Picasso get from the sale?
 
 _None, because he is dead._ But were he alive today he would still not see any of the $9 999 900 the painting has appreciated for.
@@ -137,24 +123,28 @@ _None, because he is dead._ But were he alive today he would still not see any o
 
 Poor Picasso.
 
-NFTs are different, however. There is a royalty fee attached to the art which the artist decides when publishing. The fee can range from 0%, all the way up an extreme 10%.
+NFTs are different, however. There is a royalty fee attached to the art which the artist decides when publishing. The fee can range from 0%, all the way up to an extreme 10%.
 
-Let's perform the same exercise as before, only now Picasso has released his paiting as an NFT and set a royalty fee of 10%. He would still only get $100 dollars on the inital sale, but years later,
-when the painting is sold at auction he gets nearly _a million dollars_ just from the royalties. This, including all the other subsequent times the piece changes hands after the initial sale,
+Let's perform the same exercise as before, only now Picasso has released his painting as an NFT and set a royalty fee of 10%. He would still only get $100 on the initial sale, but, years later,
+when the painting is sold at auction he gets _a million dollars_ just from the royalties. This, including all the other subsequent times the piece changes hands after the initial sale,
 would make Picasso an obscenely rich man.
 
 <div align="center">
   <img src="/images/article/nft-trading/picasso-happy.webp" />
 </div>
 
-But I am getting off topic. This is not an article to persuade you to become an NFT artist so you can finally buy that yatcht and move to Monaco.
-This is an article about writing code to automate buying NFTs so you can finally buy that yatcht and move to Monaco.
+But I am getting off-topic. This is not an article to persuade you to become an NFT artist so you can finally buy that yacht and move to Monaco.
+This is an article about writing code to automate buying NFTs so you can finally buy that yacht and move to Monaco.
+
+<div align="center">
+  <img src="/images/article/nft-trading/yacht.gif" />
+</div>
 
 ### The royalty fee
 
 The royalty fee is important to keep in mind when trading. If we buy an NFT for, say 1 ETH, and sell again for the same price, we won't break even, we'll be down 0.1 ETH.
-OpenSea also takes a cut for facilitating the trade, which is a fixed 2.5%. In total we'll be down 0.125 ETH.
-Which is why, when calculating the bid price, we want to bid below this, and a little extra. The little extra is our profit margin.
+OpenSea also takes a cut for facilitating the trade, which is a fixed 2.5%. In total, we'll be down 0.125 ETH.
+This is why, when calculating the bid price, we want to bid below this, and a little extra. The little extra is our profit margin.
 
 Below is the function I used to fetch information about the contract of the NFT and calculate the bid price dynamically to ensure a profitable trade, no matter the royalty fee:
 
@@ -194,30 +184,31 @@ primary_asset_contracts[0];
 ### The technical limitations
 
 There are many guards put in place by OpenSea to limit how many bids you can place within a timeframe. Their API was intended to be used by normal people,
-so they put up limitations to stop mass bidding. This, however, won't stop us resourceful developers from finding genious solutions to circumvent these limitations.
+so they put up limitations to stop mass bidding. This, however, won't stop us, resourceful developers, from finding genius solutions to circumvent these limitations.
 
-#### There are 4 main variables which limit our ability to rapidly bid on NFTs:
+#### There are 4 main variables that limit our ability to rapidly bid on NFTs:
 
-1. The IP address of the client placing the bid.
-2. The API key which is used by the user to make the API call.
-3. The amount of Ethereum in the wallet making the bid on the NFT \* 10 000 (outstanding bids).
-4. Daily quota of Ethereum Node requests per day (Infura)
+1. The IP address of the client
+2. The API key used by the client
+3. The amount of Ethereum in the wallet of the client
+4. Daily quota of daily Ethereum Node requests
 
-## 1. Exceeding the API throttle limit:
+## 1. Exceeding the IP address throttle limit
 
-If you're familiar with what a VPN is, then proxies shouldn't be be a hard concept to grasp. You can see it as a middleman between you and the internet.
+If you're familiar with what a VPN is, then proxies shouldn't be a hard concept to grasp. You can view it as a middleman between you and the internet.
 
-Let's say you're back in first grade. You have a raging crush on a cute blonde girl in your class named Lily, and you want to send a love letter to her, confessing your feelings.
+Let's say you're back in first grade. You have a raging crush on a cute blonde girl in your class named Lily, and you want to send her a love letter confessing your feelings. In classic first grade style,
+you're shy, and you don't want Lily to know that it's you who sent the letter, so you ask your bestest of friends (let's call him Dave) to deliver it for you. Bare with me here, I assure you it will make sense.
 
-In classic first grade style, you're shy, and you don't want Lily to know that it's you who sent the letter, so you ask your bestest of friends (let's call him Dave) to deliver it for you.
-Bare with me here, I assure you it will make sense. Dave gives the letter to Lily, and as she reads, she blushes and seems to be flattered, but since the letter wasn't signed,
-she now thinks it was Dave who wrote it since he was the one who delivered it.
+Dave gives the letter to Lily, and as she reads, she blushes and seems to be flattered, but since the letter wasn't signed, she now thinks it was Dave who wrote it since he was the one who delivered it.
 
-In this story, Dave is our Proxy and Lily is OpenSea's API. You make the request and give the proxy instructions on where the request should go.
-The recipent of the request will think it is the proxy who made the request, thus allowing us to mask ourselves. This can then be scaled horizontally to make as many requests with as many proxies as you want in parallel,
-making it look like different clients making the request at once.
+In this story, the love letter is the request, Dave is our proxy and Lily is the OpenSea API. You make the request and give the proxy instructions on where the request should go.
+The recipient of the request will think it is the proxy who made the request, thus allowing us to mask our true identity.
 
-Imagine an army of Daves going up to Lily to deliver a heartfelt love letter all at once. Below is a simple demonstration of how we can accomplish this in TypeScript:
+This can then be scaled horizontally to make as many requests with as many proxies as we want in parallel, making it look like different clients making the requests all at once.
+Imagine an army of Daves going up to Lily to deliver a heartfelt love letter all at once.
+
+Below is a simple demonstration of how we can accomplish this in TypeScript.
 
 #### Making a normal request:
 
@@ -279,8 +270,8 @@ getOriginWithProxy();
   {`{ origin: '130.41.41.175' }`}
 </SyntaxHighlighter>
 
-As we can see here, the server I'm making a request to thinks the request is coming from the IP address I specified in the `httpsAgent`, not my actual IP address.
-But now we have basically accomplished what we had before, just more layers. The real power of proxies shows when we rotate them. Below we have an array of proxies and put the code above in a simple loop.
+As we can see here, the server I'm making a request to thinks the request is coming from the IP address I specified in the `httpsAgent`, not my actual IP address which we saw above.
+But now we have accomplished what we had before, just one more layer. The real power of proxies comes into play when we rotate them. Below we have an array of proxies and put the code we already have in a simple loop.
 
 #### Rotating proxies:
 
@@ -324,9 +315,9 @@ getOriginWithRotatingProxies();`}
 { origin: '185.212.205.236' }`}
 </SyntaxHighlighter>
 
-That was pretty simple, wasn't it? But making requests to an API that just returns an IP address isn't very useful. This is where the [OpenSea SDK](https://github.com/ProjectOpenSea/opensea-js) comes in.
+That was pretty easy, wasn't it? But making requests to an API that just returns an IP address isn't very useful. This is where the [OpenSea SDK](https://github.com/ProjectOpenSea/opensea-js) comes in.
 
-Finding where to implement the proxy logic was surprisingly easy. After digging for some time I finally found the private method _\_fetch_ that is utilized by all the functions of the SDK to call the API.
+Finding where to implement the proxy logic was surprisingly easy. After digging for some time I finally found the private method `_fetch` that is utilized by all the functions of the SDK to call the API.
 Bingo. Change the code here, change it for the whole project.
 
 <SyntaxHighlighter language="typescript">
@@ -371,25 +362,24 @@ private async _fetch(apiPath: string, opts: RequestInit = {}) {
 > A big caveat to proxies is that the proxy provider can see all the traffic routed through their service. This can be a huge security concern. There are both free proxies and paid proxies.
 > Like all things in life: if it's free, you're the product.
 
-The company behind the free proxies aren't just nice people who want to make the internet a safer place. They use the traffic routed through their service and sell the data.
-I would never recommend using a free proxy when making requests containing sensitive information.
+The company behind the free proxies aren't just nice people who want to make the internet a safer place. They store the traffic routed through their service and sell the data to the highest bidder.
+I recommend you never use a free proxy when making requests containing sensitive information.
 
-Making bids in OpenSea specifies a private API key, your ethereum wallet address, your mnemonic phrase.
-The type of stuff you _do not_ want other people to see. Therefore, should you try this yourself, you should definitely look into using a paid service.
+Making bids in OpenSea specifies a private API key, your Ethereum wallet address, and your mnemonic phrase.
+The type of stuff you _do not_ want other people to see. Therefore, should you try this yourself, you should look into using a paid service.
 
-I searched around a lot and tried a lot of different services. I eventually landed on an unnamed shoddy service due to a lack of better alternatives.
-What I eventually found is that it is a Russian company behind this service, and keep in mind, this when the Ukrainian
-war had just started.
+I searched around and tried a lot of different services. I eventually landed on a shoddy service that I will not name due to a lack of better alternatives.
+What I eventually found is that the people behind is a Russian company. Keep in mind that this was when the Ukrainian war had just started.
 
-While using their service it crashed and it was down for a few days.
-I contacted their support and they, in turn, directly told me it was due to the west sanctioning their country. They fixed the issue and offered me a free coupon. I, naturally, accepted.
+While using their service it crashed and it was down for a few days. I contacted their support and they, in not as many words, told me that it was due to the west sanctioning their country.
+A little later they fixed the issue and offered me a free coupon. I, naturally, gracefully accepted. You may have your war going on, but I'll be damned if it's going to stop my bot.
 
-## 2. The OpenSea API keys
+## 2. The API keys
 
 If you're not familiar with API keys, think of them as credentials to your Netflix account. If you don't have your password, you're not watching that last season of Grey's Anatomy.
 
-When it comes to API keys on OpenSea, the development team has a full monopoly over who gets keys and who doesn't. You'll to [fill out a form](https://docs.opensea.io/reference/request-an-api-key) and wait for approval.
-Most people never get their API key. I was lucky enough to get one, however the rate limit of one key is _4 requests per second_. That's abysmally low.
+When it comes to API keys on OpenSea, the development team has a full monopoly over who gets a key and who doesn't. Everyone has to [fill out a form](https://docs.opensea.io/reference/request-an-api-key) and wait for the approval.
+Most people never get their API key. I was lucky enough to get one, however, the rate limit of one key is _4 requests per second_. That's abysmally low.
 
 <div align="center">
   <img src="/images/article/nft-trading/rookie-numbers.gif" />
@@ -399,51 +389,52 @@ Considering that completing a single bid takes a total of 4 API calls, if I want
 10 000 seconds or **2 hours and 46 minutes**.
 
 Remember, this is a numbers game, the more nets you throw out into the ocean, the more fish you're going to catch.
-Spending 3 hours to throw out 10 000 nets may sound like a lot, but in the world of fishing for digital art this gives us a very low probability of catching anything.
+Spending 3 hours to throw out 10 000 nets may sound like a lot of nets, but in the world of fishing for digital art, this gives us a very low probability of catching anything.
 
 **We can do better than that.**
 
 "But how?" I hear you say. "OpenSea has a strict limit of 1 key per developer and currently nobody is getting any keys." You worry not, my sweet summer child,
-for this is where the careless users of the open-source community comes in. See, people, by nature, are messy, especially when it comes to storing sensitive credentials.
+for this is where the careless users of the open-source community come in. See, people, by nature, are messy, especially when it comes to storing sensitive credentials.
 
-If you go to [GitHub and search OPENSEA_API_KEY](https://github.com/search?p=1&q=OPENSEA_API_KEY&type=Code) you get over 80 pages of open-source code
-where people are using their API keys. Some have done a good job of keeping their API keys secret, others, not so much. Write a quick web scraper to go over each page,
-find the hard-coded API keys, validate them by making a redundant API call to OpenSea and violà! We now have a lot of API keys to play around with.
+If you go to GitHub and search [OPENSEA_API_KEY](https://github.com/search?p=1&q=OPENSEA_API_KEY&type=Code) you get over 80 pages of open-source code
+where people are using their API keys. Some have done a good job of keeping their API keys secret, others, not so much.
 
-When I did this I got a total of 17 keys. This includes that some keys that I got from other botters who were in desperate need of the rotating proxy logic. And here I am giving it away for free.
+Write a quick web scraper to go over each page, find the hard-coded API keys, validate them by making a redundant API call to OpenSea, and violà! We now have a lot of API keys to play around with.
+
+When I did this I got a total of 17 keys. This includes some keys that I got from other botters who were in desperate need of the rotating proxy logic. And here I am giving it away for free.
 
 ## 3. The outstanding bid limit
 
-The easiest one is by far the bid limit. OpenSea set a hard cap on the bids each wallet can have active at once. This is calculated using a dead simple formula:
+The easiest one to grasp but the hardest one to do anything about is the bid limit. OpenSea set a hard cap on the bids each wallet can have active at once. This is calculated using a dead simple formula:
 
 <mark>wallet funds * 10000 > total outstanding bid amount</mark>
 
-What does this mean? Let's put it into practice.
+What does this mean for us? Let's put it into practice.
 
-If we have a crypto wallet containing 1 ETH, we would have a max outstanding bid amout of 10 000 ETH. If we now run our bot and place bids with a price of 1 ETH on each NFT we would be able to bid on 10 000 NFTs.
-The way to increase this number is obvious: either decrease bid price, or put more money in your wallet.
+If we have a wallet containing 1 ETH, we would have a max outstanding bid amount of 10 000 ETH. If we now run our bot and place bids with a price of 1 ETH on each NFT we would be able to bid on 10 000 NFTs.
+The way to increase this number is obvious: either decrease the bid price, decrease the bid time so that the offer expires earlier, or put more money in your wallet.
 
-This limitation creates a snow ball effect; the more you profit; the more you can bid; the more you can profit. It is cash-positive feedback loop.
+This limitation creates a snowball effect; the more you profit, the more you can bid, the more you can profit, and on it goes. It's a cash-positive feedback loop.
 
-## 4. The daily quota of Ethereum Node requests per day
+## 4. The daily Ethereum Node requests quota
 
-So far we've gone over rotating proxies, API keys and the outstanding bid limit.
+So far we've gone over 3 out of for points: rotating proxies, API keys, and the outstanding bid limit.
 
-Last, but not least, we have the nodes you have to use to talk to the Ethereum network. A single node contains the whole network and it is replicated all across other nodes in the word.
+Last, but not least, we have the nodes you use to talk to the Ethereum network. A single node contains the whole Ethereum network and it is replicated all across other nodes in the world. This is what allows it to be decentralized.
 
-If there is an update to our Node, the other Nodes around the world verify and update. If there is a update on one of the countless other Nodes in the world, our Node verifies and updates.
-Keep in mind, this is a huge simplification of how the Ethereum network actually works. But in broad strokes this explanation will suffice.
+If there is an update to our Node, the other Nodes around the world verify and update. If there is an update on one of the countless other Nodes in the world, our Node verifies and updates.
+Keep in mind that this is a huge simplification of how the Ethereum network works, however, in broad strokes this explanation will suffice.
 
-In any case, setting up a node for yourself is expensive and hard (unless your name is Vitalik). A much easier option is to use a provider such as Infura, and use their API.
-Their service is free up to 100 000 requests per day. When scaling up my bot I quickly hit this limit.
+In any case, setting up a node for yourself is expensive, hard (unless your name is Vitalik) and time-consuming. A much easier option is to use a provider such as [Infura](https://infura.io/), and use their API.
+Their service is free for up to 100 000 requests per day. When scaling up my bot I quickly hit this limit.
 
 > How should I solve this issue?
 
-Every new user on Infura's platform gets a free 100 000 requests per day. If you can make more accounts, you can essentially get more API keys, each with a daily limit of 100k requests.
+Every new user on Infura's platform gets a free 100 000 requests per day. If you can make more accounts, you get more API keys, each with a daily limit of 100k requests.
 
 I used a temporary email service and managed to make a couple of fake accounts all with their own daily quotas. Nice! Now to make many more. I tried automating it, but captchas, anti-bot measures,
-making fake emails and saving the generated API key in a database made it a troublesome task, so what to do? I could spend hours doing it myself, and I did for a little while.
-But that kind of boring work made it feel like I was slowly dying inside. So doing it myself is off the table, and automating it is not worth the development cost. What now?
+making fake emails, and saving the generated API key in a database made it a troublesome task, so what to do? I could spend hours manually doing it myself, and I did for a little while.
+However, this kind of work made my brain smoother by the minute and I stopped. Okay, doing it myself is now off the table, and automating it is not worth the development cost. What now?
 
 I went into a Swedish discord channel and posted the following:
 
@@ -451,8 +442,10 @@ I went into a Swedish discord channel and posted the following:
   <img src="/images/article/nft-trading/hiring.png" />
 </div>
 
-I got a lot of DMs. In retrospect I think I might have overpaid, but I felt the work was so tedious and boring that nobody would do it for less. In any case,
-I found a good candidate, and they got to work creating fake accounts and storing the API key. At the end I had a total of **220 keys** which allowed my bot to make a total of **2 200 000 requests per day**. This was exactly what I needed.
+I got a lot of DMs. In retrospect, I think I might have overpaid, but I felt the work was so tedious that nobody would do it for less. In any case,
+I found a good candidate, and they got to work creating fake accounts and storing the API key. In the end, I had a total of **220 keys** which allowed my bot to make a total of **22 million requests per day**. This was exactly what I needed.
+
+**All the pieces fall into place, except, maybe not?**
 
 ## The competition
 
@@ -464,10 +457,11 @@ I was just starting out when I found these guys, and my morale was crushed.
   <img src="/images/article/nft-trading/handshake-homepage.png" />
 </div>
 
-I thought that I had no way to compete and it would be better to just buy access to their service and use that. After doing some more research I realised
-that this competition was not a disadvantage, quite the opposite; it was a huge advantage. Here are people who share resources, ideas and their methodology when it comes to bidding for free and then expect you to buy their service.
-What if I researched their ideas, implemented the best ones and created my own? Another point which gave me a huge advantage is that these people were good at marketing and selling their service to people who couldn't code, but their developer team wasn't actually that good.
-This is the services they provided:
+I thought that I had no way to compete, and it would be better to just buy access to their service and use that. After doing some more research I realized
+that this competition was not a disadvantage, quite the opposite; it was a huge advantage. Here are people who share resources, ideas, and their methodology when it comes to bidding for free and then expect you to buy their service.
+
+What if I researched their ideas, reverse-engineered their solutions, and implemented them in my bot? Another point that gave me a huge advantage is that these people were good at marketing and selling their services to
+non-technical people who didn't know code, but their developer team wasn't all that amazing. These are the services they provided:
 
 <div
   align="center"
@@ -483,34 +477,44 @@ This is the services they provided:
   />
 </div>
 
-These are insane prices which cut into your profit margins. For reference, at the time, 5.5 ETH was $16 500! Their service was also quite unspectacular. They had a fancy interface, but they could only offer their users a bid speed of around 45 bids per minute.
+Mostly just fluff and these insane prices cut into your profit margins if you want to earn something while botting. For reference, at the time, 5.5 ETH was $16 500! Their bots were quite unspectacular.
+They had a fancy interface, sure, but they could only offer their users a bid speed of around 45 bids per minute.
 
-Don't get me wrong, 45 bids per minute is impressive when you have a large userbase, but it could not compete with my custom made bot with a speed of 600 bids per minute. Imagine a hand-made Ferrari F40 which takes months to manufacture and only one person can drive versus
-a Volkswagen Golf, which is manufactured in short time and reliably serves millions of people every year. Both good cars in their own aspect, but which do you think would win in a race?
+Don't get me wrong, 45 bids per minute is impressive when you have a large user base, but I could do better.
 
-And this was absolutely a race.
+Imagine a hand-made Ferrari F40 which takes months to manufacture and only one person can drive versus a Volkswagen Golf, which is manufactured in a comparatively short amount of time and reliably serves millions of people every year.
+Both are good cars in their own respect, but which one do you think would win in a race?
 
-TODO: WRITE MORE ABOUT THE CODE ITSELF
+**And this was absolutely a race.**
 
-With all these in place and some fine tuning to the code, which I did over several months I ended up bidding on 850 000 NFTs per day. That's a total of 3.4 million API requests. All routed through some proxy datacenter in Spain coming directly from my server at home.
+## The bot in action
 
-Like I mentioned in the first paragraph I managed to lose 0.85 in a single trade. Long story short: in the beginning I had neglected writing the code to dynamically set the price, and, most crucially, a safety net to stop bids that are way above the floor price to go through.
-This happened in Feburary, which was when Ethereum peaked at an all-time high of $3 300. The NFT I lost almost all my starting capital on was from a collection called [Meta legends](https://opensea.io/assets/ethereum/0xf9c362cdd6eeba080dd87845e88512aa0a18c615/369).
+With all these variables in place and constant fine-tuning to the code over several months, my bot managed to bid at a rate of 600 bids a minute.
+Quite the upgrade from the 22 bids per minute I started with. **I demolished my competition**; Both the hobby developers who coded their own bots and the people who had bought a botting service could not compete.
+
+Of course, they still managed to make money, since there are far too many NFT collections in the world of Web3 to bid on all at once for one bot, however, I was profiting faster than they were. _I may have a problem when it comes to my competitiveness_.
+
+Competitiveness aside, if we do some quick calculations we can find that my bot ended up bidding on 36 000 NFTs every hour, every day, 24/7. That's over 860 000 NFTs and 3.4 million API requests every single day.
+All routed through some proxy data center in Spain secretly coming directly from my Linux server at home.
+
+As I mentioned in the first paragraph I managed to lose 0.85 in a single trade. Long story short: in the beginning, I had neglected writing the code to dynamically set the price, and, most crucially, a safety net to stop bids that are way above the floor price to go through.
+This happened around February, which was when Ethereum peaked at an all-time high of $3 300. The NFT that I lost almost all of my starting capital on was from a collection called [Meta legends](https://opensea.io/assets/ethereum/0xf9c362cdd6eeba080dd87845e88512aa0a18c615/369).
 
 <div align="center">
   <img src="/images/article/nft-trading/meta.png" />
 </div>
 
-Take a good look at the image above. **I paid $2 600 for it**. On the NFT we can see the item activity, and here we find the fateful trade which my bot made and the big loss I took.
+Take a good look at the image above. **I paid $2 600 for it**. On the NFT we can see the item activity, and here we find the fateful trades which my bot made and the big loss I took.
 
 <div align="center">
   <img src="/images/article/nft-trading/meta-activity.png" />
 </div>
 
-This may not seem like a huge loss, and in the big picture it wasn't. However, at the time, this was the biggest business loss I had made in my career and I seriously considered stopping working on the project. I took a break the next day in which I did some reflecting.
-Things were just starting to pick up and I decided against stopping; like hell if I would let this stop me. The loss wasn't the money I lost, the real loss would have been if I let it stop me.
+In the grand scheme of things, it may not seem all that much, and in retrospect, it wasn't. However, at the time, this was the biggest loss I had ever made in my career and I seriously considered stopping working on the project.
+I subsequently gave myself a day to reflect on the situation. My bot was just starting to gain traction and I was sooo close to having it almost run without any human intervention.
 
-I coded up a safety net to ensure this could not happen again:
+I decided against shelving the bot; like hell if I would let this stop me. The loss wouldn't have been the money that I lost, the real loss would have been if I let this setback stop me.
+I learned from my mistake, and coded up a safety net to ensure this could not happen again:
 
 <SyntaxHighlighter language="typescript">
   {`import { HARD_MAX_BID_PRICE, HARD_MIN_BID_PRICE } from "../consts";
@@ -539,12 +543,17 @@ export default function safetyNet({
 }`}
 </SyntaxHighlighter>
 
-I tested it rigorously, invested more money into my bot and kept my eye on the ball. I was now all in.
+I tested my bot more rigorously, invested more money, and kept my eye on the ball. I was now all in.
 
-In retrospect I am extremely glad I made this decision, and it was a great learning experience without making an irrevesible mistake and I ended up recuperating my loss and then some.
+In retrospect I am extremely glad I made this decision, and it was a great learning experience and I ended up recuperating my loss, and then some.
 
-After this I made constant minor improvements to the bot, almost like a mechanic constantly tinkering on the car of the engine. It was a hugely rewarding project to work on. Improving the bot and seeing the result in forms of profit gave me the best work ethic possible.
-I previously kept a track of all trades in a Google sheets document, but it quickly became unmanagable, so I made an overview which is on this very site. It is in the ["Bot"](https://www.nikolaiwaerpen.com/bot) tab in the navigation. The code for which can be seen here:
+After this, I made constant minor improvements to the bot, almost like a mechanic tinkering on the engine of his car. It was a hugely rewarding project for me. Improving the bot and instantly seeing the result in the form of profit
+gave me an incredible work ethic.
+
+## The bot dashboard
+
+I previously kept a track of all trades in a Google sheets document, but it quickly became unmanageable as the bot gained traction, so I coded up a quick overview which is on this very site.
+Look up at the navigation and see the ["Bot"](https://www.nikolaiwaerpen.com/bot) tab. The code for which can be seen here:
 
 [Frontend](https://github.com/NikolaiWaerpen/zimmer)
 
@@ -552,15 +561,20 @@ I previously kept a track of all trades in a Google sheets document, but it quic
 
 ## In conclusion
 
-The way my journey is detailed in this article makes it sound like the road was clear cut: it was not. I made a lot of mistakes, learned and grew. I was constantly optimizing the code and the infrastructure on which it ran.
-The bot started from around 22 to a whopping 600 bids per minute or 850 000 bids per day.
+The way my journey is detailed in this article makes it sound like the road was clear cut: it was not. It was shrouded in a thick fog of uncertainty. I made a lot of mistakes, learned, and grew. Both in business, but also in technical ability.
+I was constantly optimizing the code and the infrastructure on which it ran and thinking of new solutions. The bot started from a prototype making 22 bids per minute to a whopping 600 bids per minute or 864 000 bids per day.
 
-Eventually the price of Ethereum dropped heavily, the hype for NFTs fizzled out a little and I started working at a new company, which took up a significant portion of my time and energy, so I stopped.
+Eventually, the price of Ethereum dropped, the hype for NFTs fizzled out, OpenSea made breaking changes to their SDK and APIs, API keys stopped working. I moved to my own apartment, I started working at a new company
+and I had other projects in the making which all took up a significant portion of my time and energy. I decided to stop around the middle of May.
 
-There is a lot more to this story than I've included, such as how to find the best collections, how to get a high cashflow and how the underlying code worked. I'd like to share more, but this article became much longer than expected.
-This is still very much a viable way to make money. Ethereum is admittedly a lower price than what it was, but that might mean that more people are willing to sell.
+There is more to this story than what I have written here, such as methods to find the best collections to invest in, how to get a high cash flow and how the underlying code worked.
+I'd like to share more, but this article became much longer than I initially expected.
 
-I have considered several times to dust off the bot and take a look at it again, I simply haven't dedicated the time to it.
-Perhaps it will be a tale for another time. Maybe I'll even release the source code some day.
+Botting and trading NFTs is still very much a viable way to make money. While I wrote this article I researched the market and other botters are still thriving, making their owners rich.
 
-If you have any questions, contact me on either
+I have considered several times picking the bot off of its shelf and start working on it again, but I simply haven't dedicated the time to it.
+Perhaps someday I will do it, however, that will be a tale for another time. Maybe I'll even release the full source-code some day.
+
+> There are so many new exciting things to learn and new projects that can make you money - start building!
+
+If you have any questions, please feel free to contact me.
