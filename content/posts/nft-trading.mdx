@@ -371,24 +371,32 @@ Making bids in OpenSea specifies a private API key, your Ethereum wallet address
 The type of stuff you _do not_ want other people to see. Therefore, should you try this yourself, you should look into using a paid service.
 
 I searched around and tried a lot of different services. I eventually landed on a shoddy service that I will not name due to a lack of better alternatives.
-What I eventually found is that the people behind is a Russian company. Keep in mind that this was when the Ukrainian war had just started.
+What I eventually found is that the company behind the service is Russian. Keep in mind that this was when the Ukrainian war had just started.
 
-While using their service it crashed and it was down for a few days. I contacted their support and they, in not as many words, told me that it was due to the west sanctioning their country.
-A little later they fixed the issue and offered me a free coupon. I, naturally, gracefully accepted. You may have your war going on, but I'll be damned if it's going to stop my bot.
+While using their service it crashed and it was down for a few days. I contacted their support and they, in not as many words, told me that it was due to the sanctions of their country.
+
+A little later they fixed the issue and offered me a free coupon. I, naturally, gracefully accepted. The Russians are also suffering from this ridiculous war. I may be wrong, but I doubt this shoddy
+company is in bed with Putin and his oligarchs, so hopefully I'm helping them out by using their services. Best of all, my conscience is clear!
+
+<div align="center">
+  <img src="/images/article/nft-trading/putin.jpeg" />
+</div>
+
+**You may have your little war going on, Putin, but I'll be damned if it's going to stop my bot.**
 
 ## 2. The API keys
 
-If you're not familiar with API keys, think of them as credentials to your Netflix account. If you don't have your password, you're not watching that last season of Grey's Anatomy.
+If you're not familiar with API keys, think of them as the login credentials to your Netflix account. If you forgot your password, you're not watching that last season of Grey's Anatomy.
 
 When it comes to API keys on OpenSea, the development team has a full monopoly over who gets a key and who doesn't. Everyone has to [fill out a form](https://docs.opensea.io/reference/request-an-api-key) and wait for the approval.
 Most people never get their API key. I was lucky enough to get one, however, the rate limit of one key is _4 requests per second_. That's abysmally low.
 
+Considering that completing a single bid takes a total of 4 API calls, if I wanted to do a full sweep of a usual collection of **10 000 NFTs**, it would take. Drum roll... you guessed it!
+10 000 seconds or **2 hours and 46 minutes**.
+
 <div align="center">
   <img src="/images/article/nft-trading/rookie-numbers.gif" />
 </div>
-
-Considering that completing a single bid takes a total of 4 API calls, if I wanted to do a full sweep of a usual collection of **10 000 NFTs**, it would take. Drum roll... you guessed it!
-10 000 seconds or **2 hours and 46 minutes**.
 
 Remember, this is a numbers game, the more nets you throw out into the ocean, the more fish you're going to catch.
 Spending 3 hours to throw out 10 000 nets may sound like a lot of nets, but in the world of fishing for digital art, this gives us a very low probability of catching anything.
@@ -403,7 +411,7 @@ where people are using their API keys. Some have done a good job of keeping thei
 
 Write a quick web scraper to go over each page, find the hard-coded API keys, validate them by making a redundant API call to OpenSea, and violà! We now have a lot of API keys to play around with.
 
-When I did this I got a total of 17 keys. This includes some keys that I got from other botters who were in desperate need of the rotating proxy logic. And here I am giving it away for free.
+When I did this I got a total of 17 keys. This includes some keys that I got from other botters who were in desperate need of the rotating proxy logic. And here I already gave it away for free.
 
 ## 3. The outstanding bid limit
 
