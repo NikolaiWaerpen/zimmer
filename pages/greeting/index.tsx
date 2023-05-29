@@ -40,8 +40,9 @@ export type GreetingType = {
 };
 
 export default function Greeting() {
-  const { loading, error, data } =
-    useQuery<{ greetings: GreetingType[] }>(GET_GREETINGS);
+  const { loading, error, data } = useQuery<{ greetings: GreetingType[] }>(
+    GET_GREETINGS
+  );
   const [editingGreeting, setEditingGreeting] = useState<null | number>(null);
 
   if (loading) return <Loader fullscreen />;
