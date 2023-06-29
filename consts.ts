@@ -29,10 +29,10 @@ export const WPM = 250;
 export const NAVIGATION = {
   main: [
     { name: "Home", href: "/" },
-    { name: "Guest Book", href: "/greeting" },
+    // { name: "Guest Book", href: "/greeting" },
     { name: "Articles", href: "/article" },
     // { name: "Bot", href: "/bot" },
-    { name: "Trump", href: "/trump" },
+    // { name: "Trump", href: "/trump" },
   ],
   social: [
     {
